@@ -1,0 +1,64 @@
+# Nature Photonics-style Matplotlib stylesheet
+# Usage: plt.style.use('/path/to/nature_photonics.mplstyle')
+
+# Figure geometry
+figure.figsize: 3.5, 2.4
+figure.dpi: 150
+figure.constrained_layout.use: True
+
+# Export
+savefig.dpi: 600
+savefig.bbox: tight
+savefig.pad_inches: 0.02
+savefig.transparent: False
+pdf.fonttype: 42
+ps.fonttype: 42
+svg.fonttype: none
+
+# Typography
+font.family: sans-serif
+font.sans-serif: Arial, Helvetica, DejaVu Sans
+font.size: 6
+axes.labelsize: 7
+axes.titlesize: 7
+xtick.labelsize: 6
+ytick.labelsize: 6
+legend.fontsize: 6
+mathtext.fontset: dejavusans
+mathtext.default: regular
+
+# Axes and lines
+axes.linewidth: 0.6
+axes.labelpad: 2.0
+lines.linewidth: 1.2
+lines.markersize: 3.5
+lines.markeredgewidth: 0.6
+patch.linewidth: 0.6
+xtick.major.width: 0.6
+ytick.major.width: 0.6
+xtick.minor.width: 0.45
+ytick.minor.width: 0.45
+xtick.major.size: 2.5
+ytick.major.size: 2.5
+xtick.minor.size: 1.5
+ytick.minor.size: 1.5
+xtick.direction: out
+ytick.direction: out
+xtick.top: False
+ytick.right: False
+axes.spines.top: False
+axes.spines.right: False
+axes.grid: False
+
+# Legend
+legend.frameon: False
+legend.handlelength: 1.6
+legend.handletextpad: 0.4
+legend.borderaxespad: 0.3
+legend.labelspacing: 0.25
+legend.columnspacing: 0.8
+
+# Images and colors
+image.cmap: viridis
+image.interpolation: none
+axes.prop_cycle: cycler('color', ['#1B3B6F', '#D55E00', '#007C73', '#B2479A', '#C99A00', '#4D4D4D', '#56B4E9', '#000000'])
