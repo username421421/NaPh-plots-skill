@@ -1,4 +1,4 @@
 interface:
   display_name: "Nature Photonics Plotting"
-  short_description: "Nature Photonics-style figure refactoring"
-  default_prompt: "Use $nature-photonics-plotting to refactor my Matplotlib figure into a Nature Photonics-style publication plot."
+  short_description: "Nature Photonics-style scientific figures"
+  default_prompt: "Use $nature-photonics-plotting to refactor my Matplotlib figure or microscopy-panel layout into a Nature Photonics-style publication figure."
