@@ -9,7 +9,7 @@ Assume `style-foundation.md` is already loaded.
 Use for Poynting vectors, electric-field direction, polarization, flow, or gradients.
 
 ```python
-fig, ax = plt.subplots(figsize=(3.5, 3.0), constrained_layout=True)
+fig, ax = plt.subplots(figsize=(3.4646, 3.0), constrained_layout=True)
 mag = np.hypot(U, V)
 im = ax.imshow(mag, origin="lower", extent=[xmin, xmax, ymin, ymax],
                cmap="viridis", alpha=0.9)
@@ -17,7 +17,7 @@ step = 4
 ax.quiver(
     X[::step, ::step], Y[::step, ::step],
     U[::step, ::step], V[::step, ::step],
-    color="white", linewidth=0.4, width=0.003, scale=quiver_scale,
+    color="white", linewidth=1.0, width=0.003, scale=quiver_scale,
 )
 ```
 
@@ -40,7 +40,7 @@ fig, ax = plt.subplots(
 ax.plot(theta, intensity, lw=1.3, color="#1B3B6F")
 ax.set_theta_zero_location("N")
 ax.set_theta_direction(-1)
-ax.grid(True, color="0.85", lw=0.5)
+ax.grid(True, color="0.85", lw=1.0)
 ```
 
 Rules:
@@ -78,7 +78,7 @@ Use for families of spectra across temperature, power, angle, device index, or t
 ```python
 offset = 0.0
 for i, y in enumerate(spectra):
-    ax.plot(wavelength_nm, y + offset * i, lw=0.9, color="#1B3B6F")
+    ax.plot(wavelength_nm, y + offset * i, lw=1.0, color="#1B3B6F")
 ax.set_xlabel("Wavelength (nm)")
 ax.set_ylabel("Intensity + offset")
 ```
@@ -97,7 +97,7 @@ Use for photonic bands, frequency vs wavevector, or angle-resolved dispersion.
 for band in bands:
     ax.plot(k, band, lw=1.0, color="#1B3B6F")
 for xpos in high_symmetry_positions:
-    ax.axvline(xpos, color="0.75", lw=0.5, zorder=0)
+    ax.axvline(xpos, color="0.75", lw=1.0, zorder=0)
 ax.set_xticks(high_symmetry_positions, high_symmetry_labels)
 ax.set_ylabel("Frequency (THz)")
 ```

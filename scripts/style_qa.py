@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Static QA checks for Nature Photonics-style Matplotlib scripts.
+"""Static QA checks for Nature Communications-style Matplotlib scripts.
 
 Usage:
     python style_qa.py path/to/script.py [another.py ...]
@@ -18,6 +18,8 @@ from typing import Iterable
 BANNED_CMAPS = {"jet", "rainbow", "hsv", "gist_rainbow", "nipy_spectral"}
 WARN_CMAPS = {"turbo"}
 REQUIRED_EXPORT_HINTS = {"pdf.fonttype", "svg.fonttype", "savefig.dpi"}
+NCOMMS_SINGLE_COLUMN_WIDTH_IN = 88 / 25.4
+NCOMMS_DOUBLE_COLUMN_WIDTH_IN = 180 / 25.4
 
 
 class PlotStyleVisitor(ast.NodeVisitor):
@@ -52,15 +54,17 @@ class PlotStyleVisitor(ast.NodeVisitor):
             for kw in node.keywords:
                 if kw.arg == "figsize":
                     size = self._tuple_numbers(kw.value)
-                    if size and (size[0] > 8 or size[1] > 6):
-                        self.warn(node, "LARGE_FIGSIZE", f"figsize={size} is likely presentation-sized; use ~3.5 in single or ~7.2 in double column.")
+                    if size and (size[0] > 7.5 or size[1] > 6):
+                        self.warn(node, "LARGE_FIGSIZE", f"figsize={size} is likely presentation-sized; use 88 mm single-column or 180 mm double-column width.")
 
         # linewidth too large
         for kw in node.keywords:
             if kw.arg in {"linewidth", "linewidths", "lw"}:
                 num = self._number(kw.value)
                 if num is not None and num >= 3:
-                    self.warn(node, "THICK_LINE", f"{kw.arg}={num:g} is heavy for journal plots; prefer ~0.6 for axes/contours or 1.2–1.5 for curves.")
+                    self.warn(node, "THICK_LINE", f"{kw.arg}={num:g} is heavy for journal plots; prefer 1.0 for axes/contours or 1.2-1.5 for curves.")
+                if num is not None and 0 < num < 1:
+                    self.warn(node, "THIN_LINE", f"{kw.arg}={num:g} is below Nature Communications' 1 pt minimum final line weight.")
             if kw.arg in {"markersize", "ms"}:
                 num = self._number(kw.value)
                 if num is not None and num > 7:
@@ -84,14 +88,16 @@ class PlotStyleVisitor(ast.NodeVisitor):
         if func_name.endswith("savefig"):
             first = self._literal_str(node.args[0]) if node.args else ""
             if first and not Path(first).suffix:
-                self.warn(node, "SAVEFIG_EXT", "Use explicit .pdf/.svg/.png extension for publication export.")
-            if first.lower().endswith((".png", ".jpg", ".jpeg", ".tif", ".tiff")):
+                self.warn(node, "SAVEFIG_EXT", "Use an explicit publication extension such as .pdf, .svg, .eps, or .tif.")
+            if first and first.lower().endswith((".jpg", ".jpeg")):
+                self.warn(node, "JPEG_EXPORT", "Avoid JPEG for final Nature Communications figure files; use vector PDF/EPS/AI for line art or RGB TIFF for bitmap images.")
+            if first and first.lower().endswith((".png", ".jpg", ".jpeg", ".tif", ".tiff")):
                 dpi = None
                 for kw in node.keywords:
                     if kw.arg == "dpi":
                         dpi = self._number(kw.value)
-                if dpi is not None and dpi < 450:
-                    self.warn(node, "LOW_DPI", f"Raster export dpi={dpi:g} is low; use 600 dpi for publication fallback.")
+                if dpi is not None and dpi < 300:
+                    self.warn(node, "LOW_DPI", f"Raster export dpi={dpi:g} is low; use at least 300 dpi for Nature Communications.")
 
         self.generic_visit(node)
 
@@ -145,9 +151,15 @@ def scan_text(source: str, path: Path) -> list[tuple[int, str, str]]:
             if hint not in source:
                 issues.append((0, "MISSING_RCPARAM", f"Consider setting rcParams['{hint}'] for editable/high-resolution export."))
         if re.search(r"plt\.grid\(\s*True", source) or re.search(r"ax\.grid\(\s*True", source):
-            issues.append((0, "GRID", "Use no grid or very subtle grid lines for compact Nature-style plots."))
+            issues.append((0, "GRID", "Use no grid or very subtle grid lines for compact Nature Communications-style plots."))
         if "legend(" in source and "frameon=False" not in source and "legend.frameon" not in source:
             issues.append((0, "LEGEND_FRAME", "Use frameon=False for minimal legends unless a frame is needed."))
+        if re.search(r"\blena\b", f"{path} {source}", re.IGNORECASE):
+            issues.append((0, "LENA_IMAGE", "Nature Communications will not publish or peer review manuscripts using the image Lena."))
+        if re.search(r"\bmsec\b", source):
+            issues.append((0, "UNIT_MSEC", "Use SI-style unit 'ms' instead of 'msec'."))
+        if "transparent=True" in source or '"savefig.transparent": True' in source or "'savefig.transparent': True" in source:
+            issues.append((0, "TRANSPARENT_BG", "Nature Communications display items should be on a white background, not transparent."))
 
     return sorted(issues, key=lambda item: item[0])
 

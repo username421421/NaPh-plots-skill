@@ -9,24 +9,30 @@ Assume `style-foundation.md` is already loaded.
 Defaults:
 
 - `lw=1.2-1.5`
+- thinnest final line art at least 1 pt
 - no markers unless individual sample points matter
 - 4-6 major ticks per axis
+- simple, consistent axes without decorative outer boxes
 - no title unless the panel is standalone
 - use concise axis labels with units
 
+The bundled helpers `apply_nature_style()` and `apply_lineplot_style()` keep the top and right spines visible by default; remove them only if the paper uses open axes consistently.
+
 ```python
-fig, ax = plt.subplots(figsize=(3.5, 2.4), constrained_layout=True)
+fig, ax = plt.subplots(figsize=(3.4646, 2.4945), constrained_layout=True)
 ax.plot(wavelength_nm, transmission, lw=1.3, color="#1B3B6F", label="Measured")
 ax.plot(wavelength_nm, simulation, lw=1.1, color="#D55E00", ls="--", label="Simulated")
 ax.set_xlabel("Wavelength (nm)")
 ax.set_ylabel("Transmission")
+for spine in ax.spines.values():
+    spine.set_visible(True)
 ```
 
 For measured points plus a fit:
 
 ```python
 ax.plot(xfit, yfit, lw=1.3, color="#1B3B6F", label="Fit")
-ax.plot(x, y, "o", ms=3.2, mfc="white", mec="#1B3B6F", mew=0.6, label="Data")
+ax.plot(x, y, "o", ms=3.2, mfc="white", mec="#1B3B6F", mew=1.0, label="Data")
 ```
 
 Avoid:
@@ -40,8 +46,8 @@ Avoid:
 ```python
 ax.errorbar(
     x, y, yerr=yerr,
-    fmt="o", ms=3.2, mfc="white", mec="#1B3B6F", mew=0.6,
-    ecolor="#1B3B6F", elinewidth=0.8, capsize=2.0, capthick=0.8,
+    fmt="o", ms=3.2, mfc="white", mec="#1B3B6F", mew=1.0,
+    ecolor="#1B3B6F", elinewidth=1.0, capsize=2.0, capthick=1.0,
     lw=0, zorder=3,
 )
 ```
@@ -63,7 +69,7 @@ Defaults:
 
 - `s=12-20`
 - `alpha=0.75-0.9`
-- `linewidths=0.3-0.5`
+- `linewidths=0` for no marker edge, or at least `1.0` if an edge is needed
 - rasterize for very dense scatter in vector output
 
 ```python
@@ -78,7 +84,7 @@ Parity plot:
 
 ```python
 lims = [min(np.nanmin(x), np.nanmin(y)), max(np.nanmax(x), np.nanmax(y))]
-ax.plot(lims, lims, color="0.25", lw=0.8, ls="--", zorder=1)
+ax.plot(lims, lims, color="0.25", lw=1.0, ls="--", zorder=1)
 ax.set_xlim(lims)
 ax.set_ylim(lims)
 ax.set_aspect("equal", adjustable="box")
@@ -87,7 +93,7 @@ ax.set_aspect("equal", adjustable="box")
 Residual plot:
 
 ```python
-ax.axhline(0, color="0.25", lw=0.8, ls="--", zorder=1)
+ax.axhline(0, color="0.25", lw=1.0, ls="--", zorder=1)
 ax.scatter(x, residual, s=14, color="#4D4D4D", alpha=0.85, linewidths=0)
 ```
 

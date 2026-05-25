@@ -1,5 +1,5 @@
-# Legacy filename for the Nature Communications-style Matplotlib stylesheet
-# Usage: plt.style.use('/path/to/nature_photonics.mplstyle')
+# Nature Communications-style Matplotlib stylesheet
+# Usage: plt.style.use('/path/to/nature_communications.mplstyle')
 
 # Figure geometry
 figure.figsize: 3.4646, 2.4945

@@ -9,7 +9,7 @@ Assume `style-foundation.md` is already loaded.
 Use for regular 2D arrays such as PSFs, near-field maps, correlation matrices, or parameter sweeps on a regular grid.
 
 ```python
-fig, ax = plt.subplots(figsize=(3.5, 3.0), constrained_layout=True)
+fig, ax = plt.subplots(figsize=(3.4646, 3.0), constrained_layout=True)
 im = ax.imshow(
     Z,
     origin="lower",
@@ -133,7 +133,7 @@ Use when level sets have physical meaning.
 ```python
 levels = np.linspace(vmin, vmax, 9)
 cf = ax.contourf(X, Y, Z, levels=levels, cmap="viridis", extend="both")
-cs = ax.contour(X, Y, Z, levels=levels[::2], colors="0.15", linewidths=0.45)
+cs = ax.contour(X, Y, Z, levels=levels[::2], colors="0.15", linewidths=1.0)
 ax.clabel(cs, fmt="%.2g", fontsize=5, inline=True)
 ```
 

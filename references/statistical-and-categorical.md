@@ -9,9 +9,9 @@ Assume `style-foundation.md` is already loaded.
 Use for distributions of linewidth, resonance wavelength, Q factor, residuals, fabrication error, particle size, intensity values, or noise.
 
 ```python
-fig, ax = plt.subplots(figsize=(3.5, 2.4), constrained_layout=True)
+fig, ax = plt.subplots(figsize=(3.4646, 2.4), constrained_layout=True)
 ax.hist(values, bins="fd", color="#4D4D4D", alpha=0.82,
-        edgecolor="white", linewidth=0.35)
+        edgecolor="white", linewidth=1.0)
 ax.set_xlabel("Resonance shift (nm)")
 ax.set_ylabel("Count")
 ```
@@ -30,6 +30,7 @@ Rules:
 - Use shared bins for direct comparison.
 - Label count vs density correctly.
 - Prefer outlined or lightly transparent overlap, not muddy filled overlap.
+- Do not truncate the vertical axis to exaggerate small differences.
 
 ## ECDFs
 
@@ -59,10 +60,10 @@ bp = ax.boxplot(
     widths=0.52,
     patch_artist=True,
     showfliers=False,
-    medianprops={"color": "black", "linewidth": 0.9},
-    boxprops={"linewidth": 0.7, "color": "0.25"},
-    whiskerprops={"linewidth": 0.7, "color": "0.25"},
-    capprops={"linewidth": 0.7, "color": "0.25"},
+    medianprops={"color": "black", "linewidth": 1.0},
+    boxprops={"linewidth": 1.0, "color": "0.25"},
+    whiskerprops={"linewidth": 1.0, "color": "0.25"},
+    capprops={"linewidth": 1.0, "color": "0.25"},
 )
 for patch in bp["boxes"]:
     patch.set_facecolor("#BFD2E6")
@@ -96,7 +97,7 @@ vp = ax.violinplot(data_groups, positions=np.arange(1, len(data_groups) + 1),
 for body, color in zip(vp["bodies"], ["#1B3B6F", "#D55E00", "#007C73"]):
     body.set_facecolor(color)
     body.set_edgecolor("0.2")
-    body.set_linewidth(0.6)
+    body.set_linewidth(1.0)
     body.set_alpha(0.45)
 ```
 
@@ -110,8 +111,8 @@ Use only for categorical totals or summary values. Do not use bars when the unde
 x = np.arange(len(labels))
 ax.bar(
     x, mean, yerr=err, width=0.62,
-    color="#A8BBD8", edgecolor="0.2", linewidth=0.6,
-    error_kw={"elinewidth": 0.8, "capsize": 2, "capthick": 0.8},
+    color="#A8BBD8", edgecolor="0.2", linewidth=1.0,
+    error_kw={"elinewidth": 1.0, "capsize": 2, "capthick": 1.0},
 )
 ax.set_xticks(x, labels)
 ax.set_ylabel("Efficiency (%)")
@@ -120,6 +121,7 @@ ax.set_ylabel("Efficiency (%)")
 Rules:
 
 - Start the y-axis at zero for ordinary bar magnitudes.
+- Do not truncate the vertical axis of histograms or bars to exaggerate small differences.
 - Add error bars or raw points when summarizing replicates.
 - Avoid gradients, 3D bars, or thick outlines.
 

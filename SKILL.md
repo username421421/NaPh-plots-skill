@@ -1,19 +1,20 @@
 ---
-name: nature-photonics-plotting
+name: scientific-plotting
 description: >-
-  Use when generating, editing, or reviewing publication-grade Nature
-  Photonics-style scientific figures or figure layouts in Python/Matplotlib:
+  Use when generating, editing, or reviewing publication-grade scientific figures or figure layouts in Python/Matplotlib, with Nature Communications-style defaults when a journal aesthetic is useful:
   spectra, PSF/intensity maps, heat maps, microscopy/SEM/TEM/AFM panels,
   statistical plots, multi-panel layouts, mixed plot+image figures, and export
   workflows. Do not use for decorative business graphics unless the user
   explicitly asks for a journal-style scientific figure.
 ---
 
-# Nature Photonics-style scientific figure skill
+# Scientific plotting skill
 
 ## Purpose
 
-Produce compact, technically correct, publication-ready scientific figures and figure layouts with a Nature Photonics / Nature Portfolio aesthetic. Preserve the scientific content while improving readability, normalization, color choice, layout, annotation, and export.
+Produce compact, technically correct, publication-ready scientific figures and figure layouts with a Nature Communications / Nature Portfolio aesthetic. Preserve the scientific content while improving readability, normalization, color choice, layout, annotation, and export.
+
+This is a general plotting guideline, not a repository- or paper-specific workflow. Do not assume project-specific paths, manuscript geometry, datasets, or local conventions unless the user provides them.
 
 Keep this file lean. Use it as a router. Load only the reference files needed for the active figure family instead of pulling every recipe into context.
 
@@ -21,13 +22,22 @@ Keep this file lean. Use it as a router. Load only the reference files needed fo
 
 - Preserve scientific meaning. Do not silently change processing, normalization semantics, statistics, or units.
 - Design at final journal size, not notebook size.
-- Keep typography sans-serif and compact: typically 5-7 pt at final size.
-- Use lower-case bold panel labels: `a`, `b`, `c`, ...
+- Use the same typeface across all figures. Prefer Arial or Helvetica, with Symbol/mathtext used for Greek letters and symbols when needed.
+- Keep typography sans-serif and compact at final display size. Nature Communications states that the optimum final-size font is 5-8 pt. Use base/title/legend 8 pt, axis/tick/colorbar 7 pt, panel labels 8 pt, and SEM/image annotation text 7 pt unless the user specifies otherwise.
+- For final Nature Communications production files, use one- or two-column figure widths: 88 mm single column or 180 mm double column. For manuscript/LaTeX review files, first determine the LaTeX display width for the whole figure and make the generated figure width match it. If no LaTeX file or production target is available, assume a 6.5 in text width. Use the full figure width, not one subplot width.
+- Use lower-case bold panel labels: `a`, `b`, `c`, ... Use 8 pt labels when the generated width matches the LaTeX display width. Only scale panel labels as a fallback when an existing script cannot generate at the LaTeX display width.
 - Keep text, axes, scale bars, arrows, and boxes editable whenever possible.
+- Use a white background for all display items.
+- Keep the thinnest final line art at least 1 pt wide. Avoid excessive boxing and decorative outer frames.
 - Use semantically correct colormaps and normalization.
-- Avoid decorative effects, heavy grids, thick borders, and rainbow colormaps for scalar data.
-- For microscopy/image panels, keep scale bars and annotations as vector overlays over the raster image.
-- Prefer PDF/SVG for vector or mixed figures and PNG/TIFF at 600 dpi for raster-heavy output.
+- Use distinct colors with comparable visibility. Avoid red-vs-green contrast and avoid rainbow colormaps for scalar data.
+- Provide photographic/bitmapped images as TIFF in RGB color at 300 dpi or higher resolution, close to final page size. Single-column bitmap panels should be at least 1,040 px wide; double-column bitmap figures should be at least 2,080 px wide, excluding peripheral whitespace.
+- Supply line art, graphs, charts, and schematics as vector files such as PDF/EPS/AI when possible. If line art cannot be supplied as vector, export it at 1,200 dpi.
+- Prefer editable vector or layered files when possible.
+- Avoid decorative effects, heavy grids, and thick borders.
+- For microscopy/image panels, keep scale bars and annotations as vector overlays over the raster image. Use scale bars rather than magnification factors; by default define the scale-bar length in the figure legend, not as text on the bar.
+- For SEM publication-finalizer requests, generate one standalone Python script with a top-level `CONFIG` dictionary; do not create YAML, JSON, TOML, or other external config files unless explicitly requested.
+- Prefer PDF/SVG for vector or mixed figures and PNG/TIFF at 300 dpi or higher; use 600 dpi for raster-heavy output when practical.
 
 ## Routing workflow
 
@@ -49,7 +59,7 @@ Keep this file lean. Use it as a router. Load only the reference files needed fo
   Read `references/specialized-plots.md`
 - Microscopy, SEM, FESEM, STEM, TEM, AFM-like, optical micrograph, overview+zoom, annotated image panel:
   Read `references/microscopy-and-sem-panels.md`
-- Multi-panel figure, mixed plot+image figure, shared colorbars, panel letters, GridSpec/subplot_mosaic layouts, inset axes:
+- Multi-panel figure, mixed plot+image figure, shared colorbars, panel letters, GridSpec/subplot_mosaic layouts, inset axes, stacked zoom rows:
   Read `references/multi-panel-layouts.md`
 
 If the task spans several families, load the smallest useful combination. Typical combinations:
@@ -82,7 +92,8 @@ Then load only the matching references.
 
 ## Files in this skill
 
-- `assets/nature_photonics.mplstyle`: reusable Matplotlib style sheet.
+- `assets/nature_communications.mplstyle`: reusable Matplotlib style sheet.
+- `assets/nature_photonics.mplstyle`: legacy filename kept for compatibility; content follows Nature Communications defaults.
 - `scripts/np_plot_style.py`: helper functions for style, sizing, panel labels, robust limits, colorbars, and scale bars.
 - `scripts/style_qa.py`: static lint-style checks for plotting mistakes.
 - `references/style-foundation.md`: core rcParams, sizing, color, normalization, export, and editing policy.
