@@ -1,0 +1,127 @@
+# Script Commands as Methods - Python API
+
+Source URL: https://optics.ansys.com/hc/en-us/articles/360041579954-Script-Commands-as-Methods-Python-API  
+Area: Python API  
+Topic: Calling script commands as Python methods  
+Discovery depth: 0  
+Last checked: 2026-06-23  
+Capture mode: citation-safe local metadata, generated summary, headings, links, code/table inventories, key terms, and bounded excerpt.
+
+## Local Capture Summary
+
+This local capture indexes the official page `Script Commands as Methods - Python API` for the topic `Calling script commands as Python methods`. It captured 8 heading(s), 44 link(s), 15 code block(s), 2 inline code term(s), and 0 table(s). Main headings: Script Commands as Methods - Python API, Built-In Scripting Commands, Overview, Constructor Script Commands, Importing Custom Script Commands, Non-Constructor Script Commands, Unsupported Methods, Local Documentation. Key detected terms: analysis, command, fdtd, gaussian, import, lumapi, mode, monitor, plane, port, python, python-api, script, script-command, source, transmission.
+
+## Key Terms
+
+- analysis
+- command
+- fdtd
+- gaussian
+- import
+- lumapi
+- mode
+- monitor
+- plane
+- port
+- python
+- python-api
+- script
+- script-command
+- source
+- transmission
+
+## Captured Headings
+
+- Script Commands as Methods - Python API
+- Built-In Scripting Commands
+- Overview
+- Constructor Script Commands
+- Importing Custom Script Commands
+- Non-Constructor Script Commands
+- Unsupported Methods
+- Local Documentation
+
+## Official Text Excerpt
+
+> Script Commands as Methods - Python API FDTD MODE DGTD CHARGE HEAT FEEM INTERCONNECT Automation API At the most basic level, the Lumerical Python API can be used to directly invoke Lumerical script commands and interact with the product as the Lumerical Scripting Language would. This article will describe the basic use case for using scripting commands as methods, and common best practices. Built-In Scripting Commands Overview Almost all script commands in the Lumerical Scripting Language can be used as methods on your session object in Python. The lumapi methods and the Lumerical script commands share the same name and can be called directly on the session once it's been created. For more information on the Lumerical Scripting Language, please see: - Lumerical Scripting Learning Track on Ansys Innovation Courses (AIC) - Lumerical Scripting Language - Alphabetical list - Lumerical Scripting Language - By category Two simple examples are show below. In the first example, the Lumerical commands getfdtdindex and stackrt is used in conjunction with typical math and plotting libraries in Python to simulate and visualize the transmission of ...
+
+## Code Block Inventory
+
+- Code block 1: 19 line(s); first line `import lumapi #Ensure lumapi has already been added to path`
+- Code block 2: 45 line(s); first line `import os,sys`
+- Code block 3: 8 line(s); first line `fdtd = lumapi.FDTD()`
+- Code block 4: 5 line(s); first line `from collections import OrderedDict #Ensure OrderedDict is imported`
+- Code block 5: 2 line(s); first line `fdtd = lumapi.FDTD()`
+- Code block 6: 7 line(s); first line `function helloWorld(){`
+- Code block 7: 3 line(s); first line `function customMultiply(a,b){`
+- Code block 8: 6 line(s); first line `with lumapi.FDTD(script = ["MyFunctions.lsf", "MyFunctions2.lsf"]) as fdtd:`
+- Code block 9: 3 line(s); first line `helloworld`
+- Code block 10: 1 line(s); first line `fdtd.addfdtd()fdtd.set(property = "x span", value = 1e-6)`
+- Code block 11: 1 line(s); first line `fdtd.addfdtd()fdtd.set("x span", 1e-6)`
+- Code block 12: 12 line(s); first line `function constructFDTDandRect(x_input,y_input,z_input){`
+- Code block 13: 4 line(s); first line `fdtd = lumapi.FDTD()`
+- Code block 14: 4 line(s); first line `fdtd = lumapi.FDTD()`
+- Code block 15: 18 line(s); first line `help(fdtd.addfdtd)`
+
+## Inline Code Inventory
+
+- `**`
+- `^`
+
+## Table Inventory
+
+- No tables detected
+
+## Official Links Found
+
+- [FDTD](https://optics.ansys.com/hc/en-us/articles/360033154434)
+- [MODE](https://optics.ansys.com/hc/en-us/articles/360020687354)
+- [DGTD](https://optics.ansys.com/hc/en-us/articles/360037744173)
+- [CHARGE](https://optics.ansys.com/hc/en-us/articles/360037184494)
+- [HEAT](https://optics.ansys.com/hc/en-us/articles/360037224694)
+- [FEEM](https://optics.ansys.com/hc/en-us/articles/360037744633)
+- [INTERCONNECT](https://optics.ansys.com/hc/en-us/articles/360037304774)
+- [Automation API](https://optics.ansys.com/hc/en-us/articles/360037824513)
+- [Lumerical Scripting Language - Alphabetical list](https://optics.ansys.com/hc/en-us/articles/360034923553)
+- [Lumerical Scripting Language - By category](https://optics.ansys.com/hc/en-us/articles/360037228834)
+- [getfdtdindex](https://optics.ansys.com/hc/en-us/articles/360034409694-getfdtdindex-Script-command)
+- [stackrt](https://optics.ansys.com/hc/en-us/articles/360034406254-stackrt-Script-command)
+- [Installation and Getting Started](https://optics.ansys.com/hc/en-us/articles/39744901602707-Installation-and-Getting-Started-Python-API)
+- [addrect](https://optics.ansys.com/hc/en-us/articles/360034404214-addrect-Script-command)
+- [addfdtd](https://optics.ansys.com/hc/en-us/articles/360034924173-addfdtd-Script-command)
+- [set](https://optics.ansys.com/hc/en-us/articles/360034928773-set-Script-command)
+- [setnamed](https://optics.ansys.com/hc/en-us/articles/360034928793-setnamed-Script-command)
+- [Simulation Objects in Python API](https://optics.ansys.com/hc/en-us/articles/39744946400659-Working-with-Simulation-Objects-Python-API)
+- [Working with Simulation Objects in Python API](https://optics.ansys.com/hc/en-us/articles/39744946400659-Working-with-Simulation-Objects-Python-API)
+- [script](https://optics.ansys.com/hc/en-us/articles/38660003331859-Lumerical-Python-API-Reference)
+- [eval](https://optics.ansys.com/hc/en-us/articles/360043166434-lumapi-Lumerical-eval-Python-API-Method)
+- [eval()](https://optics.ansys.com/hc/en-us/articles/360043166434-lumapi-Lumerical-eval-Python-API-Method)
+- [*](https://optics.ansys.com/hc/en-us/articles/360034930833--)
+- [/](https://optics.ansys.com/hc/en-us/articles/360034930853--)
+- [+](https://optics.ansys.com/hc/en-us/articles/360034410254--)
+- [-](https://optics.ansys.com/hc/en-us/articles/360034930873--)
+- [^](https://optics.ansys.com/hc/en-us/articles/360034410274--)
+- [>=](https://optics.ansys.com/hc/en-us/articles/360034930933--)
+- [<](https://optics.ansys.com/hc/en-us/articles/360034410334--)
+- [>](https://optics.ansys.com/hc/en-us/articles/360034930953--)
+- [&](https://optics.ansys.com/hc/en-us/articles/360034930973--)
+- [and](https://optics.ansys.com/hc/en-us/articles/360034410354-and)
+- [|](https://optics.ansys.com/hc/en-us/articles/360034410374--)
+- [or](https://optics.ansys.com/hc/en-us/articles/360034930993-or)
+- [!](https://optics.ansys.com/hc/en-us/articles/360034931013--)
+- [~](https://optics.ansys.com/hc/en-us/articles/360034931033--)
+- [querynamed](https://optics.ansys.com/hc/en-us/articles/360042115274)
+- [queryanalysisprop](https://optics.ansys.com/hc/en-us/articles/360042187894-queryanalysisprop-Script-command)
+- [Alphabetical List of Script Commands](https://optics.ansys.com/hc/en-us/articles/360034923553)
+- [Python API Overview](https://optics.ansys.com/hc/en-us/articles/360037824513-Python-API-overview)
+- [Working with Simulation Objects – Python API](https://optics.ansys.com/hc/en-us/articles/39744946400659-Working-with-Simulation-Objects-Python-API)
+- [Script Commands as Methods – Python API](https://optics.ansys.com/hc/en-us/articles/360041579954-Script-commands-as-methods-Python-API)
+- [Installation and Getting Started – Python API](https://optics.ansys.com/hc/en-us/articles/39744901602707-Installation-and-Getting-Started-Python-API)
+
+## Ansys-Related External Links Found
+
+- [Lumerical Scripting Learning Track on Ansys Innovation Courses (AIC)](https://courses.ansys.com/index.php/courses/ansys-lumerical-scripting/)
+
+## External Links Found
+
+- None

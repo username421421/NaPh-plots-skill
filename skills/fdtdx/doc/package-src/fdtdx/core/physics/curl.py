@@ -1,0 +1,397 @@
+import jax
+import jax.numpy as jnp
+
+from fdtdx.config import SimulationConfig
+from fdtdx.constants import c as c0
+from fdtdx.fdtd.container import ObjectContainer, PmlAuxField
+from fdtdx.typing import SliceTuple3D
+
+
+def _metric_scale(
+    config: SimulationConfig,
+    axis: int,
+    shape: tuple[int, int, int],
+    stencil: str,
+) -> jax.Array | float:
+    """Return the local derivative scale for a rectilinear Yee curl term.
+
+    fdtdx historically stores curl terms as raw finite differences and applies a
+    scalar Courant number in the update equations.  On a non-uniform grid the
+    equivalent term is ``(c * dt / courant_number) * diff / d_axis[i]``.  The
+    prefactor equals the uniform spacing on legacy grids, so uniform behavior is
+    unchanged while stretched grids get local metric factors.
+    """
+    if not config.has_nonuniform_grid:
+        return 1.0
+
+    grid = config.resolved_grid
+    assert grid is not None
+    widths = grid.cell_widths(axis)
+    if stencil == "backward":
+        prev_widths = jnp.concatenate([widths[:1], widths[:-1]])
+        widths = 0.5 * (widths + prev_widths)
+    elif stencil != "forward":
+        raise ValueError(f"Unknown derivative stencil: {stencil}")
+    reference_spacing = c0 * config.time_step_duration / config.courant_number
+    scale = reference_spacing / widths
+    broadcast_shape = [1, 1, 1]
+    broadcast_shape[axis] = shape[axis]
+    return scale.reshape(tuple(broadcast_shape))
+
+
+def _backward_edge_average(
+    current: jax.Array,
+    previous: jax.Array,
+    config: SimulationConfig | None,
+    axis: int,
+    region_slice: SliceTuple3D | None = None,
+) -> jax.Array:
+    """Interpolate center-staggered samples back to an edge on a rectilinear grid.
+
+    Uniform grids use the historical arithmetic mean.  On stretched grids the
+    target edge is not halfway between neighboring cell centers, so the average
+    is weighted by the half-widths of the cells on each side of the edge.
+
+    Args:
+        current: Center-staggered samples of the cells on the target edges.
+        previous: Center-staggered samples of the neighboring cells behind the edges.
+        config: Optional simulation configuration carrying the grid.
+        axis: Grid axis along which the interpolation is performed.
+        region_slice: Grid slice ``((x0, x1), (y0, y1), (z0, z1))`` covered by the inputs
+            when they are a sub-block of the domain. The cell widths are sliced to match.
+
+    Returns:
+        Edge-interpolated samples of the same shape as ``current``.
+    """
+    if config is None or not config.has_nonuniform_grid:
+        return 0.5 * (current + previous)
+
+    grid = config.resolved_grid
+    assert grid is not None
+    widths = grid.cell_widths(axis)
+    previous_widths = jnp.concatenate([widths[:1], widths[:-1]])
+    if region_slice is not None:
+        start, stop = region_slice[axis]
+        widths = widths[start:stop]
+        previous_widths = previous_widths[start:stop]
+    current_half_width = 0.5 * widths
+    previous_half_width = 0.5 * previous_widths
+    broadcast_shape = [1, 1, 1]
+    broadcast_shape[axis] = current.shape[axis]
+    current_half_width = current_half_width.reshape(tuple(broadcast_shape))
+    previous_half_width = previous_half_width.reshape(tuple(broadcast_shape))
+    return (current * previous_half_width + previous * current_half_width) / (current_half_width + previous_half_width)
+
+
+def interpolate_fields(
+    E_pad: jax.Array,
+    H_pad: jax.Array,
+    config: SimulationConfig | None = None,
+    region_slice: SliceTuple3D | None = None,
+) -> tuple[jax.Array, jax.Array]:
+    """Interpolates E and H fields onto the E_z Yee grid point (i, j, k+½).
+
+    All six field components are co-located at (i·Δx, j·Δy, (k+½)·Δz) using
+    half-step averages. Expects pre-padded fields. Slices [1:-1]/[:-2] produce
+    a backward half-step (e.g. i+½ → i) and [1:-1]/[2:] a forward half-step
+    (k → k+½).
+
+    Natural positions (Taflove convention, axis 0=x, 1=y, 2=z):
+        E_x: (i+½, j,   k  )  →  shift x: -½, z: +½
+        E_y: (i,   j+½, k  )  →  shift y: -½, z: +½
+        E_z: (i,   j,   k+½)  →  already at target
+        H_x: (i,   j+½, k+½)  →  shift y: -½
+        H_y: (i+½, j,   k+½)  →  shift x: -½
+        H_z: (i+½, j+½, k  )  →  shift x: -½, y: -½, z: +½
+
+    Args:
+        E_pad: Pre-padded electric field array of shape (3, Nx+2, Ny+2, Nz+2)
+        H_pad: Pre-padded magnetic field array of shape (3, Nx+2, Ny+2, Nz+2)
+        config: Optional simulation configuration.  When it carries a
+            non-uniform ``RectilinearGrid``, center-to-edge interpolations use local
+            physical distances instead of equal weights.
+        region_slice: Grid slice ``((x0, x1), (y0, y1), (z0, z1))`` covered by the inputs
+            when they are a haloed sub-block of the domain instead of the whole padded
+            domain. The interpolation weights are sliced to match.
+
+    Returns:
+        Tuple of (E_interp, H_interp), each of shape (3, Nx, Ny, Nz)
+    """
+    E_x, E_y, E_z = E_pad[0], E_pad[1], E_pad[2]
+    H_x, H_y, H_z = H_pad[0], H_pad[1], H_pad[2]
+
+    # E_x: (i+½, j, k) → (i, j, k+½): x backward, z forward
+    E_x_lower_z = _backward_edge_average(
+        current=E_x[1:-1, 1:-1, 1:-1],
+        previous=E_x[:-2, 1:-1, 1:-1],
+        config=config,
+        axis=0,
+        region_slice=region_slice,
+    )
+    E_x_upper_z = _backward_edge_average(
+        current=E_x[1:-1, 1:-1, 2:],
+        previous=E_x[:-2, 1:-1, 2:],
+        config=config,
+        axis=0,
+        region_slice=region_slice,
+    )
+    E_x = (E_x_lower_z + E_x_upper_z) / 2.0
+
+    # E_y: (i, j+½, k) → (i, j, k+½): y backward, z forward
+    E_y_lower_z = _backward_edge_average(
+        current=E_y[1:-1, 1:-1, 1:-1],
+        previous=E_y[1:-1, :-2, 1:-1],
+        config=config,
+        axis=1,
+        region_slice=region_slice,
+    )
+    E_y_upper_z = _backward_edge_average(
+        current=E_y[1:-1, 1:-1, 2:],
+        previous=E_y[1:-1, :-2, 2:],
+        config=config,
+        axis=1,
+        region_slice=region_slice,
+    )
+    E_y = (E_y_lower_z + E_y_upper_z) / 2.0
+
+    # E_z: (i, j, k+½) → already at target
+    E_z = E_z[1:-1, 1:-1, 1:-1]
+
+    # H_x: (i, j+½, k+½) → (i, j, k+½): y backward only
+    H_x = _backward_edge_average(
+        current=H_x[1:-1, 1:-1, 1:-1],
+        previous=H_x[1:-1, :-2, 1:-1],
+        config=config,
+        axis=1,
+        region_slice=region_slice,
+    )
+
+    # H_y: (i+½, j, k+½) → (i, j, k+½): x backward only
+    H_y = _backward_edge_average(
+        current=H_y[1:-1, 1:-1, 1:-1],
+        previous=H_y[:-2, 1:-1, 1:-1],
+        config=config,
+        axis=0,
+        region_slice=region_slice,
+    )
+
+    # H_z: (i+½, j+½, k) → (i, j, k+½): x backward, y backward, z forward
+    H_z_lower_z_x = _backward_edge_average(
+        current=H_z[1:-1, 1:-1, 1:-1],
+        previous=H_z[:-2, 1:-1, 1:-1],
+        config=config,
+        axis=0,
+        region_slice=region_slice,
+    )
+    H_z_lower_z_xy = _backward_edge_average(
+        current=H_z_lower_z_x,
+        previous=_backward_edge_average(
+            current=H_z[1:-1, :-2, 1:-1],
+            previous=H_z[:-2, :-2, 1:-1],
+            config=config,
+            axis=0,
+            region_slice=region_slice,
+        ),
+        config=config,
+        axis=1,
+        region_slice=region_slice,
+    )
+    H_z_upper_z_x = _backward_edge_average(
+        current=H_z[1:-1, 1:-1, 2:],
+        previous=H_z[:-2, 1:-1, 2:],
+        config=config,
+        axis=0,
+        region_slice=region_slice,
+    )
+    H_z_upper_z_xy = _backward_edge_average(
+        current=H_z_upper_z_x,
+        previous=_backward_edge_average(
+            current=H_z[1:-1, :-2, 2:],
+            previous=H_z[:-2, :-2, 2:],
+            config=config,
+            axis=0,
+            region_slice=region_slice,
+        ),
+        config=config,
+        axis=1,
+        region_slice=region_slice,
+    )
+    H_z = (H_z_lower_z_xy + H_z_upper_z_xy) / 2.0
+
+    E_interp = jnp.stack([E_x, E_y, E_z], axis=0)
+    H_interp = jnp.stack([H_x, H_y, H_z], axis=0)
+
+    return E_interp, H_interp
+
+
+def curl_E(
+    config: SimulationConfig,
+    E_pad: jax.Array,
+    psi_H: PmlAuxField,
+    objects: ObjectContainer,
+    simulate_boundaries: bool,
+) -> tuple[jax.Array, dict[str, tuple[jax.Array, jax.Array]]]:
+    """Transforms an E-type field into an H-type field by performing a curl operation.
+
+    Computes the discrete curl of the electric field to obtain the corresponding
+    magnetic field components. The input E-field is defined on the edges of the Yee grid
+    cells (integer grid points), while the output H-field is defined on the faces
+    (half-integer grid points).
+
+    The CPML correction is applied by computing the full-volume curl first, then
+    iterating over the defined PML objects to apply the local per-cell corrections and
+    update their auxiliary fields.
+
+    Args:
+        config (SimulationConfig): Simulation configuration parameters.
+        E_pad (jax.Array): Pre-padded electric field of shape (3, nx+2, ny+2, nz+2).
+        psi_H (PmlAuxField): Dictionary mapping PML object
+            names to their auxiliary magnetic field states.
+        objects (ObjectContainer): Object collection containing `pml_objects`, which are used to apply
+            the PML boundary corrections.
+        simulate_boundaries (bool): Whether to update the PML auxiliary fields.
+
+    Returns:
+        tuple[jax.Array, PmlAuxField]: A tuple containing:
+            - The curl of E (an H-type field located on the faces of the grid, i.e.,
+              half-integer grid points). Has same shape as unpadded input (3, nx, ny, nz).
+            - The updated dictionary of auxiliary magnetic fields `psi_H`.
+    """
+    shape = E_pad.shape[1] - 2, E_pad.shape[2] - 2, E_pad.shape[3] - 2
+    dx_scale = _metric_scale(config, axis=0, shape=shape, stencil="forward")
+    dy_scale = _metric_scale(config, axis=1, shape=shape, stencil="forward")
+    dz_scale = _metric_scale(config, axis=2, shape=shape, stencil="forward")
+
+    Ex = E_pad[0]
+    Ey = E_pad[1]
+    Ez = E_pad[2]
+    center = (slice(1, -1), slice(1, -1), slice(1, -1))
+
+    dyEz = (Ez[1:-1, 2:, 1:-1] - Ez[center]) * dy_scale
+    dzEy = (Ey[1:-1, 1:-1, 2:] - Ey[center]) * dz_scale
+    dzEx = (Ex[1:-1, 1:-1, 2:] - Ex[center]) * dz_scale
+    dxEz = (Ez[2:, 1:-1, 1:-1] - Ez[center]) * dx_scale
+    dxEy = (Ey[2:, 1:-1, 1:-1] - Ey[center]) * dx_scale
+    dyEx = (Ex[1:-1, 2:, 1:-1] - Ex[center]) * dy_scale
+
+    curl_x = dyEz - dzEy
+    curl_y = dzEx - dxEz
+    curl_z = dxEy - dyEx
+    curl_components = [curl_x, curl_y, curl_z]
+
+    psi_H_updated = {}
+
+    for pml in objects.pml_objects:
+        a = pml.axis
+        i, j = (a + 1) % 3, (a + 2) % 3
+
+        # Map to the cyclic sequence of orthogonal derivatives
+        if a == 0:
+            d_a_F_j, d_a_F_i = dxEz, dxEy
+        elif a == 1:
+            d_a_F_j, d_a_F_i = dyEx, dyEz
+        else:
+            d_a_F_j, d_a_F_i = dzEy, dzEx
+
+        d_field_1 = d_a_F_j[pml.grid_slice]
+        d_field_2 = d_a_F_i[pml.grid_slice]
+
+        psi_1, psi_2 = psi_H[pml.name]
+
+        corr_1, corr_2, psi_1_new, psi_2_new = pml.step_cpml(
+            d_field_1, d_field_2, psi_1, psi_2, is_curl_E=True, simulate_boundaries=simulate_boundaries
+        )
+
+        curl_components[i] = curl_components[i].at[pml.grid_slice].add(-corr_1)
+        curl_components[j] = curl_components[j].at[pml.grid_slice].add(corr_2)
+
+        psi_H_updated[pml.name] = (psi_1_new, psi_2_new)
+
+    curl = jnp.stack(curl_components, axis=0)
+    return curl, psi_H_updated
+
+
+def curl_H(
+    config: SimulationConfig,
+    H_pad: jax.Array,
+    psi_E: PmlAuxField,
+    objects: ObjectContainer,
+    simulate_boundaries: bool,
+) -> tuple[jax.Array, dict[str, tuple[jax.Array, jax.Array]]]:
+    """Transforms an H-type field into an E-type field by performing a curl operation.
+
+    Computes the discrete curl of the magnetic field to obtain the corresponding
+    electric field components. The input H-field is defined on the faces of the Yee grid
+    cells (half-integer grid points), while the output E-field is defined on the edges
+    (integer grid points).
+
+    The CPML correction is applied by computing the full-volume curl first, then
+    iterating over the defined PML objects to apply the local per-cell corrections and
+    update their auxiliary fields.
+
+    Args:
+        config (SimulationConfig): Simulation configuration parameters.
+        H_pad (jax.Array): Pre-padded magnetic field of shape (3, nx+2, ny+2, nz+2).
+        psi_E (PmlAuxField): Dictionary mapping PML object
+            names to their auxiliary electric field states.
+        objects (ObjectContainer): Object collection containing `pml_objects`, which are used to apply
+            the PML boundary corrections.
+        simulate_boundaries (bool): Whether to update the PML auxiliary fields.
+
+    Returns:
+        tuple[jax.Array, PmlAuxField]: A tuple containing:
+            - The curl of H (an E-type field located on the edges of the grid, i.e.,
+              integer grid points). Has same shape as unpadded input (3, nx, ny, nz).
+            - The updated dictionary of auxiliary electric fields `psi_E`.
+    """
+    shape = H_pad.shape[1] - 2, H_pad.shape[2] - 2, H_pad.shape[3] - 2
+    dx_scale = _metric_scale(config, axis=0, shape=shape, stencil="backward")
+    dy_scale = _metric_scale(config, axis=1, shape=shape, stencil="backward")
+    dz_scale = _metric_scale(config, axis=2, shape=shape, stencil="backward")
+
+    Hx = H_pad[0]
+    Hy = H_pad[1]
+    Hz = H_pad[2]
+    center = (slice(1, -1), slice(1, -1), slice(1, -1))
+
+    dyHz = (Hz[center] - Hz[1:-1, :-2, 1:-1]) * dy_scale
+    dzHy = (Hy[center] - Hy[1:-1, 1:-1, :-2]) * dz_scale
+    dzHx = (Hx[center] - Hx[1:-1, 1:-1, :-2]) * dz_scale
+    dxHz = (Hz[center] - Hz[:-2, 1:-1, 1:-1]) * dx_scale
+    dxHy = (Hy[center] - Hy[:-2, 1:-1, 1:-1]) * dx_scale
+    dyHx = (Hx[center] - Hx[1:-1, :-2, 1:-1]) * dy_scale
+
+    curl_x = dyHz - dzHy
+    curl_y = dzHx - dxHz
+    curl_z = dxHy - dyHx
+    curl_components = [curl_x, curl_y, curl_z]
+
+    psi_E_updated = {}
+
+    for pml in objects.pml_objects:
+        a = pml.axis
+        i, j = (a + 1) % 3, (a + 2) % 3
+
+        if a == 0:
+            d_a_F_j, d_a_F_i = dxHz, dxHy
+        elif a == 1:
+            d_a_F_j, d_a_F_i = dyHx, dyHz
+        else:
+            d_a_F_j, d_a_F_i = dzHy, dzHx
+
+        d_field_1 = d_a_F_j[pml.grid_slice]
+        d_field_2 = d_a_F_i[pml.grid_slice]
+
+        psi_1, psi_2 = psi_E[pml.name]
+
+        corr_1, corr_2, psi_1_new, psi_2_new = pml.step_cpml(
+            d_field_1, d_field_2, psi_1, psi_2, is_curl_E=False, simulate_boundaries=simulate_boundaries
+        )
+
+        curl_components[i] = curl_components[i].at[pml.grid_slice].add(-corr_1)
+        curl_components[j] = curl_components[j].at[pml.grid_slice].add(corr_2)
+
+        psi_E_updated[pml.name] = (psi_1_new, psi_2_new)
+
+    curl = jnp.stack(curl_components, axis=0)
+    return curl, psi_E_updated

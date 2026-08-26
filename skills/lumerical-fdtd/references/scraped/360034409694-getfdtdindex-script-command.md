@@ -1,0 +1,64 @@
+# getfdtdindex - Script command
+
+Source URL: https://optics.ansys.com/hc/en-us/articles/360034409694-getfdtdindex-Script-command  
+Area: Discovered official source  
+Topic: Discovered from Script Commands as Methods - Python API  
+Discovery depth: 1  
+Last checked: 2026-06-21  
+Capture mode: citation-safe local metadata, generated summary, headings, links, code/table inventories, key terms, and bounded excerpt.
+
+## Local Capture Summary
+
+This local capture indexes the official page `getfdtdindex - Script command` for the topic `Discovered from Script Commands as Methods - Python API`. It captured 1 heading(s), 9 link(s), 2 code block(s), 0 inline code term(s), and 1 table(s). Main headings: getfdtdindex - Script command. Key detected terms: command, fdtd, material, mode, script, script-command.
+
+## Key Terms
+
+- command
+- fdtd
+- material
+- mode
+- script
+- script-command
+
+## Captured Headings
+
+- getfdtdindex - Script command
+
+## Official Text Excerpt
+
+> getfdtdindex - Script command FDTD MODE Returns the complex refractive index of a material in the database with material fit that will be used in a simulation in FDTD. Many materials (such as Sampled materials) have properties that depend on frequency. Using getfdtdindex, you can specify frequency range, and the fitting routine will find a best fit of the material data over that range. The refractive index evaluated at the specified frequencies is then returned. Note that the fit result depends on the fit parameters, Max coefficients and Tolerance set for the material, thus getfdtdindex result depends on those parameters as well. Tips for setting these parameters can be found at Modifying the material fits. | Syntax | Description | out = getfdtdindex( "materialname", f, fmin, fmax); | Returns the complex index of the material with the given name. The index is returned for the specified frequency f. Similar to getindex, but you also specify fmin and fmax, the span of frequency of the FDTD simulation. All frequency units are in Hz. | getfdtdindex("materialname", f,fmin, fmax, component); | Optional argument ...
+
+## Code Block Inventory
+
+- Code block 1: 22 line(s); first line `material="Au (Gold) - CRC";   # material`
+- Code block 2: 8 line(s); first line `material="Au (Gold) - CRC";   # material`
+
+## Inline Code Inventory
+
+- No inline code terms detected
+
+## Table Inventory
+
+- Table 1: 2 column(s), 2 row(s)
+  - Headers: Syntax, Description
+  - First row sample: out = getfdtdindex( "materialname", f, fmin, fmax); | Returns the complex index of the material with the given name. The index is returned for the specified frequency f. Similar to getindex, but you also specify fmin and fmax, the span of f
+
+## Official Links Found
+
+- [FDTD](https://optics.ansys.com/hc/en-us/articles/360033154434)
+- [MODE](https://optics.ansys.com/hc/en-us/articles/360020687354)
+- [Modifying the material fits](https://optics.ansys.com/hc/en-us/articles/360034915053-Modifying-the-Material-Fits)
+- [List of commands](https://optics.ansys.com/hc/en-us/articles/360037228834)
+- [getindex](https://optics.ansys.com/hc/en-us/articles/360034409674-getindex)
+- [getmodeindex](https://optics.ansys.com/hc/en-us/articles/360034930073)
+- [addmaterial](https://optics.ansys.com/hc/en-us/articles/360034930013-addmaterial)
+- [setmaterial](https://optics.ansys.com/hc/en-us/articles/360034409654-setmaterial)
+- [getnumericalpermittivity](https://optics.ansys.com/hc/en-us/articles/360034930093-getnumericalpermittivity)
+
+## Ansys-Related External Links Found
+
+- None
+
+## External Links Found
+
+- None

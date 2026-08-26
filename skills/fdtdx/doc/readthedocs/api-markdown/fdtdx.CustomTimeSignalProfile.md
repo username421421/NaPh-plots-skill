@@ -1,0 +1,197 @@
+<div id="fdtdx-customtimesignalprofile" class="section">
+
+# fdtdx.CustomTimeSignalProfile<a href="#fdtdx-customtimesignalprofile" class="headerlink" title="Link to this heading">#</a>
+
+*<span class="k"><span class="pre">class</span></span><span class="w"> </span>*<span class="sig-prename descclassname"><span class="pre">fdtdx.</span></span><span class="sig-name descname"><span class="pre">CustomTimeSignalProfile</span></span><span class="sig-paren">(</span>*<span class="keyword-only-separator o"><span class="abbr" title="Keyword-only parameters separator (PEP 3102)"><span class="pre">\*</span></span></span>*, *<span class="n"><span class="pre">signal</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">null</span></span>*, *<span class="n"><span class="pre">time_step_duration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">null</span></span>*, *<span class="n"><span class="pre">start_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span>*, *<span class="n"><span class="pre">interpolation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'linear'</span></span>*, *<span class="n"><span class="pre">outside_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span>*<span class="sig-paren">)</span><a href="../_modules/fdtdx/objects/sources/profile.html#CustomTimeSignalProfile" class="reference internal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a href="#fdtdx.CustomTimeSignalProfile" class="headerlink" title="Link to this definition">#</a>  
+Bases: <a href="fdtdx.TemporalProfile.html#fdtdx.TemporalProfile" class="reference internal" title="fdtdx.objects.sources.profile.TemporalProfile"><span class="pre"><code class="sourceCode python">TemporalProfile</code></span></a>
+
+Sampled waveform temporal profile for arbitrary time signals.
+
+Stores the source waveform as a pre-computed JAX array and interpolates it at each time step inside the FDTD loop. All signal shaping is done *outside* JIT before constructing this object.
+
+The sampled <span class="pre">`signal`</span> fully defines the injected time waveform, so the FDTD loop does not apply an additional source-level <span class="pre">`phase_shift`</span>.
+
+Unlike <a href="fdtdx.GaussianPulseProfile.html#fdtdx.GaussianPulseProfile" class="reference internal" title="fdtdx.GaussianPulseProfile"><span class="pre"><code class="sourceCode python">GaussianPulseProfile</code></span></a>, this profile does **not** accept a <span class="pre">`center_wave`</span> or spectral-width parameter. For an arbitrary waveform the spectral centre is not a free parameter — it is an emergent property of the signal (see, e.g., Gedeon et al., IEEE Trans. Antennas Propag. 73(5), 2025). Instead, <a href="#fdtdx.CustomTimeSignalProfile.get_reference_frequency" class="reference internal" title="fdtdx.CustomTimeSignalProfile.get_reference_frequency"><span class="pre"><code class="sourceCode python">get_reference_frequency()</code></span></a> computes the magnitude-weighted spectral centroid directly from <span class="pre">`signal`</span>, and the frequency axis of any plot is determined automatically from the actual spectrum content via <span class="pre">`_auto_range()`</span>.
+
+<div id="quick-reference" class="section">
+
+## Quick Reference<a href="#quick-reference" class="headerlink" title="Link to this heading">#</a>
+
+Attributes
+
+- <a href="#fdtdx.CustomTimeSignalProfile.interpolation" class="reference internal" title="fdtdx.CustomTimeSignalProfile.interpolation"><span class="pre"><code class="sourceCode python">interpolation</code></span></a>
+
+- <a href="#fdtdx.CustomTimeSignalProfile.outside_value" class="reference internal" title="fdtdx.CustomTimeSignalProfile.outside_value"><span class="pre"><code class="sourceCode python">outside_value</code></span></a>
+
+- <a href="#fdtdx.CustomTimeSignalProfile.signal" class="reference internal" title="fdtdx.CustomTimeSignalProfile.signal"><span class="pre"><code class="sourceCode python">signal</code></span></a>
+
+- <a href="#fdtdx.CustomTimeSignalProfile.start_time" class="reference internal" title="fdtdx.CustomTimeSignalProfile.start_time"><span class="pre"><code class="sourceCode python">start_time</code></span></a>
+
+- <a href="#fdtdx.CustomTimeSignalProfile.time_step_duration" class="reference internal" title="fdtdx.CustomTimeSignalProfile.time_step_duration"><span class="pre"><code class="sourceCode python">time_step_duration</code></span></a>
+
+Methods
+
+- <a href="#fdtdx.CustomTimeSignalProfile.aset" class="reference internal" title="fdtdx.CustomTimeSignalProfile.aset"><span class="pre"><code class="sourceCode python">aset</code></span></a>
+
+- <a href="#fdtdx.CustomTimeSignalProfile.frequency_spectrum" class="reference internal" title="fdtdx.CustomTimeSignalProfile.frequency_spectrum"><span class="pre"><code class="sourceCode python">frequency_spectrum</code></span></a>
+
+- <a href="#fdtdx.CustomTimeSignalProfile.get_amplitude" class="reference internal" title="fdtdx.CustomTimeSignalProfile.get_amplitude"><span class="pre"><code class="sourceCode python">get_amplitude</code></span></a>
+
+- <a href="#fdtdx.CustomTimeSignalProfile.get_class_fields" class="reference internal" title="fdtdx.CustomTimeSignalProfile.get_class_fields"><span class="pre"><code class="sourceCode python">get_class_fields</code></span></a>
+
+- <a href="#fdtdx.CustomTimeSignalProfile.get_frequency_plot_range" class="reference internal" title="fdtdx.CustomTimeSignalProfile.get_frequency_plot_range"><span class="pre"><code class="sourceCode python">get_frequency_plot_range</code></span></a>
+
+- <a href="#fdtdx.CustomTimeSignalProfile.get_public_fields" class="reference internal" title="fdtdx.CustomTimeSignalProfile.get_public_fields"><span class="pre"><code class="sourceCode python">get_public_fields</code></span></a>
+
+- <a href="#fdtdx.CustomTimeSignalProfile.get_reference_frequency" class="reference internal" title="fdtdx.CustomTimeSignalProfile.get_reference_frequency"><span class="pre"><code class="sourceCode python">get_reference_frequency</code></span></a>
+
+- <a href="#fdtdx.CustomTimeSignalProfile.get_time_plot_range" class="reference internal" title="fdtdx.CustomTimeSignalProfile.get_time_plot_range"><span class="pre"><code class="sourceCode python">get_time_plot_range</code></span></a>
+
+- <a href="#fdtdx.CustomTimeSignalProfile.plot_time_signal_and_spectrum" class="reference internal" title="fdtdx.CustomTimeSignalProfile.plot_time_signal_and_spectrum"><span class="pre"><code class="sourceCode python">plot_time_signal_and_spectrum</code></span></a>
+
+- <a href="#fdtdx.CustomTimeSignalProfile.sample_time_signal" class="reference internal" title="fdtdx.CustomTimeSignalProfile.sample_time_signal"><span class="pre"><code class="sourceCode python">sample_time_signal</code></span></a>
+
+</div>
+
+</div>
+
+<div id="attributes" class="section">
+
+# Attributes<a href="#attributes" class="headerlink" title="Link to this heading">#</a>
+
+<span class="sig-prename descclassname"><span class="pre">CustomTimeSignalProfile.</span></span><span class="sig-name descname"><span class="pre">interpolation</span></span>*<span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">`Literal`</span><span class="pre">\[</span><span class="pre">`'linear'`</span><span class="pre">,</span> <span class="pre">`'nearest'`</span><span class="pre">\]</span>*<a href="#fdtdx.CustomTimeSignalProfile.interpolation" class="headerlink" title="Link to this definition">#</a>  
+<span class="pre">`"linear"`</span> (default) or <span class="pre">`"nearest"`</span>.
+
+Type<span class="colon">:</span>  
+Interpolation mode
+
+<!-- -->
+
+<span class="sig-prename descclassname"><span class="pre">CustomTimeSignalProfile.</span></span><span class="sig-name descname"><span class="pre">outside_value</span></span>*<span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">`float`</span>*<a href="#fdtdx.CustomTimeSignalProfile.outside_value" class="headerlink" title="Link to this definition">#</a>  
+Value returned for times outside the sampled window.
+
+<!-- -->
+
+<span class="sig-prename descclassname"><span class="pre">CustomTimeSignalProfile.</span></span><span class="sig-name descname"><span class="pre">signal</span></span>*<span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">`Array`</span>*<a href="#fdtdx.CustomTimeSignalProfile.signal" class="headerlink" title="Link to this definition">#</a>  
+Pre-sampled waveform, shape <span class="pre">`(N,)`</span>. Lives in the pytree so JAX can differentiate through the interpolation if needed.
+
+<!-- -->
+
+<span class="sig-prename descclassname"><span class="pre">CustomTimeSignalProfile.</span></span><span class="sig-name descname"><span class="pre">start_time</span></span>*<span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">`float`</span>*<a href="#fdtdx.CustomTimeSignalProfile.start_time" class="headerlink" title="Link to this definition">#</a>  
+Simulation time at which <span class="pre">`signal[0]`</span> was sampled (seconds).
+
+<!-- -->
+
+<span class="sig-prename descclassname"><span class="pre">CustomTimeSignalProfile.</span></span><span class="sig-name descname"><span class="pre">time_step_duration</span></span>*<span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">`float`</span>*<a href="#fdtdx.CustomTimeSignalProfile.time_step_duration" class="headerlink" title="Link to this definition">#</a>  
+Duration of a single simulation time step (seconds).
+
+</div>
+
+<div id="methods" class="section">
+
+# Methods<a href="#methods" class="headerlink" title="Link to this heading">#</a>
+
+<span class="sig-prename descclassname"><span class="pre">CustomTimeSignalProfile.</span></span><span class="sig-name descname"><span class="pre">aset</span></span><span class="sig-paren">(</span>*<span class="n"><span class="pre">attr_name</span></span>*, *<span class="n"><span class="pre">val</span></span>*, *<span class="n"><span class="pre">create_new_ok</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span>*<span class="sig-paren">)</span><a href="#fdtdx.CustomTimeSignalProfile.aset" class="headerlink" title="Link to this definition">#</a>  
+Sets an attribute of this class. In contrast to the classical .at\[\].set(), this method updates the class attribute directly and does not only operate on jax pytree leaf nodes. Instead, replaces the full attribute with the new value.
+
+The attribute can either be the attribute name of this class, or for nested classes it can also be the attribute name of a class, which itself is an attribute of this class. The syntax for this operation could look like this: “a-\>b-\>\[0\]-\>\[‘name’\]”. Here, the current class has an attribute a, which has an attribute b, which is a list, which we index at index 0, which is an element of type dictionary, which we index using the dictionary key ‘name’.
+
+Note that dictionary keys cannot contain square brackets or single quotes (even if they are escaped).
+
+Parameters<span class="colon">:</span>  
+- **attr_name** (*str*) – Name of attribute to set
+
+- **val** (*Any*) – Value to set the attribute to
+
+- **create_new_ok** (*bool,* *optional*) – If false (default), throw an error if the attribute does not exist. If true, creates a new attribute if the attribute name does not exist yet.
+
+Returns<span class="colon">:</span>  
+Updated instance with new attribute value
+
+Return type<span class="colon">:</span>  
+Self
+
+<!-- -->
+
+<span class="sig-prename descclassname"><span class="pre">CustomTimeSignalProfile.</span></span><span class="sig-name descname"><span class="pre">frequency_spectrum</span></span><span class="sig-paren">(</span>*<span class="n"><span class="pre">period</span></span>*, *<span class="n"><span class="pre">time_step_duration</span></span>*, *<span class="n"><span class="pre">num_time_steps</span></span>*, *<span class="n"><span class="pre">phase_shift</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span>*, *<span class="n"><span class="pre">normalize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span>*<span class="sig-paren">)</span><a href="#fdtdx.CustomTimeSignalProfile.frequency_spectrum" class="headerlink" title="Link to this definition">#</a>  
+Return the one-sided FFT magnitude of the sampled source signal.
+
+Return type<span class="colon">:</span>  
+<span class="sphinx_autodoc_typehints-type"><span class="pre">`tuple`</span>\[<span class="pre">`ndarray`</span>, <span class="pre">`ndarray`</span>\]</span>
+
+<!-- -->
+
+<span class="sig-prename descclassname"><span class="pre">CustomTimeSignalProfile.</span></span><span class="sig-name descname"><span class="pre">get_amplitude</span></span><span class="sig-paren">(</span>*<span class="n"><span class="pre">time</span></span>*, *<span class="n"><span class="pre">period</span></span>*, *<span class="n"><span class="pre">phase_shift</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span>*<span class="sig-paren">)</span><a href="../_modules/fdtdx/objects/sources/profile.html#CustomTimeSignalProfile.get_amplitude" class="reference internal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a href="#fdtdx.CustomTimeSignalProfile.get_amplitude" class="headerlink" title="Link to this definition">#</a>  
+Calculate the temporal amplitude at given time points.
+
+Parameters<span class="colon">:</span>  
+- **time** (*jax.Array*) – Time points to evaluate amplitude at
+
+- **period** (*float*) – Period of the carrier wave (1/frequency)
+
+- **phase_shift** (*float*) – Phase shift of the carrier wave
+
+Returns<span class="colon">:</span>  
+Amplitude values at the given time points
+
+Return type<span class="colon">:</span>  
+jax.Array
+
+<!-- -->
+
+<span class="sig-prename descclassname"><span class="pre">CustomTimeSignalProfile.</span></span><span class="sig-name descname"><span class="pre">get_class_fields</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a href="#fdtdx.CustomTimeSignalProfile.get_class_fields" class="headerlink" title="Link to this definition">#</a>  
+Return type<span class="colon">:</span>  
+<span class="sphinx_autodoc_typehints-type"><span class="pre">`list`</span>\[<span class="pre">`TreeClassField`</span>\]</span>
+
+<!-- -->
+
+<span class="sig-prename descclassname"><span class="pre">CustomTimeSignalProfile.</span></span><span class="sig-name descname"><span class="pre">get_frequency_plot_range</span></span><span class="sig-paren">(</span>*<span class="n"><span class="pre">period</span></span>*, *<span class="n"><span class="pre">frequencies</span></span>*, *<span class="n"><span class="pre">spectrum</span></span>*<span class="sig-paren">)</span><a href="#fdtdx.CustomTimeSignalProfile.get_frequency_plot_range" class="headerlink" title="Link to this definition">#</a>  
+Return a profile-specific frequency plot range, or None to use automatic range detection.
+
+Subclasses may override this hook when the profile has known physical frequency properties (e.g. a Gaussian pulse).
+
+Return type<span class="colon">:</span>  
+<span class="sphinx_autodoc_typehints-type"><span class="pre">`tuple`</span>\[<span class="pre">`float`</span>, <span class="pre">`float`</span>\] \| <span class="pre">`None`</span></span>
+
+<!-- -->
+
+<span class="sig-prename descclassname"><span class="pre">CustomTimeSignalProfile.</span></span><span class="sig-name descname"><span class="pre">get_public_fields</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a href="#fdtdx.CustomTimeSignalProfile.get_public_fields" class="headerlink" title="Link to this definition">#</a>  
+Return type<span class="colon">:</span>  
+<span class="sphinx_autodoc_typehints-type"><span class="pre">`list`</span>\[<span class="pre">`TreeClassField`</span>\]</span>
+
+<!-- -->
+
+<span class="sig-prename descclassname"><span class="pre">CustomTimeSignalProfile.</span></span><span class="sig-name descname"><span class="pre">get_reference_frequency</span></span><span class="sig-paren">(</span>*<span class="n"><span class="pre">period</span></span>*<span class="sig-paren">)</span><a href="../_modules/fdtdx/objects/sources/profile.html#CustomTimeSignalProfile.get_reference_frequency" class="reference internal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a href="#fdtdx.CustomTimeSignalProfile.get_reference_frequency" class="headerlink" title="Link to this definition">#</a>  
+Return the magnitude-weighted spectral centroid of the stored signal.
+
+The reference frequency is computed as the weighted mean of the non-negative FFT frequency bins, using the magnitude spectrum as weights (G. Peeters, IRCAM Technical Report, 2004). It is used by <span class="pre">`_auto_range()`</span> to anchor the frequency axis of spectrum plots.
+
+Return type<span class="colon">:</span>  
+<span class="sphinx_autodoc_typehints-type"><span class="pre">`float`</span></span>
+
+<!-- -->
+
+<span class="sig-prename descclassname"><span class="pre">CustomTimeSignalProfile.</span></span><span class="sig-name descname"><span class="pre">get_time_plot_range</span></span><span class="sig-paren">(</span>*<span class="n"><span class="pre">period</span></span>*, *<span class="n"><span class="pre">total_time</span></span>*<span class="sig-paren">)</span><a href="#fdtdx.CustomTimeSignalProfile.get_time_plot_range" class="headerlink" title="Link to this definition">#</a>  
+Return a profile-specific time plot range, or None to use automatic range detection.
+
+Subclasses may override this hook when the profile has known physical time properties (e.g. a Gaussian pulse).
+
+Return type<span class="colon">:</span>  
+<span class="sphinx_autodoc_typehints-type"><span class="pre">`tuple`</span>\[<span class="pre">`float`</span>, <span class="pre">`float`</span>\] \| <span class="pre">`None`</span></span>
+
+<!-- -->
+
+<span class="sig-prename descclassname"><span class="pre">CustomTimeSignalProfile.</span></span><span class="sig-name descname"><span class="pre">plot_time_signal_and_spectrum</span></span><span class="sig-paren">(</span>*<span class="n"><span class="pre">period</span></span>*, *<span class="n"><span class="pre">time_step_duration</span></span>*, *<span class="n"><span class="pre">num_time_steps</span></span>*, *<span class="n"><span class="pre">phase_shift</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span>*, *<span class="n"><span class="pre">axs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span>*, *<span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span>*, *<span class="n"><span class="pre">time_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span>*, *<span class="n"><span class="pre">frequency_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span>*, *<span class="n"><span class="pre">relative_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span>*, *<span class="n"><span class="pre">normalize_spectrum</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span>*<span class="sig-paren">)</span><a href="#fdtdx.CustomTimeSignalProfile.plot_time_signal_and_spectrum" class="headerlink" title="Link to this definition">#</a>  
+Plot the sampled source time signal and its one-sided frequency spectrum.
+
+<!-- -->
+
+<span class="sig-prename descclassname"><span class="pre">CustomTimeSignalProfile.</span></span><span class="sig-name descname"><span class="pre">sample_time_signal</span></span><span class="sig-paren">(</span>*<span class="n"><span class="pre">period</span></span>*, *<span class="n"><span class="pre">time_step_duration</span></span>*, *<span class="n"><span class="pre">num_time_steps</span></span>*, *<span class="n"><span class="pre">phase_shift</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span>*<span class="sig-paren">)</span><a href="#fdtdx.CustomTimeSignalProfile.sample_time_signal" class="headerlink" title="Link to this definition">#</a>  
+Sample this temporal profile at the same cadence as an FDTD simulation.
+
+Return type<span class="colon">:</span>  
+<span class="sphinx_autodoc_typehints-type"><span class="pre">`tuple`</span>\[<span class="pre">`ndarray`</span>, <span class="pre">`ndarray`</span>\]</span>
+
+If you find any errors in the documentation, please report them in the <a href="https://github.com/ymahlau/fdtdx/issues" class="reference external">Github Issues</a>!
+
+</div>

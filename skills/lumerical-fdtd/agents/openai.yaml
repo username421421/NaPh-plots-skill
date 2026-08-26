@@ -1,0 +1,4 @@
+interface:
+  display_name: "Lumerical FDTD"
+  short_description: "Build and debug Ansys Lumerical FDTD simulations"
+  default_prompt: "Use $lumerical-fdtd to build or debug an Ansys Lumerical FDTD simulation from the bundled local references."

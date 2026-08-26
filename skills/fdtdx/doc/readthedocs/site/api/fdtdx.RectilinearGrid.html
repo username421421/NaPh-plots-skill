@@ -1,0 +1,1340 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>fdtdx.RectilinearGrid &#8212; fdtdx 0.6.2 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=e889af53" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=967efe37"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/fdtdx.RectilinearGrid';</script>
+    <link rel="icon" href="../_static/fdtdx_icon_64.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="fdtdx.RemoveFloatingMaterial" href="fdtdx.RemoveFloatingMaterial.html" />
+    <link rel="prev" title="fdtdx.RecordingState" href="fdtdx.RecordingState.html" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+<meta name="google-site-verification" content="Au3fTqdYzcm77AO7QU3X3MH1ZRFntjEN9i5DAsoQVK8" />
+
+  <script async type="text/javascript" src="/_/static/javascript/readthedocs-addons.js"></script><meta name="readthedocs-project-slug" content="fdtdx" /><meta name="readthedocs-version-slug" content="latest" /><meta name="readthedocs-resolver-filename" content="/api/fdtdx.RectilinearGrid.html" /><meta name="readthedocs-http-status" content="200" /></head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/fdtdx_icon_200.png" class="logo__image only-light" alt="fdtdx 0.6.2 documentation - Home"/>
+    <img src="../_static/fdtdx_icon_200.png" class="logo__image only-dark pst-js-only" alt="fdtdx 0.6.2 documentation - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01_quickstart.html">Quickstart</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/quickstart/01_jax_introduction.html">Introduction to JAX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/quickstart/02_basic_materials.html">Basic Materials and Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/quickstart/03_object_placement_guide.html">Object Placement Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/quickstart/04_basic_simulation.html">First Basic Simulation</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02_physics.html">Physics Tutorials</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/physics/01_maxwell.html">Maxwell’s Equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/physics/02_fdtd.html">FDTD Method</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../03_components.html">Component Examples</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/components/01_uniform_plane_source.html">Uniform Plane Source</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/components/02_mode_source_detector.html">Mode Source and Detector</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../04_advanced.html">Advanced</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/advanced/01_2d_simulation.html">2D Simulations</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_faq.html">FAQ</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../07_api.html">API</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.apply_params.html">fdtdx.apply_params</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.ArrayContainer.html">fdtdx.ArrayContainer</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.autoinit.html">fdtdx.autoinit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.BinaryMedianFilterModule.html">fdtdx.BinaryMedianFilterModule</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.BlochBoundary.html">fdtdx.BlochBoundary</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.boundary_objects_from_config.html">fdtdx.boundary_objects_from_config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.BoundaryConfig.html">fdtdx.BoundaryConfig</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.BrushConstraint2D.html">fdtdx.BrushConstraint2D</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.calculate_sparam.html">fdtdx.calculate_sparam</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.calculate_sparams.html">fdtdx.calculate_sparams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.CCPRPole.html">fdtdx.CCPRPole</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.circular_brush.html">fdtdx.circular_brush</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.ClosedSurfacePhasorPoyntingFluxDetector.html">fdtdx.ClosedSurfacePhasorPoyntingFluxDetector</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.ClosedSurfacePoyntingFluxDetector.html">fdtdx.ClosedSurfacePoyntingFluxDetector</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.ClosestIndex.html">fdtdx.ClosestIndex</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.Color.html">fdtdx.Color</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.compute_energy.html">fdtdx.compute_energy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.compute_eps_spectrum_from_coefficients.html">fdtdx.compute_eps_spectrum_from_coefficients</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.compute_impedance_corrected_temporal_profile.html">fdtdx.compute_impedance_corrected_temporal_profile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.compute_integrated_power.html">fdtdx.compute_integrated_power</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.compute_mode.html">fdtdx.compute_mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.compute_pole_coefficients.html">fdtdx.compute_pole_coefficients</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.compute_pole_coefficients_per_axis.html">fdtdx.compute_pole_coefficients_per_axis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.compute_poynting_flux.html">fdtdx.compute_poynting_flux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.ConnectHolesAndStructures.html">fdtdx.ConnectHolesAndStructures</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.CustomTimeSignalProfile.html">fdtdx.CustomTimeSignalProfile</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.Cylinder.html">fdtdx.Cylinder</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.Detector.html">fdtdx.Detector</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.DetectorState.html">fdtdx.DetectorState</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.Device.html">fdtdx.Device</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.DiagonalSymmetry2D.html">fdtdx.DiagonalSymmetry2D</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.DiagonalSymmetry3D.html">fdtdx.DiagonalSymmetry3D</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.DispersionModel.html">fdtdx.DispersionModel</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.DrudePole.html">fdtdx.DrudePole</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.DtypeConversion.html">fdtdx.DtypeConversion</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.EnergyDetector.html">fdtdx.EnergyDetector</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.export_arrays_snapshot_to_vti.html">fdtdx.export_arrays_snapshot_to_vti</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.export_json.html">fdtdx.export_json</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.export_json_str.html">fdtdx.export_json_str</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.export_stl.html">fdtdx.export_stl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.export_vti.html">fdtdx.export_vti</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.export_vtr.html">fdtdx.export_vtr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.extend_material_to_pml.html">fdtdx.extend_material_to_pml</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.ExtrudedPolygon.html">fdtdx.ExtrudedPolygon</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.extruded_polygon_from_gds.html">fdtdx.extruded_polygon_from_gds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.extruded_polygon_from_gds_path.html">fdtdx.extruded_polygon_from_gds_path</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.field.html">fdtdx.field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.FieldDetector.html">fdtdx.FieldDetector</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.FieldProjectionAngleDetector.html">fdtdx.FieldProjectionAngleDetector</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.FieldProjectionCartesianDetector.html">fdtdx.FieldProjectionCartesianDetector</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.FieldProjectionKSpaceDetector.html">fdtdx.FieldProjectionKSpaceDetector</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.FieldState.html">fdtdx.FieldState</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.frozen_field.html">fdtdx.frozen_field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.frozen_private_field.html">fdtdx.frozen_private_field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.full_backward.html">fdtdx.full_backward</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.GaussianPlaneSource.html">fdtdx.GaussianPlaneSource</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.GaussianPulseProfile.html">fdtdx.GaussianPulseProfile</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.GaussianSmoothing2D.html">fdtdx.GaussianSmoothing2D</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.GradientConfig.html">fdtdx.GradientConfig</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.GridCoordinateConstraint.html">fdtdx.GridCoordinateConstraint</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.HorizontalSymmetry2D.html">fdtdx.HorizontalSymmetry2D</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.HorizontalSymmetry3D.html">fdtdx.HorizontalSymmetry3D</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.import_from_json.html">fdtdx.import_from_json</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.LinearReconstructEveryK.html">fdtdx.LinearReconstructEveryK</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.Logger.html">fdtdx.Logger</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.LorentzPole.html">fdtdx.LorentzPole</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.Material.html">fdtdx.Material</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.metric_efficiency.html">fdtdx.metric_efficiency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.ModeOverlapDetector.html">fdtdx.ModeOverlapDetector</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.ModePlaneSource.html">fdtdx.ModePlaneSource</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.normalize_by_energy.html">fdtdx.normalize_by_energy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.normalize_by_poynting_flux.html">fdtdx.normalize_by_poynting_flux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.ObjectContainer.html">fdtdx.ObjectContainer</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.OnOffSwitch.html">fdtdx.OnOffSwitch</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.ParameterContainer.html">fdtdx.ParameterContainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.ParameterTransformation.html">fdtdx.ParameterTransformation</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.PerfectElectricConductor.html">fdtdx.PerfectElectricConductor</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.PerfectMagneticConductor.html">fdtdx.PerfectMagneticConductor</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.PerfectlyMatchedLayer.html">fdtdx.PerfectlyMatchedLayer</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.PeriodicBoundary.html">fdtdx.PeriodicBoundary</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.PhasorDetector.html">fdtdx.PhasorDetector</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.PhasorPoyntingFluxDetector.html">fdtdx.PhasorPoyntingFluxDetector</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.PillarDiscretization.html">fdtdx.PillarDiscretization</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.place_objects.html">fdtdx.place_objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.plot_field_slice.html">fdtdx.plot_field_slice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.plot_field_slice_component.html">fdtdx.plot_field_slice_component</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.plot_material.html">fdtdx.plot_material</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.plot_material_from_side.html">fdtdx.plot_material_from_side</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.plot_setup.html">fdtdx.plot_setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.plot_setup_from_side.html">fdtdx.plot_setup_from_side</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.PointDipoleSource.html">fdtdx.PointDipoleSource</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.PointSymmetry2D.html">fdtdx.PointSymmetry2D</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.PointSymmetry3D.html">fdtdx.PointSymmetry3D</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.Pole.html">fdtdx.Pole</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.PortSpec.html">fdtdx.PortSpec</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.PositionConstraint.html">fdtdx.PositionConstraint</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.PoyntingFluxDetector.html">fdtdx.PoyntingFluxDetector</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.private_field.html">fdtdx.private_field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.QuasiUniformGrid.html">fdtdx.QuasiUniformGrid</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.RealCoordinateConstraint.html">fdtdx.RealCoordinateConstraint</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.Recorder.html">fdtdx.Recorder</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.RecordingState.html">fdtdx.RecordingState</a></li>
+
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">fdtdx.RectilinearGrid</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.RemoveFloatingMaterial.html">fdtdx.RemoveFloatingMaterial</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.resolve_object_constraints.html">fdtdx.resolve_object_constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.run_fdtd.html">fdtdx.run_fdtd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.setup_sparams_simulation.html">fdtdx.setup_sparams_simulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.SimulationConfig.html">fdtdx.SimulationConfig</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.SimulationObject.html">fdtdx.SimulationObject</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.SimulationState.html">fdtdx.SimulationState</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.SimulationVolume.html">fdtdx.SimulationVolume</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.SingleFrequencyProfile.html">fdtdx.SingleFrequencyProfile</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.SizeConstraint.html">fdtdx.SizeConstraint</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.SizeExtensionConstraint.html">fdtdx.SizeExtensionConstraint</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.Sphere.html">fdtdx.Sphere</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.StandardToCustomRange.html">fdtdx.StandardToCustomRange</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.StandardToInversePermittivityRange.html">fdtdx.StandardToInversePermittivityRange</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.StandardToPlusOneMinusOneRange.html">fdtdx.StandardToPlusOneMinusOneRange</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.SubpixelSmoothedProjection.html">fdtdx.SubpixelSmoothedProjection</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.TanhProjection.html">fdtdx.TanhProjection</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.TemporalProfile.html">fdtdx.TemporalProfile</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.TFSFPlaneSourceRegion.html">fdtdx.TFSFPlaneSourceRegion</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.TreeClass.html">fdtdx.TreeClass</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.unfold_array.html">fdtdx.unfold_array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.unfold_detector_states.html">fdtdx.unfold_detector_states</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.unfold_fields.html">fdtdx.unfold_fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.unfold_source_mode.html">fdtdx.unfold_source_mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.UniformGrid.html">fdtdx.UniformGrid</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.UniformMaterialObject.html">fdtdx.UniformMaterialObject</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.UniformPlaneSource.html">fdtdx.UniformPlaneSource</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.VerticalSymmetry2D.html">fdtdx.VerticalSymmetry2D</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.VerticalSymmetry3D.html">fdtdx.VerticalSymmetry3D</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.WaveCharacter.html">fdtdx.WaveCharacter</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.wavelength_to_period.html">fdtdx.wavelength_to_period</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.GDSLayerObject.html">fdtdx.GDSLayerObject</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.GDSLayerSpec.html">fdtdx.GDSLayerSpec</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.GDSPortSpec.html">fdtdx.GDSPortSpec</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.detectors_from_gds_ports.html">fdtdx.detectors_from_gds_ports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.gds_layer_stack.html">fdtdx.gds_layer_stack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.gds_layer_stack_from_component.html">fdtdx.gds_layer_stack_from_component</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.sources_from_gds_ports.html">fdtdx.sources_from_gds_ports</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/ymahlau/fdtdx" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/api/fdtdx.RectilinearGrid.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>fdtdx.RectilinearGrid</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">fdtdx.RectilinearGrid</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-reference">Quick Reference</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#attributes">Attributes</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.dx"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.dx</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.dy"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.dy</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.dz"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.dz</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.is_uniform"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.is_uniform</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.min_spacing"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.min_spacing</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.min_spacings"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.min_spacings</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.shape"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.shape</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.uniform_spacing"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.uniform_spacing</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.x_edges"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.x_edges</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.y_edges"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.y_edges</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.z_edges"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.z_edges</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#methods">Methods</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.anchor_coordinate"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.anchor_coordinate()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.aset"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.aset()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.axis_extent"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.axis_extent()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.bounds_for_anchor"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.bounds_for_anchor()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.bounds_for_center"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.bounds_for_center()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.cell_volume"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.cell_volume()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.cell_widths"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.cell_widths()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.centers"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.centers()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.cfl_time_step"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.cfl_time_step()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.coord_to_index"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.coord_to_index()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.custom"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.custom()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.edges"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.edges()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.face_area"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.face_area()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.get_class_fields"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.get_class_fields()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.get_public_fields"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.get_public_fields()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.length_to_cell_count"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.length_to_cell_count()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.reduce_symmetric"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.reduce_symmetric()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.slice_extent"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.slice_extent()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.subgrid"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.subgrid()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.uniform"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.uniform()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="fdtdx-rectilineargrid">
+<h1>fdtdx.RectilinearGrid<a class="headerlink" href="#fdtdx-rectilineargrid" title="Link to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="fdtdx.RectilinearGrid">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fdtdx.</span></span><span class="sig-name descname"><span class="pre">RectilinearGrid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_edges</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">null</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_edges</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">null</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z_edges</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">null</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/fdtdx/core/grid.html#RectilinearGrid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fdtdx.RectilinearGrid" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="fdtdx.TreeClass.html#fdtdx.TreeClass" title="fdtdx.core.jax.pytrees.TreeClass"><code class="xref py py-class docutils literal notranslate"><span class="pre">TreeClass</span></code></a></p>
+<p>Realized rectilinear simulation grid described by physical cell edges.</p>
+<p>This is the canonical solver-facing grid representation used by fdtdx
+internals.  A uniform grid is represented by equally spaced edge arrays, not
+by a separate scalar code path.  Keeping one realized representation is
+important for the non-uniform grid migration: placement, PML profiles,
+mode-solver coordinates, detector weights, and Yee update metrics should all
+ask the grid for physical distances instead of deriving them from a global
+<code class="docutils literal notranslate"><span class="pre">resolution</span></code> value.</p>
+<p>The arrays store cell <em>edges</em> in metres.  For a grid with <code class="docutils literal notranslate"><span class="pre">nx</span></code> cells along
+x, <code class="docutils literal notranslate"><span class="pre">x_edges</span></code> has shape <code class="docutils literal notranslate"><span class="pre">(nx</span> <span class="pre">+</span> <span class="pre">1,)</span></code> and must be strictly increasing.  Cell
+widths, centers, face areas, and volumes are derived from these arrays.</p>
+<p class="rubric">Notes</p>
+<p>This class intentionally does not encode automatic mesh generation
+policy.  Future policy objects such as <code class="docutils literal notranslate"><span class="pre">AutoGrid</span></code> or
+<code class="docutils literal notranslate"><span class="pre">QuasiUniformGrid</span></code> should resolve to <code class="docutils literal notranslate"><span class="pre">RectilinearGrid</span></code> before the
+solver runs.</p>
+</dd></dl>
+
+<section id="quick-reference">
+<h2>Quick Reference<a class="headerlink" href="#quick-reference" title="Link to this heading">#</a></h2>
+<p class="rubric">Attributes</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#fdtdx.RectilinearGrid.dx" title="fdtdx.RectilinearGrid.dx"><code class="xref py py-attr docutils literal notranslate"><span class="pre">dx</span></code></a></p></li>
+<li><p><a class="reference internal" href="#fdtdx.RectilinearGrid.dy" title="fdtdx.RectilinearGrid.dy"><code class="xref py py-attr docutils literal notranslate"><span class="pre">dy</span></code></a></p></li>
+<li><p><a class="reference internal" href="#fdtdx.RectilinearGrid.dz" title="fdtdx.RectilinearGrid.dz"><code class="xref py py-attr docutils literal notranslate"><span class="pre">dz</span></code></a></p></li>
+<li><p><a class="reference internal" href="#fdtdx.RectilinearGrid.is_uniform" title="fdtdx.RectilinearGrid.is_uniform"><code class="xref py py-attr docutils literal notranslate"><span class="pre">is_uniform</span></code></a></p></li>
+<li><p><a class="reference internal" href="#fdtdx.RectilinearGrid.min_spacing" title="fdtdx.RectilinearGrid.min_spacing"><code class="xref py py-attr docutils literal notranslate"><span class="pre">min_spacing</span></code></a></p></li>
+<li><p><a class="reference internal" href="#fdtdx.RectilinearGrid.min_spacings" title="fdtdx.RectilinearGrid.min_spacings"><code class="xref py py-attr docutils literal notranslate"><span class="pre">min_spacings</span></code></a></p></li>
+<li><p><a class="reference internal" href="#fdtdx.RectilinearGrid.shape" title="fdtdx.RectilinearGrid.shape"><code class="xref py py-attr docutils literal notranslate"><span class="pre">shape</span></code></a></p></li>
+<li><p><a class="reference internal" href="#fdtdx.RectilinearGrid.uniform_spacing" title="fdtdx.RectilinearGrid.uniform_spacing"><code class="xref py py-attr docutils literal notranslate"><span class="pre">uniform_spacing</span></code></a></p></li>
+<li><p><a class="reference internal" href="#fdtdx.RectilinearGrid.x_edges" title="fdtdx.RectilinearGrid.x_edges"><code class="xref py py-attr docutils literal notranslate"><span class="pre">x_edges</span></code></a></p></li>
+<li><p><a class="reference internal" href="#fdtdx.RectilinearGrid.y_edges" title="fdtdx.RectilinearGrid.y_edges"><code class="xref py py-attr docutils literal notranslate"><span class="pre">y_edges</span></code></a></p></li>
+<li><p><a class="reference internal" href="#fdtdx.RectilinearGrid.z_edges" title="fdtdx.RectilinearGrid.z_edges"><code class="xref py py-attr docutils literal notranslate"><span class="pre">z_edges</span></code></a></p></li>
+</ul>
+<p class="rubric">Methods</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#fdtdx.RectilinearGrid.anchor_coordinate" title="fdtdx.RectilinearGrid.anchor_coordinate"><code class="xref py py-attr docutils literal notranslate"><span class="pre">anchor_coordinate</span></code></a></p></li>
+<li><p><a class="reference internal" href="#fdtdx.RectilinearGrid.aset" title="fdtdx.RectilinearGrid.aset"><code class="xref py py-attr docutils literal notranslate"><span class="pre">aset</span></code></a></p></li>
+<li><p><a class="reference internal" href="#fdtdx.RectilinearGrid.axis_extent" title="fdtdx.RectilinearGrid.axis_extent"><code class="xref py py-attr docutils literal notranslate"><span class="pre">axis_extent</span></code></a></p></li>
+<li><p><a class="reference internal" href="#fdtdx.RectilinearGrid.bounds_for_anchor" title="fdtdx.RectilinearGrid.bounds_for_anchor"><code class="xref py py-attr docutils literal notranslate"><span class="pre">bounds_for_anchor</span></code></a></p></li>
+<li><p><a class="reference internal" href="#fdtdx.RectilinearGrid.bounds_for_center" title="fdtdx.RectilinearGrid.bounds_for_center"><code class="xref py py-attr docutils literal notranslate"><span class="pre">bounds_for_center</span></code></a></p></li>
+<li><p><a class="reference internal" href="#fdtdx.RectilinearGrid.cell_volume" title="fdtdx.RectilinearGrid.cell_volume"><code class="xref py py-attr docutils literal notranslate"><span class="pre">cell_volume</span></code></a></p></li>
+<li><p><a class="reference internal" href="#fdtdx.RectilinearGrid.cell_widths" title="fdtdx.RectilinearGrid.cell_widths"><code class="xref py py-attr docutils literal notranslate"><span class="pre">cell_widths</span></code></a></p></li>
+<li><p><a class="reference internal" href="#fdtdx.RectilinearGrid.centers" title="fdtdx.RectilinearGrid.centers"><code class="xref py py-attr docutils literal notranslate"><span class="pre">centers</span></code></a></p></li>
+<li><p><a class="reference internal" href="#fdtdx.RectilinearGrid.cfl_time_step" title="fdtdx.RectilinearGrid.cfl_time_step"><code class="xref py py-attr docutils literal notranslate"><span class="pre">cfl_time_step</span></code></a></p></li>
+<li><p><a class="reference internal" href="#fdtdx.RectilinearGrid.coord_to_index" title="fdtdx.RectilinearGrid.coord_to_index"><code class="xref py py-attr docutils literal notranslate"><span class="pre">coord_to_index</span></code></a></p></li>
+<li><p><a class="reference internal" href="#fdtdx.RectilinearGrid.custom" title="fdtdx.RectilinearGrid.custom"><code class="xref py py-attr docutils literal notranslate"><span class="pre">custom</span></code></a></p></li>
+<li><p><a class="reference internal" href="#fdtdx.RectilinearGrid.edges" title="fdtdx.RectilinearGrid.edges"><code class="xref py py-attr docutils literal notranslate"><span class="pre">edges</span></code></a></p></li>
+<li><p><a class="reference internal" href="#fdtdx.RectilinearGrid.face_area" title="fdtdx.RectilinearGrid.face_area"><code class="xref py py-attr docutils literal notranslate"><span class="pre">face_area</span></code></a></p></li>
+<li><p><a class="reference internal" href="#fdtdx.RectilinearGrid.get_class_fields" title="fdtdx.RectilinearGrid.get_class_fields"><code class="xref py py-attr docutils literal notranslate"><span class="pre">get_class_fields</span></code></a></p></li>
+<li><p><a class="reference internal" href="#fdtdx.RectilinearGrid.get_public_fields" title="fdtdx.RectilinearGrid.get_public_fields"><code class="xref py py-attr docutils literal notranslate"><span class="pre">get_public_fields</span></code></a></p></li>
+<li><p><a class="reference internal" href="#fdtdx.RectilinearGrid.length_to_cell_count" title="fdtdx.RectilinearGrid.length_to_cell_count"><code class="xref py py-attr docutils literal notranslate"><span class="pre">length_to_cell_count</span></code></a></p></li>
+<li><p><a class="reference internal" href="#fdtdx.RectilinearGrid.reduce_symmetric" title="fdtdx.RectilinearGrid.reduce_symmetric"><code class="xref py py-attr docutils literal notranslate"><span class="pre">reduce_symmetric</span></code></a></p></li>
+<li><p><a class="reference internal" href="#fdtdx.RectilinearGrid.slice_extent" title="fdtdx.RectilinearGrid.slice_extent"><code class="xref py py-attr docutils literal notranslate"><span class="pre">slice_extent</span></code></a></p></li>
+<li><p><a class="reference internal" href="#fdtdx.RectilinearGrid.subgrid" title="fdtdx.RectilinearGrid.subgrid"><code class="xref py py-attr docutils literal notranslate"><span class="pre">subgrid</span></code></a></p></li>
+<li><p><a class="reference internal" href="#fdtdx.RectilinearGrid.uniform" title="fdtdx.RectilinearGrid.uniform"><code class="xref py py-attr docutils literal notranslate"><span class="pre">uniform</span></code></a></p></li>
+</ul>
+</section>
+</section>
+<section id="attributes">
+<h1>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">#</a></h1>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fdtdx.RectilinearGrid.dx">
+<span class="sig-prename descclassname"><span class="pre">RectilinearGrid.</span></span><span class="sig-name descname"><span class="pre">dx</span></span><a class="headerlink" href="#fdtdx.RectilinearGrid.dx" title="Link to this definition">#</a></dt>
+<dd><p>Cell widths along x in metres.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fdtdx.RectilinearGrid.dy">
+<span class="sig-prename descclassname"><span class="pre">RectilinearGrid.</span></span><span class="sig-name descname"><span class="pre">dy</span></span><a class="headerlink" href="#fdtdx.RectilinearGrid.dy" title="Link to this definition">#</a></dt>
+<dd><p>Cell widths along y in metres.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fdtdx.RectilinearGrid.dz">
+<span class="sig-prename descclassname"><span class="pre">RectilinearGrid.</span></span><span class="sig-name descname"><span class="pre">dz</span></span><a class="headerlink" href="#fdtdx.RectilinearGrid.dz" title="Link to this definition">#</a></dt>
+<dd><p>Cell widths along z in metres.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fdtdx.RectilinearGrid.is_uniform">
+<span class="sig-prename descclassname"><span class="pre">RectilinearGrid.</span></span><span class="sig-name descname"><span class="pre">is_uniform</span></span><a class="headerlink" href="#fdtdx.RectilinearGrid.is_uniform" title="Link to this definition">#</a></dt>
+<dd><p>Whether all cell widths match a single spacing within numerical tolerance.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fdtdx.RectilinearGrid.min_spacing">
+<span class="sig-prename descclassname"><span class="pre">RectilinearGrid.</span></span><span class="sig-name descname"><span class="pre">min_spacing</span></span><a class="headerlink" href="#fdtdx.RectilinearGrid.min_spacing" title="Link to this definition">#</a></dt>
+<dd><p>Smallest cell width in the grid.</p>
+<p>This value is the conservative spacing used for staged CFL migration.
+The full non-uniform update should eventually use explicit local metric
+arrays, but stability remains controlled by the smallest cell.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fdtdx.RectilinearGrid.min_spacings">
+<span class="sig-prename descclassname"><span class="pre">RectilinearGrid.</span></span><span class="sig-name descname"><span class="pre">min_spacings</span></span><a class="headerlink" href="#fdtdx.RectilinearGrid.min_spacings" title="Link to this definition">#</a></dt>
+<dd><p>Smallest cell width along each axis in metres.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fdtdx.RectilinearGrid.shape">
+<span class="sig-prename descclassname"><span class="pre">RectilinearGrid.</span></span><span class="sig-name descname"><span class="pre">shape</span></span><a class="headerlink" href="#fdtdx.RectilinearGrid.shape" title="Link to this definition">#</a></dt>
+<dd><p>Number of cells along each axis.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fdtdx.RectilinearGrid.uniform_spacing">
+<span class="sig-prename descclassname"><span class="pre">RectilinearGrid.</span></span><span class="sig-name descname"><span class="pre">uniform_spacing</span></span><a class="headerlink" href="#fdtdx.RectilinearGrid.uniform_spacing" title="Link to this definition">#</a></dt>
+<dd><p>Return the scalar spacing for a uniform grid or raise for non-uniform grids.</p>
+<p>This compatibility escape hatch should only be used by code that has not
+yet been migrated to metric-aware helpers.  It deliberately raises for
+non-uniform grids so unsupported paths fail loudly.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fdtdx.RectilinearGrid.x_edges">
+<span class="sig-prename descclassname"><span class="pre">RectilinearGrid.</span></span><span class="sig-name descname"><span class="pre">x_edges</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">Array</span></code></em><a class="headerlink" href="#fdtdx.RectilinearGrid.x_edges" title="Link to this definition">#</a></dt>
+<dd><p>Physical edge coordinates along x in metres, shape <code class="docutils literal notranslate"><span class="pre">(nx</span> <span class="pre">+</span> <span class="pre">1,)</span></code>.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fdtdx.RectilinearGrid.y_edges">
+<span class="sig-prename descclassname"><span class="pre">RectilinearGrid.</span></span><span class="sig-name descname"><span class="pre">y_edges</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">Array</span></code></em><a class="headerlink" href="#fdtdx.RectilinearGrid.y_edges" title="Link to this definition">#</a></dt>
+<dd><p>Physical edge coordinates along y in metres, shape <code class="docutils literal notranslate"><span class="pre">(ny</span> <span class="pre">+</span> <span class="pre">1,)</span></code>.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fdtdx.RectilinearGrid.z_edges">
+<span class="sig-prename descclassname"><span class="pre">RectilinearGrid.</span></span><span class="sig-name descname"><span class="pre">z_edges</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">Array</span></code></em><a class="headerlink" href="#fdtdx.RectilinearGrid.z_edges" title="Link to this definition">#</a></dt>
+<dd><p>Physical edge coordinates along z in metres, shape <code class="docutils literal notranslate"><span class="pre">(nz</span> <span class="pre">+</span> <span class="pre">1,)</span></code>.</p>
+</dd></dl>
+
+</section>
+<section id="methods">
+<h1>Methods<a class="headerlink" href="#methods" title="Link to this heading">#</a></h1>
+<dl class="py method">
+<dt class="sig sig-object py" id="fdtdx.RectilinearGrid.anchor_coordinate">
+<span class="sig-prename descclassname"><span class="pre">RectilinearGrid.</span></span><span class="sig-name descname"><span class="pre">anchor_coordinate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bounds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/fdtdx/core/grid.html#RectilinearGrid.anchor_coordinate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fdtdx.RectilinearGrid.anchor_coordinate" title="Link to this definition">#</a></dt>
+<dd><p>Return a physical anchor coordinate inside an interval.</p>
+<p><code class="docutils literal notranslate"><span class="pre">position</span></code> follows fdtdx object-anchor convention: <code class="docutils literal notranslate"><span class="pre">-1</span></code> is the lower
+side, <code class="docutils literal notranslate"><span class="pre">0</span></code> is the center, and <code class="docutils literal notranslate"><span class="pre">+1</span></code> is the upper side.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fdtdx.RectilinearGrid.aset">
+<span class="sig-prename descclassname"><span class="pre">RectilinearGrid.</span></span><span class="sig-name descname"><span class="pre">aset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attr_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">create_new_ok</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fdtdx.RectilinearGrid.aset" title="Link to this definition">#</a></dt>
+<dd><p>Sets an attribute of this class. In contrast to the classical .at[].set(), this method updates the class
+attribute directly and does not only operate on jax pytree leaf nodes. Instead, replaces the full attribute
+with the new value.</p>
+<p>The attribute can either be the attribute name of this class, or for nested classes it can also be the
+attribute name of a class, which itself is an attribute of this class. The syntax for this operation could
+look like this: “a-&gt;b-&gt;[0]-&gt;[‘name’]”. Here, the current class has an attribute a, which has an attribute b,
+which is a list, which we index at index 0, which is an element of type dictionary, which we index using
+the dictionary key ‘name’.</p>
+<p>Note that dictionary keys cannot contain square brackets or single quotes (even if they are escaped).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>attr_name</strong> (<em>str</em>) – Name of attribute to set</p></li>
+<li><p><strong>val</strong> (<em>Any</em>) – Value to set the attribute to</p></li>
+<li><p><strong>create_new_ok</strong> (<em>bool</em><em>, </em><em>optional</em>) – If false (default), throw an error if the attribute does not exist.
+If true, creates a new attribute if the attribute name does not exist yet.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Updated instance with new attribute value</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Self</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fdtdx.RectilinearGrid.axis_extent">
+<span class="sig-prename descclassname"><span class="pre">RectilinearGrid.</span></span><span class="sig-name descname"><span class="pre">axis_extent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bounds</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/fdtdx/core/grid.html#RectilinearGrid.axis_extent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fdtdx.RectilinearGrid.axis_extent" title="Link to this definition">#</a></dt>
+<dd><p>Physical length covered by an index interval on one axis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fdtdx.RectilinearGrid.bounds_for_anchor">
+<span class="sig-prename descclassname"><span class="pre">RectilinearGrid.</span></span><span class="sig-name descname"><span class="pre">bounds_for_anchor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">anchor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/fdtdx/core/grid.html#RectilinearGrid.bounds_for_anchor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fdtdx.RectilinearGrid.bounds_for_anchor" title="Link to this definition">#</a></dt>
+<dd><p>Choose a cell interval whose object anchor is closest to <code class="docutils literal notranslate"><span class="pre">anchor</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>axis</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></span>) – Grid axis.</p></li>
+<li><p><strong>size</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></span>) – Number of cells in the interval.</p></li>
+<li><p><strong>anchor</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></span>) – Desired physical anchor coordinate in metres.</p></li>
+<li><p><strong>position</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></span>) – Object-relative anchor position, where <code class="docutils literal notranslate"><span class="pre">-1</span></code> is lower
+side, <code class="docutils literal notranslate"><span class="pre">0</span></code> is center, and <code class="docutils literal notranslate"><span class="pre">+1</span></code> is upper side.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]</span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">(lower,</span> <span class="pre">upper)</span></code> edge indices with <code class="docutils literal notranslate"><span class="pre">upper</span> <span class="pre">-</span> <span class="pre">lower</span> <span class="pre">==</span> <span class="pre">size</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fdtdx.RectilinearGrid.bounds_for_center">
+<span class="sig-prename descclassname"><span class="pre">RectilinearGrid.</span></span><span class="sig-name descname"><span class="pre">bounds_for_center</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/fdtdx/core/grid.html#RectilinearGrid.bounds_for_center"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fdtdx.RectilinearGrid.bounds_for_center" title="Link to this definition">#</a></dt>
+<dd><p>Choose a cell interval whose physical center is closest to <code class="docutils literal notranslate"><span class="pre">center</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>axis</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></span>) – Grid axis.</p></li>
+<li><p><strong>center</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></span>) – Desired physical center coordinate in metres.</p></li>
+<li><p><strong>size</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></span>) – Number of cells in the interval.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]</span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">(lower,</span> <span class="pre">upper)</span></code> edge indices with <code class="docutils literal notranslate"><span class="pre">upper</span> <span class="pre">-</span> <span class="pre">lower</span> <span class="pre">==</span> <span class="pre">size</span></code>.</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This operation is used by object placement when a physical center
+position and an already-resolved grid-cell size are known.  On a
+non-uniform grid there is no exact analogue of <code class="docutils literal notranslate"><span class="pre">round(x</span> <span class="pre">/</span> <span class="pre">dx)</span></code>;
+selecting the closest physical interval center gives deterministic
+snapping while preserving the requested grid-cell size.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fdtdx.RectilinearGrid.cell_volume">
+<span class="sig-prename descclassname"><span class="pre">RectilinearGrid.</span></span><span class="sig-name descname"><span class="pre">cell_volume</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">slice_tuple</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/fdtdx/core/grid.html#RectilinearGrid.cell_volume"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fdtdx.RectilinearGrid.cell_volume" title="Link to this definition">#</a></dt>
+<dd><p>Return per-cell volume weights broadcast to a 3D slice shape.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Array</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fdtdx.RectilinearGrid.cell_widths">
+<span class="sig-prename descclassname"><span class="pre">RectilinearGrid.</span></span><span class="sig-name descname"><span class="pre">cell_widths</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axis</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/fdtdx/core/grid.html#RectilinearGrid.cell_widths"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fdtdx.RectilinearGrid.cell_widths" title="Link to this definition">#</a></dt>
+<dd><p>Return cell widths for <code class="docutils literal notranslate"><span class="pre">axis</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Array</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fdtdx.RectilinearGrid.centers">
+<span class="sig-prename descclassname"><span class="pre">RectilinearGrid.</span></span><span class="sig-name descname"><span class="pre">centers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axis</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/fdtdx/core/grid.html#RectilinearGrid.centers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fdtdx.RectilinearGrid.centers" title="Link to this definition">#</a></dt>
+<dd><p>Return cell-center coordinates for <code class="docutils literal notranslate"><span class="pre">axis</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Array</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fdtdx.RectilinearGrid.cfl_time_step">
+<span class="sig-prename descclassname"><span class="pre">RectilinearGrid.</span></span><span class="sig-name descname"><span class="pre">cfl_time_step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">courant_factor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/fdtdx/core/grid.html#RectilinearGrid.cfl_time_step"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fdtdx.RectilinearGrid.cfl_time_step" title="Link to this definition">#</a></dt>
+<dd><p>Return the CFL-limited time step for a rectilinear 3D grid.</p>
+<p>The stability limit for an orthogonal FDTD grid is controlled by the
+smallest spacing on each axis:</p>
+<p><code class="docutils literal notranslate"><span class="pre">dt</span> <span class="pre">&lt;=</span> <span class="pre">courant_factor</span> <span class="pre">/</span> <span class="pre">(c</span> <span class="pre">*</span> <span class="pre">sqrt(1/dx_min^2</span> <span class="pre">+</span> <span class="pre">1/dy_min^2</span> <span class="pre">+</span> <span class="pre">1/dz_min^2))</span></code>.</p>
+<p>For uniform grids this is exactly the existing <code class="docutils literal notranslate"><span class="pre">courant_factor/sqrt(3)</span></code>
+behavior.  For anisotropic or stretched grids it avoids using one global
+spacing for all three axes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fdtdx.RectilinearGrid.coord_to_index">
+<span class="sig-prename descclassname"><span class="pre">RectilinearGrid.</span></span><span class="sig-name descname"><span class="pre">coord_to_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coord</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'nearest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/fdtdx/core/grid.html#RectilinearGrid.coord_to_index"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fdtdx.RectilinearGrid.coord_to_index" title="Link to this definition">#</a></dt>
+<dd><p>Map a physical coordinate to a grid edge index.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>axis</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></span>) – Grid axis.</p></li>
+<li><p><strong>coord</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></span>) – Coordinate in metres.</p></li>
+<li><p><strong>snap</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span>) – Snapping rule. <code class="docutils literal notranslate"><span class="pre">&quot;nearest&quot;</span></code> chooses the closest edge,
+<code class="docutils literal notranslate"><span class="pre">&quot;lower&quot;</span></code> chooses the previous edge, and <code class="docutils literal notranslate"><span class="pre">&quot;upper&quot;</span></code> chooses
+the next edge.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Edge index after applying the requested snapping rule.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fdtdx.RectilinearGrid.custom">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">RectilinearGrid.</span></span><span class="sig-name descname"><span class="pre">custom</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_edges</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_edges</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z_edges</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/fdtdx/core/grid.html#RectilinearGrid.custom"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fdtdx.RectilinearGrid.custom" title="Link to this definition">#</a></dt>
+<dd><p>Create a realized rectilinear grid from explicit edge arrays.</p>
+<p>This constructor is equivalent to calling <code class="docutils literal notranslate"><span class="pre">RectilinearGrid(...)</span></code>
+directly, but it makes the user-facing intent explicit: the caller is
+supplying the final grid coordinates, not an automatic meshing policy.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fdtdx.RectilinearGrid.edges">
+<span class="sig-prename descclassname"><span class="pre">RectilinearGrid.</span></span><span class="sig-name descname"><span class="pre">edges</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axis</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/fdtdx/core/grid.html#RectilinearGrid.edges"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fdtdx.RectilinearGrid.edges" title="Link to this definition">#</a></dt>
+<dd><p>Return edge coordinates for <code class="docutils literal notranslate"><span class="pre">axis</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Array</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fdtdx.RectilinearGrid.face_area">
+<span class="sig-prename descclassname"><span class="pre">RectilinearGrid.</span></span><span class="sig-name descname"><span class="pre">face_area</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slice_tuple</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/fdtdx/core/grid.html#RectilinearGrid.face_area"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fdtdx.RectilinearGrid.face_area" title="Link to this definition">#</a></dt>
+<dd><p>Return per-cell face-area weights for a detector plane.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>axis</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></span>) – Normal axis of the face.</p></li>
+<li><p><strong>slice_tuple</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]]</span>) – Grid slice containing the detector volume.  The normal
+axis is expected to have width one for a plane detector.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Array</span></code></span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Area weights broadcast to the detector’s 3D slice shape.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fdtdx.RectilinearGrid.get_class_fields">
+<span class="sig-prename descclassname"><span class="pre">RectilinearGrid.</span></span><span class="sig-name descname"><span class="pre">get_class_fields</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fdtdx.RectilinearGrid.get_class_fields" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">TreeClassField</span></code>]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fdtdx.RectilinearGrid.get_public_fields">
+<span class="sig-prename descclassname"><span class="pre">RectilinearGrid.</span></span><span class="sig-name descname"><span class="pre">get_public_fields</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fdtdx.RectilinearGrid.get_public_fields" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">TreeClassField</span></code>]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fdtdx.RectilinearGrid.length_to_cell_count">
+<span class="sig-prename descclassname"><span class="pre">RectilinearGrid.</span></span><span class="sig-name descname"><span class="pre">length_to_cell_count</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axis</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'nearest'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/fdtdx/core/grid.html#RectilinearGrid.length_to_cell_count"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fdtdx.RectilinearGrid.length_to_cell_count" title="Link to this definition">#</a></dt>
+<dd><p>Convert a physical length to a number of cells from the lower domain edge.</p>
+<p>This helper preserves the old uniform-grid behavior when <code class="docutils literal notranslate"><span class="pre">snap</span></code> is
+<code class="docutils literal notranslate"><span class="pre">&quot;nearest&quot;</span></code>.  For non-uniform placement, <code class="docutils literal notranslate"><span class="pre">&quot;upper&quot;</span></code> is usually the
+safer rule because it chooses enough cells to cover the requested metric
+size from the lower domain edge.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fdtdx.RectilinearGrid.reduce_symmetric">
+<span class="sig-prename descclassname"><span class="pre">RectilinearGrid.</span></span><span class="sig-name descname"><span class="pre">reduce_symmetric</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symmetry</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/fdtdx/core/grid.html#RectilinearGrid.reduce_symmetric"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fdtdx.RectilinearGrid.reduce_symmetric" title="Link to this definition">#</a></dt>
+<dd><p>Return the grid reduced onto the kept (upper) half along each symmetric axis.</p>
+<p>Used by <code class="docutils literal notranslate"><span class="pre">place_objects</span></code> when <code class="docutils literal notranslate"><span class="pre">config.symmetry</span></code> is set on a non-uniform grid: the
+simulation runs on the reduced (half/quarter/octant) domain and the result is unfolded
+afterwards. For every axis with <code class="docutils literal notranslate"><span class="pre">symmetry[a]</span> <span class="pre">!=</span> <span class="pre">0</span></code> this keeps the upper-half edges
+<code class="docutils literal notranslate"><span class="pre">edges(a)[n</span> <span class="pre">//</span> <span class="pre">2:]</span></code> (absolute coordinates preserved — the FDTD metrics depend only on
+cell widths, which are translation-invariant). Non-symmetric axes are returned unchanged.</p>
+<p>Two conditions must hold on each symmetric axis so that mirroring the kept half exactly
+reconstructs the full domain:</p>
+<ul class="simple">
+<li><p>an even cell count, so the split lands on a cell edge, and</p></li>
+<li><p>mirror-symmetric cell widths about the center (<code class="docutils literal notranslate"><span class="pre">dx[i]</span> <span class="pre">==</span> <span class="pre">dx[n</span> <span class="pre">-</span> <span class="pre">1</span> <span class="pre">-</span> <span class="pre">i]</span></code>), so the
+discarded lower half is the exact mirror of the kept half.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>symmetry</strong> (<em>tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>, </em><em>int</em><em>]</em>) – Per-axis symmetry condition <code class="docutils literal notranslate"><span class="pre">(x,</span> <span class="pre">y,</span> <span class="pre">z)</span></code>; <code class="docutils literal notranslate"><span class="pre">0</span></code> means
+no reduction on that axis (any nonzero value reduces it).</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The reduced grid (a new instance; the original is unchanged).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#fdtdx.RectilinearGrid" title="fdtdx.RectilinearGrid">RectilinearGrid</a></p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If a symmetric axis has an odd (or &lt; 2) cell count, or cell widths that are
+    not mirror-symmetric about the center.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fdtdx.RectilinearGrid.slice_extent">
+<span class="sig-prename descclassname"><span class="pre">RectilinearGrid.</span></span><span class="sig-name descname"><span class="pre">slice_extent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">slice_tuple</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/fdtdx/core/grid.html#RectilinearGrid.slice_extent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fdtdx.RectilinearGrid.slice_extent" title="Link to this definition">#</a></dt>
+<dd><p>Physical side lengths covered by a 3D grid slice.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fdtdx.RectilinearGrid.subgrid">
+<span class="sig-prename descclassname"><span class="pre">RectilinearGrid.</span></span><span class="sig-name descname"><span class="pre">subgrid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">grid_slice</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/fdtdx/core/grid.html#RectilinearGrid.subgrid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fdtdx.RectilinearGrid.subgrid" title="Link to this definition">#</a></dt>
+<dd><p>Convenience wrapper to get the sub-grid of a placed fdtdx.SimulationObject given its grid_slice</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fdtdx.RectilinearGrid.uniform">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">RectilinearGrid.</span></span><span class="sig-name descname"><span class="pre">uniform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spacing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">origin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/fdtdx/core/grid.html#RectilinearGrid.uniform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fdtdx.RectilinearGrid.uniform" title="Link to this definition">#</a></dt>
+<dd><p>Create a realized rectilinear grid for a uniform grid.</p>
+<p>The grid is centered at <code class="docutils literal notranslate"><span class="pre">center</span></code> by default, so edge arrays span
+<code class="docutils literal notranslate"><span class="pre">[center[a]</span> <span class="pre">-</span> <span class="pre">shape[a]</span> <span class="pre">*</span> <span class="pre">spacing</span> <span class="pre">/</span> <span class="pre">2,</span> <span class="pre">center[a]</span> <span class="pre">+</span> <span class="pre">shape[a]</span> <span class="pre">*</span> <span class="pre">spacing</span> <span class="pre">/</span> <span class="pre">2]</span></code>
+along each axis.  Negative and positive coordinates are used symmetrically
+around the center of the simulation domain.</p>
+<p>Passing an explicit <code class="docutils literal notranslate"><span class="pre">origin</span></code> (lower-corner coordinate) overrides
+<code class="docutils literal notranslate"><span class="pre">center</span></code> and restores the legacy lower-corner behaviour.  This is used
+internally by <code class="docutils literal notranslate"><span class="pre">UniformGrid.resolve</span></code> after it has already computed the
+lower corner from the center.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shape</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]</span>) – Number of cells in <code class="docutils literal notranslate"><span class="pre">(x,</span> <span class="pre">y,</span> <span class="pre">z)</span></code>.</p></li>
+<li><p><strong>spacing</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></span>) – Uniform cell width in metres.</p></li>
+<li><p><strong>center</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>]</span>) – Physical coordinate of the domain center. Defaults to
+<code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></code> so the domain spans equally into negative and
+positive coordinates.</p></li>
+<li><p><strong>origin</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>] | <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span>) – Physical coordinate of the <strong>lower</strong> domain corner.  When
+provided this takes priority over <code class="docutils literal notranslate"><span class="pre">center</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A grid whose edge arrays are equally spaced and centered on
+<code class="docutils literal notranslate"><span class="pre">center</span></code> (or anchored at <code class="docutils literal notranslate"><span class="pre">origin</span></code> when given).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p>If you find any errors in the documentation, please report them in the <a class="reference external" href="https://github.com/ymahlau/fdtdx/issues">Github Issues</a>!</p>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="fdtdx.RecordingState.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">fdtdx.RecordingState</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="fdtdx.RemoveFloatingMaterial.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">fdtdx.RemoveFloatingMaterial</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">fdtdx.RectilinearGrid</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-reference">Quick Reference</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#attributes">Attributes</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.dx"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.dx</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.dy"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.dy</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.dz"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.dz</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.is_uniform"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.is_uniform</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.min_spacing"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.min_spacing</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.min_spacings"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.min_spacings</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.shape"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.shape</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.uniform_spacing"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.uniform_spacing</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.x_edges"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.x_edges</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.y_edges"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.y_edges</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.z_edges"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.z_edges</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#methods">Methods</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.anchor_coordinate"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.anchor_coordinate()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.aset"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.aset()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.axis_extent"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.axis_extent()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.bounds_for_anchor"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.bounds_for_anchor()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.bounds_for_center"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.bounds_for_center()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.cell_volume"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.cell_volume()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.cell_widths"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.cell_widths()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.centers"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.centers()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.cfl_time_step"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.cfl_time_step()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.coord_to_index"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.coord_to_index()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.custom"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.custom()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.edges"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.edges()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.face_area"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.face_area()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.get_class_fields"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.get_class_fields()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.get_public_fields"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.get_public_fields()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.length_to_cell_count"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.length_to_cell_count()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.reduce_symmetric"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.reduce_symmetric()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.slice_extent"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.slice_extent()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.subgrid"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.subgrid()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.RectilinearGrid.uniform"><code class="docutils literal notranslate"><span class="pre">RectilinearGrid.uniform()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Yannik Mahlau
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025, Yannik Mahlau.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

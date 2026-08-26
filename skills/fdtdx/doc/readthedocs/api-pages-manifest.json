@@ -1,0 +1,712 @@
+{
+    "base_url":  "https://fdtdx.readthedocs.io/en/latest/api/",
+    "retrieved_date":  "2026-07-16",
+    "page_count":  141,
+    "pages":  [
+                  {
+                      "file":  "fdtdx.apply_params.html",
+                      "bytes":  37011,
+                      "sha256":  "9C8CFB017ABDA83CD74781A47DA5C52D31D12E8C9043F5036AF818E65ABE67C6"
+                  },
+                  {
+                      "file":  "fdtdx.ArrayContainer.html",
+                      "bytes":  72012,
+                      "sha256":  "1F038E8DD9E0C71E4D0074D1E1366B2A5F9A0632FA2AD404A864BF69A807E49C"
+                  },
+                  {
+                      "file":  "fdtdx.autoinit.html",
+                      "bytes":  35077,
+                      "sha256":  "5037B91E594DAB2F9BEB24ACD6B263734010CE5BC2905B4361081D741648CB4B"
+                  },
+                  {
+                      "file":  "fdtdx.BinaryMedianFilterModule.html",
+                      "bytes":  56446,
+                      "sha256":  "9F318CC0EC6B539DE256784751F27E9B3FA6917A22B8FFB12CEFD36DE97CD00C"
+                  },
+                  {
+                      "file":  "fdtdx.BlochBoundary.html",
+                      "bytes":  146293,
+                      "sha256":  "26CD8ED4402650916DD83BFFF8FA412F839D96A278C0F3C7DAD1931AA4BEED77"
+                  },
+                  {
+                      "file":  "fdtdx.boundary_objects_from_config.html",
+                      "bytes":  36558,
+                      "sha256":  "DC262B5E3FB7C869D06A9726545CB6FF6EA2A762A241FEA85F30604A46527345"
+                  },
+                  {
+                      "file":  "fdtdx.BoundaryConfig.html",
+                      "bytes":  181031,
+                      "sha256":  "AA5207900DD1E7CDA4EF7057A4E8DE88EA851B42462FDD4FE2E45D7440E33AB8"
+                  },
+                  {
+                      "file":  "fdtdx.BrushConstraint2D.html",
+                      "bytes":  55881,
+                      "sha256":  "D23B626B3FAD8E9F579A757F147683CF6D1453F29823132B1EB154F105EF350D"
+                  },
+                  {
+                      "file":  "fdtdx.calculate_sparam.html",
+                      "bytes":  43201,
+                      "sha256":  "078B8994180560BC79CEB9EA475A185AE08D090811145B3BE5C7AEA6622C6E52"
+                  },
+                  {
+                      "file":  "fdtdx.calculate_sparams.html",
+                      "bytes":  42118,
+                      "sha256":  "6B2D05BFABAC3BA3337003BEC4A5DB50E010B25D61FEBF27960A3BA5391560EA"
+                  },
+                  {
+                      "file":  "fdtdx.CCPRPole.html",
+                      "bytes":  65584,
+                      "sha256":  "F7B7A3899493E4EAF9F62472E4BEC689DFD9B13225537484266BB5A31E6B2FB7"
+                  },
+                  {
+                      "file":  "fdtdx.circular_brush.html",
+                      "bytes":  35720,
+                      "sha256":  "5CA0A6DD0193ABF442F27027C32DE292CF7E8DB10F857F17773B228F7813D30D"
+                  },
+                  {
+                      "file":  "fdtdx.ClosedSurfacePhasorPoyntingFluxDetector.html",
+                      "bytes":  167855,
+                      "sha256":  "833087214109634687B2BC31E6BB379E9F358437ABE7F8424781D620EDE61CB6"
+                  },
+                  {
+                      "file":  "fdtdx.ClosedSurfacePoyntingFluxDetector.html",
+                      "bytes":  152850,
+                      "sha256":  "5907F78BB08E2DEE3B11F221000A0A54EBCADC1B87E32520E3461B9AB19887CC"
+                  },
+                  {
+                      "file":  "fdtdx.ClosestIndex.html",
+                      "bytes":  52406,
+                      "sha256":  "85CD5C78B0984EA03EF3C69A4552B5CAAF3B84E54B82A86E1DACA373739D9170"
+                  },
+                  {
+                      "file":  "fdtdx.Color.html",
+                      "bytes":  60054,
+                      "sha256":  "0693BFC113F85C77E5F43F39422A98853A1D1853182CDABFC7BD1A4AFDC4C8A5"
+                  },
+                  {
+                      "file":  "fdtdx.compute_energy.html",
+                      "bytes":  36299,
+                      "sha256":  "783480325B9363172AAF60C1115595C832D29A12CD02D304BE8456156E9E170E"
+                  },
+                  {
+                      "file":  "fdtdx.compute_eps_spectrum_from_coefficients.html",
+                      "bytes":  42070,
+                      "sha256":  "B795456C8472CE1A10D6BBE1DC1C9FF2AE0F713806A18A1B648E1C4950B30615"
+                  },
+                  {
+                      "file":  "fdtdx.compute_impedance_corrected_temporal_profile.html",
+                      "bytes":  40893,
+                      "sha256":  "3A5CAD6FCE3C3D2528B506BA6191FD7A55B5213686232E468173646344596F41"
+                  },
+                  {
+                      "file":  "fdtdx.compute_integrated_power.html",
+                      "bytes":  36300,
+                      "sha256":  "653F21B046575BBCA6716FE9415C067B32C549005123EF11D355C771A93F5FE5"
+                  },
+                  {
+                      "file":  "fdtdx.compute_mode.html",
+                      "bytes":  40847,
+                      "sha256":  "FA3B9781C1243369BCFC7BB110331E00C96E5A5CC1F14736B4E3E0BAAE3A4F2E"
+                  },
+                  {
+                      "file":  "fdtdx.compute_pole_coefficients.html",
+                      "bytes":  37751,
+                      "sha256":  "E4A26CF0A03077FDD3D1ED4165F818723B068E7908528BA7FDD964A6FD3E80E2"
+                  },
+                  {
+                      "file":  "fdtdx.compute_pole_coefficients_per_axis.html",
+                      "bytes":  39844,
+                      "sha256":  "AE39CC062C223ED4230FC82FD14BFBEB662132D415A9F756AB44E9EA08D38E26"
+                  },
+                  {
+                      "file":  "fdtdx.compute_poynting_flux.html",
+                      "bytes":  35964,
+                      "sha256":  "30A902F6DC32D1C53616FC6C8EBFE0DE5CE2A24A0243C73A05A13B063B42C7B3"
+                  },
+                  {
+                      "file":  "fdtdx.ConnectHolesAndStructures.html",
+                      "bytes":  55251,
+                      "sha256":  "94A492A9EDDB37A41F5750D314AF4F14507CAEF20782AFCFB91E287CDFACE104"
+                  },
+                  {
+                      "file":  "fdtdx.CustomTimeSignalProfile.html",
+                      "bytes":  71925,
+                      "sha256":  "A18CDE1E68710FB50DEDA9BDFF8813B190808FA7BE3244E0D4FE87BDEF2659F3"
+                  },
+                  {
+                      "file":  "fdtdx.Cylinder.html",
+                      "bytes":  137963,
+                      "sha256":  "375F5ECBFF6C39D6EDC5655B5583D642513F67BEA331E5245EBBF05BB0A95AE4"
+                  },
+                  {
+                      "file":  "fdtdx.Detector.html",
+                      "bytes":  139053,
+                      "sha256":  "F699B3C57CFC890800D45A19455F0AD018B0DC0505B4306BB13B86E7BA1869A7"
+                  },
+                  {
+                      "file":  "fdtdx.detectors_from_gds_ports.html",
+                      "bytes":  44736,
+                      "sha256":  "62B9F98B74212C44166B04D947A71F74B37D01CC1CBD80ED26EB64BA9E4290A1"
+                  },
+                  {
+                      "file":  "fdtdx.DetectorState.html",
+                      "bytes":  34712,
+                      "sha256":  "3AC64AA98DB53FBF667E8C7DA13C2FEF026E1FA19969DEFBCDBE4D64AB9A7D1D"
+                  },
+                  {
+                      "file":  "fdtdx.Device.html",
+                      "bytes":  136695,
+                      "sha256":  "ADB18E4CAEAA6C10FD6F0BC912BDDC39E3B21F8D9247EDDA505EFDD2C95B850A"
+                  },
+                  {
+                      "file":  "fdtdx.DiagonalSymmetry2D.html",
+                      "bytes":  52483,
+                      "sha256":  "988693DD6D1FB75944D8158AE2B5DD566FC00745DCFE8E9EE5473A07D91BA074"
+                  },
+                  {
+                      "file":  "fdtdx.DiagonalSymmetry3D.html",
+                      "bytes":  54580,
+                      "sha256":  "9FFBB7B4F9B33864BF06B1516B1B2195E63B636D2DF7193A0DA0E595A2F3E0FA"
+                  },
+                  {
+                      "file":  "fdtdx.DispersionModel.html",
+                      "bytes":  61092,
+                      "sha256":  "E856102E0F010ABB173EBF03EAE9483A0AFB943613690F61D3C04AB8C47D3934"
+                  },
+                  {
+                      "file":  "fdtdx.DrudePole.html",
+                      "bytes":  60125,
+                      "sha256":  "3909A192739430983F8A0D9C4271FA2CE10E939B1F1DE201BA72817D86CA8067"
+                  },
+                  {
+                      "file":  "fdtdx.DtypeConversion.html",
+                      "bytes":  54228,
+                      "sha256":  "E00C0A701A8E5E8FF3D9A4DF144B35238FE0D198BE3D8898A28353DBCDDE1562"
+                  },
+                  {
+                      "file":  "fdtdx.EnergyDetector.html",
+                      "bytes":  148733,
+                      "sha256":  "776A3E6BB885055941CFFB7A2B13B31531FD408AD0D831929143BC9A2B2F3F9F"
+                  },
+                  {
+                      "file":  "fdtdx.export_arrays_snapshot_to_vti.html",
+                      "bytes":  35907,
+                      "sha256":  "1700909F662EBC8293A1D6393762BBE7556EAF088B16C48CC4ACD1E2BE305A00"
+                  },
+                  {
+                      "file":  "fdtdx.export_json.html",
+                      "bytes":  35142,
+                      "sha256":  "E7BCE99F0FA1F82055F81C1BADEFD7BB09954DBBF31DE794E4C3A1F459789716"
+                  },
+                  {
+                      "file":  "fdtdx.export_json_str.html",
+                      "bytes":  35060,
+                      "sha256":  "7947E6E8E681AED6C1E88570199AD8CD2CD9DC90AE264E1582BCF77F59CF97CA"
+                  },
+                  {
+                      "file":  "fdtdx.export_stl.html",
+                      "bytes":  36326,
+                      "sha256":  "4F985FC238F82D072A963DA6ADCA575D96838E03F189C64A990A07DF48FF395B"
+                  },
+                  {
+                      "file":  "fdtdx.export_vti.html",
+                      "bytes":  38114,
+                      "sha256":  "F76AE6F5723EA36D73BD1D28AE601CD0EA73D352CA18207E25B7F83A74FD5DB2"
+                  },
+                  {
+                      "file":  "fdtdx.export_vtr.html",
+                      "bytes":  38537,
+                      "sha256":  "FE886C017BED8470E51B576132F3546940733D36E1A6C601C13992B8A097C325"
+                  },
+                  {
+                      "file":  "fdtdx.extend_material_to_pml.html",
+                      "bytes":  37778,
+                      "sha256":  "03576E76BB86DC4888753EACD6328F6E11989BE5B3DE95F5BD557870DF932267"
+                  },
+                  {
+                      "file":  "fdtdx.extruded_polygon_from_gds.html",
+                      "bytes":  37934,
+                      "sha256":  "2F42B97CB034A24EF459829ED8F8BC7E8F8196E0F4663955081002FE292BBD13"
+                  },
+                  {
+                      "file":  "fdtdx.extruded_polygon_from_gds_path.html",
+                      "bytes":  38023,
+                      "sha256":  "9C95040B43262A35CC5E5B1B6BD82EC47CB6C5AFBC7088C6F9A4AC4B128A88C6"
+                  },
+                  {
+                      "file":  "fdtdx.ExtrudedPolygon.html",
+                      "bytes":  141003,
+                      "sha256":  "B7F117CA0F7087BFDDE740A75057222D4A3952ADA3BCF1F8822D0BDD9784A77E"
+                  },
+                  {
+                      "file":  "fdtdx.field.html",
+                      "bytes":  38026,
+                      "sha256":  "D715864555D47517400D77375521A14041907DD4E7DE1ECA12F6C989CF33CB23"
+                  },
+                  {
+                      "file":  "fdtdx.FieldDetector.html",
+                      "bytes":  143257,
+                      "sha256":  "DD9A63306EE48D0FFC0561558CAC86AED1A08CFC2C72CDD7F722891B2FEC6304"
+                  },
+                  {
+                      "file":  "fdtdx.FieldProjectionAngleDetector.html",
+                      "bytes":  179414,
+                      "sha256":  "CC87E90172479F7DB179BDA7E6BCBB0AB11701CFBC575E8B4147A1FE853B7D1C"
+                  },
+                  {
+                      "file":  "fdtdx.FieldProjectionCartesianDetector.html",
+                      "bytes":  184109,
+                      "sha256":  "A8245D79BD976EDBBBD0ED388FD3C8972063071D4D38EC8700F6F213F9BFDF15"
+                  },
+                  {
+                      "file":  "fdtdx.FieldProjectionKSpaceDetector.html",
+                      "bytes":  181929,
+                      "sha256":  "0CC22454CEAEC1CE2B7A3420E7F6AC95019273D4980AC20519121385CA48E1BF"
+                  },
+                  {
+                      "file":  "fdtdx.FieldState.html",
+                      "bytes":  53771,
+                      "sha256":  "824D05F7821CEC4A7C084117DDAA07F41A03B2A0CCB2E8EDD0E42172F9221998"
+                  },
+                  {
+                      "file":  "fdtdx.frozen_field.html",
+                      "bytes":  38250,
+                      "sha256":  "110EDF033F172C319AE765943DD814DC7E6BE7804CB6D1DC4B19E7E8080BC760"
+                  },
+                  {
+                      "file":  "fdtdx.frozen_private_field.html",
+                      "bytes":  38397,
+                      "sha256":  "5AB3E47509C04799366CE91D23102BB24BE2286D8540D9E9EAE35181AB487EA1"
+                  },
+                  {
+                      "file":  "fdtdx.full_backward.html",
+                      "bytes":  37437,
+                      "sha256":  "45331B97164707E62EF5989272546770CAC5C09F2956B14A142D2A9B59660D75"
+                  },
+                  {
+                      "file":  "fdtdx.GaussianPlaneSource.html",
+                      "bytes":  164172,
+                      "sha256":  "CEC88D02F1AA2C68FE601648E7B7F115DBFBDBA5093DC10E0552C42E94CD9861"
+                  },
+                  {
+                      "file":  "fdtdx.GaussianPulseProfile.html",
+                      "bytes":  64762,
+                      "sha256":  "A6D599C05B28227466C1DAB29D509CFA8EDBEF3912F59D72602F3D20502F8BD7"
+                  },
+                  {
+                      "file":  "fdtdx.GaussianSmoothing2D.html",
+                      "bytes":  60201,
+                      "sha256":  "CE567A8CC4B7F6D32D286C56551A272CBE9B17973F3F6BF13F75BC92B02640DC"
+                  },
+                  {
+                      "file":  "fdtdx.gds_layer_stack.html",
+                      "bytes":  42176,
+                      "sha256":  "11BFCF2E6B22B7DCC791BF18C5C9869F079613C0B7D4D171B53FC2D21583AE0B"
+                  },
+                  {
+                      "file":  "fdtdx.gds_layer_stack_from_component.html",
+                      "bytes":  41852,
+                      "sha256":  "0CAA3D6010B697983A5E8AD3A2F050594115D058D9CD9EED6CD8BDFA120D9204"
+                  },
+                  {
+                      "file":  "fdtdx.GDSLayerObject.html",
+                      "bytes":  155735,
+                      "sha256":  "6196F8866CC98000878AC842BCD0F7AA95168A52A71DD806C18A10868C81274F"
+                  },
+                  {
+                      "file":  "fdtdx.GDSLayerSpec.html",
+                      "bytes":  63319,
+                      "sha256":  "05587A0AD720FBCB678703BBA3D7F04D2AF9B5B0B547B001DDB459F0FEC382D2"
+                  },
+                  {
+                      "file":  "fdtdx.GDSPortSpec.html",
+                      "bytes":  43568,
+                      "sha256":  "A8401086FC205268DA05AF4CE11D7DFFC59CFEDD5171D02D4EC653380D8339F0"
+                  },
+                  {
+                      "file":  "fdtdx.GradientConfig.html",
+                      "bytes":  52130,
+                      "sha256":  "27E08578A75717BA02EE49F0E9D4702295A8D7B24C053D289E16538D9F3998C8"
+                  },
+                  {
+                      "file":  "fdtdx.GridCoordinateConstraint.html",
+                      "bytes":  43982,
+                      "sha256":  "E9B756D9D3301572757530E77A68B357971203C840C66EAEE5449D85C119D920"
+                  },
+                  {
+                      "file":  "fdtdx.HorizontalSymmetry2D.html",
+                      "bytes":  50638,
+                      "sha256":  "510B12D993C8872BEF1311BADD2D2A65DF603B4D31DBB80464566F058B0029D1"
+                  },
+                  {
+                      "file":  "fdtdx.HorizontalSymmetry3D.html",
+                      "bytes":  52584,
+                      "sha256":  "24BF19C9A162B059B842E8880F1F2F8F181B50CB1C33AB2CEDB8019B397AC6CC"
+                  },
+                  {
+                      "file":  "fdtdx.import_from_json.html",
+                      "bytes":  34955,
+                      "sha256":  "7E5CD757EB3BC96088E1645955FAD129A45F836A5DEAC531EB1434C8BCFF3527"
+                  },
+                  {
+                      "file":  "fdtdx.LinearReconstructEveryK.html",
+                      "bytes":  60093,
+                      "sha256":  "B9DF07A9721DDB823F24F1E064FBF8BDC8B2CBF6912D3EEEBCA76BDBF5D55DCC"
+                  },
+                  {
+                      "file":  "fdtdx.Logger.html",
+                      "bytes":  51542,
+                      "sha256":  "DE62BEF8003770D82A891D6865DEBD1E22E6D0082150E3F03A99771C1BE71939"
+                  },
+                  {
+                      "file":  "fdtdx.LorentzPole.html",
+                      "bytes":  62313,
+                      "sha256":  "D814928096845421661C44DDA153383058FF116E9C35A45F859EF34A9CDC8E4B"
+                  },
+                  {
+                      "file":  "fdtdx.Material.html",
+                      "bytes":  106061,
+                      "sha256":  "7AC39898F79E9BD93E82C1DAB02C6F93F6CCFB3ED29DA3EC098C9355867E2845"
+                  },
+                  {
+                      "file":  "fdtdx.metric_efficiency.html",
+                      "bytes":  36734,
+                      "sha256":  "B9D35A37969F2EFD8E16A154DD915E6459855DD21F43FB242A840AC804DC22FE"
+                  },
+                  {
+                      "file":  "fdtdx.ModeOverlapDetector.html",
+                      "bytes":  169813,
+                      "sha256":  "44D5F70106AE58C603E8D3462410BCD29DE6C792ABC229A19B3F3F48D6157CFB"
+                  },
+                  {
+                      "file":  "fdtdx.ModePlaneSource.html",
+                      "bytes":  161857,
+                      "sha256":  "9AD37343B507F6122412561A9E5033466228D7815E5F6D7D99800623E36B8DB7"
+                  },
+                  {
+                      "file":  "fdtdx.normalize_by_energy.html",
+                      "bytes":  35974,
+                      "sha256":  "05F2C3C9D3ECDD40708F2F7551F7511CBA0DB9E6E2D8C5DD5BD537E280058782"
+                  },
+                  {
+                      "file":  "fdtdx.normalize_by_poynting_flux.html",
+                      "bytes":  36506,
+                      "sha256":  "B4C25B11466225365730FC16ADCAED32E5455BF06F1A8A20ECD4CA7D2173C041"
+                  },
+                  {
+                      "file":  "fdtdx.ObjectContainer.html",
+                      "bytes":  92151,
+                      "sha256":  "A5B594219CF119E6A1F669E2620DA8CD11C8C43AF6F8278DB0360F2C07694290"
+                  },
+                  {
+                      "file":  "fdtdx.OnOffSwitch.html",
+                      "bytes":  66164,
+                      "sha256":  "31CA6A778E127E6DC62E86CBA8662B0053BC045C01B05A41A5FB47C380A890A6"
+                  },
+                  {
+                      "file":  "fdtdx.ParameterContainer.html",
+                      "bytes":  35058,
+                      "sha256":  "3DF0D92B52BC9BB3DBA5879F6CB4C92A24B15EE5AC455E3BABB2F35C24819122"
+                  },
+                  {
+                      "file":  "fdtdx.ParameterTransformation.html",
+                      "bytes":  51612,
+                      "sha256":  "30F833813774BA24E0A7442375E9E2E3757AE2C78A5B3439FF666734EC8EB247"
+                  },
+                  {
+                      "file":  "fdtdx.PerfectElectricConductor.html",
+                      "bytes":  145289,
+                      "sha256":  "E873F3592804996990E548531CC94A99237D112E10587D2AFA21F266E3B0F636"
+                  },
+                  {
+                      "file":  "fdtdx.PerfectlyMatchedLayer.html",
+                      "bytes":  171447,
+                      "sha256":  "EFD28ABCC3BC849EA1FBC39F416CB8C69C922DCEDD240C34A32D994CB954E1A1"
+                  },
+                  {
+                      "file":  "fdtdx.PerfectMagneticConductor.html",
+                      "bytes":  144444,
+                      "sha256":  "2F3E1EFD7A43871D8E74A8035BE1FF0E7EABF19E9895DC0809584D8888FCF10E"
+                  },
+                  {
+                      "file":  "fdtdx.PeriodicBoundary.html",
+                      "bytes":  143712,
+                      "sha256":  "7B78A01058A0EB6FE139554E5BAF06A5DB11B69FB42BE81995C47FBFAEB6885C"
+                  },
+                  {
+                      "file":  "fdtdx.PhasorDetector.html",
+                      "bytes":  150062,
+                      "sha256":  "618C42611FB7B5319F3B66411C321E5146EE61DB4FE5DA21A21C3678C24E6B66"
+                  },
+                  {
+                      "file":  "fdtdx.PhasorPoyntingFluxDetector.html",
+                      "bytes":  164657,
+                      "sha256":  "5D3841A36D16FDD821A2ED5B40F1638F73CFE9266953E57E0941FD45948820BB"
+                  },
+                  {
+                      "file":  "fdtdx.PillarDiscretization.html",
+                      "bytes":  58889,
+                      "sha256":  "AC9999FE09EB3054C860D30F346FA5FEDBE24B08D0934CD137C2D9A8C3495ABB"
+                  },
+                  {
+                      "file":  "fdtdx.place_objects.html",
+                      "bytes":  37480,
+                      "sha256":  "BF984854B0EADA31C49EDCCA59C8CF5522EBE154E66943CA69CA71A2754F663C"
+                  },
+                  {
+                      "file":  "fdtdx.plot_field_slice.html",
+                      "bytes":  37046,
+                      "sha256":  "190D5A1865355C8EA355651A3C156757EBC442979706296FCA7C27E10D9FE534"
+                  },
+                  {
+                      "file":  "fdtdx.plot_field_slice_component.html",
+                      "bytes":  36222,
+                      "sha256":  "25090233963E99DF9599F8B28A078EB6EFABF69A71749F940519514ECA905381"
+                  },
+                  {
+                      "file":  "fdtdx.plot_material.html",
+                      "bytes":  38516,
+                      "sha256":  "BE7BB41B23145F889B3A1F13C9F5427DC1F753E08568839131B81800DE36B4A2"
+                  },
+                  {
+                      "file":  "fdtdx.plot_material_from_side.html",
+                      "bytes":  38614,
+                      "sha256":  "3E0C5EC53064E72742DB0510FC82F8976188DEE6581E920DAC42C38768F762F6"
+                  },
+                  {
+                      "file":  "fdtdx.plot_setup.html",
+                      "bytes":  40464,
+                      "sha256":  "AF5348968C582ADB8CD837463035E396AE74817EA789985546E3BDC146A04B47"
+                  },
+                  {
+                      "file":  "fdtdx.plot_setup_from_side.html",
+                      "bytes":  40693,
+                      "sha256":  "563CD0BEC42C44C81B5B388FF9529F7F72BBF79037FDA7A77FFE389B4A94A96D"
+                  },
+                  {
+                      "file":  "fdtdx.PointDipoleSource.html",
+                      "bytes":  147153,
+                      "sha256":  "10C5391F2B479D06F67FDC0CABF59472F417084DE624A81CD1BCFE1B6466D27D"
+                  },
+                  {
+                      "file":  "fdtdx.PointSymmetry2D.html",
+                      "bytes":  50148,
+                      "sha256":  "A077CBD624C9BC87CECCD34A4B8FFE079C6628276E7525A8A67C7CAE691BA694"
+                  },
+                  {
+                      "file":  "fdtdx.PointSymmetry3D.html",
+                      "bytes":  50149,
+                      "sha256":  "9339657D3410BCCF36C767589C24AD04A733C51572C9F633B396637A94A7F58C"
+                  },
+                  {
+                      "file":  "fdtdx.Pole.html",
+                      "bytes":  56611,
+                      "sha256":  "BBE0E83EA6DBA036E92A9FB5C9F287561F6FF6ADDBEF4A269BB888EB98699DD6"
+                  },
+                  {
+                      "file":  "fdtdx.PortSpec.html",
+                      "bytes":  52143,
+                      "sha256":  "9A3F3AC5D46104CA3943EF5BD4DD09AA970F6826801F99E79E12C7211237D931"
+                  },
+                  {
+                      "file":  "fdtdx.PositionConstraint.html",
+                      "bytes":  48631,
+                      "sha256":  "DCDA03C5CDE935BE65D1843FB19A6E418D5559BCFC7E7314A5286CEB7745A74E"
+                  },
+                  {
+                      "file":  "fdtdx.PoyntingFluxDetector.html",
+                      "bytes":  151244,
+                      "sha256":  "2F5D2A877163A660F28BF7CF011E8FF1BFA8713A90D8455EA213AEAD343AA4D2"
+                  },
+                  {
+                      "file":  "fdtdx.private_field.html",
+                      "bytes":  38071,
+                      "sha256":  "67C769C3590E07E24412621F2BE77BA1C3E67A4DA249CC06AF6AA7504ADE3955"
+                  },
+                  {
+                      "file":  "fdtdx.QuasiUniformGrid.html",
+                      "bytes":  71808,
+                      "sha256":  "45703E5A16273CFAB4D21E22BB81C16F6D43F3F46B2C1FF954A8932AD16139F3"
+                  },
+                  {
+                      "file":  "fdtdx.RealCoordinateConstraint.html",
+                      "bytes":  43944,
+                      "sha256":  "D1F2BA16AEF5535DD96D10FDD4FF8BF58C52C4680FC42C40548791F50FD54256"
+                  },
+                  {
+                      "file":  "fdtdx.Recorder.html",
+                      "bytes":  51411,
+                      "sha256":  "E07EF537A344AF125D4F09A3A8DF279A0B5B4524D0BC5EA005761539BCD10890"
+                  },
+                  {
+                      "file":  "fdtdx.RecordingState.html",
+                      "bytes":  46382,
+                      "sha256":  "A5C0BB4266403FCFF3BE5E01D3749E2C95E17607E72CD0F14956881068914B4A"
+                  },
+                  {
+                      "file":  "fdtdx.RectilinearGrid.html",
+                      "bytes":  106030,
+                      "sha256":  "8D7B07E3A747BC78EFB5C4DCCE7CA45890D4F06E2D7ACB80A42479CBC83AE73A"
+                  },
+                  {
+                      "file":  "fdtdx.RemoveFloatingMaterial.html",
+                      "bytes":  53182,
+                      "sha256":  "DF9C0FCEFBAEB13AFF90B1D9C606A43F61FF2B79EDE1AF7D0F53BF5AB994CAB3"
+                  },
+                  {
+                      "file":  "fdtdx.resolve_object_constraints.html",
+                      "bytes":  35687,
+                      "sha256":  "C505AD65B3F177846EF51426BC91A8B191AB0FADF0455C82C66224AEA43F5019"
+                  },
+                  {
+                      "file":  "fdtdx.run_fdtd.html",
+                      "bytes":  36178,
+                      "sha256":  "D1AB95D04776443202C519E2E07BA11B4B04C69F0FA6B3831BD42FE2A8DD1335"
+                  },
+                  {
+                      "file":  "fdtdx.setup_sparams_simulation.html",
+                      "bytes":  44928,
+                      "sha256":  "8EDB128BABE745BDBEB6B84EC83356A7552D925CEA48862B78DCA1276B820890"
+                  },
+                  {
+                      "file":  "fdtdx.SimulationConfig.html",
+                      "bytes":  80873,
+                      "sha256":  "7F1C30DC9A60F482412EF1F7A7F4FA93875F394A96FAC4D637558D496A3DBE54"
+                  },
+                  {
+                      "file":  "fdtdx.SimulationObject.html",
+                      "bytes":  122181,
+                      "sha256":  "66202ACD79EFFD23709DD207F1F72673056CDB5BF9C39C4A1C7DE905BC9AFF9F"
+                  },
+                  {
+                      "file":  "fdtdx.SimulationState.html",
+                      "bytes":  34956,
+                      "sha256":  "BB12CB57444BA71A3DC9951E772A87A37DE0CC6DF9B589C6FA6278AFB7196958"
+                  },
+                  {
+                      "file":  "fdtdx.SimulationVolume.html",
+                      "bytes":  121533,
+                      "sha256":  "A3B5C5AA3E492012D5224F1A7B0934FB4DEF99206EA68DD273D64FECA4339319"
+                  },
+                  {
+                      "file":  "fdtdx.SingleFrequencyProfile.html",
+                      "bytes":  63873,
+                      "sha256":  "66CF7CEAE5CC36AA7F5E79BB8799D31A8D37D745170AC9D85C9A44EEB4E7B6BE"
+                  },
+                  {
+                      "file":  "fdtdx.SizeConstraint.html",
+                      "bytes":  48131,
+                      "sha256":  "87D9B656569E14DE2BED2DAA132BA4AB746EF0D74AAF62767D2E1495BC726ABD"
+                  },
+                  {
+                      "file":  "fdtdx.SizeExtensionConstraint.html",
+                      "bytes":  47702,
+                      "sha256":  "C85FCA5BA3DB8E78951E03415A1AA39A56BBDD25AE928BBBAD41157A406779C9"
+                  },
+                  {
+                      "file":  "fdtdx.sources_from_gds_ports.html",
+                      "bytes":  43659,
+                      "sha256":  "7BAA5CCF3487B0E945444CEEFCEADCE45E22654578900BF90A200E7D6F2EF4A6"
+                  },
+                  {
+                      "file":  "fdtdx.Sphere.html",
+                      "bytes":  139587,
+                      "sha256":  "AA99ECB280F392DAEBEC88E75DD6144136BAABF3FDCD79CA06477436A9B0AE50"
+                  },
+                  {
+                      "file":  "fdtdx.StandardToCustomRange.html",
+                      "bytes":  54098,
+                      "sha256":  "692128A705DDD42FF6C992D2A00380B3F54CFA3EF7DBBF88CA784469BB788FB5"
+                  },
+                  {
+                      "file":  "fdtdx.StandardToInversePermittivityRange.html",
+                      "bytes":  52157,
+                      "sha256":  "AF49CA32E7C5B3D8AB1F003F2ABB2C674DD056C7FEB368DE2F6FC754EF9CB1FA"
+                  },
+                  {
+                      "file":  "fdtdx.StandardToPlusOneMinusOneRange.html",
+                      "bytes":  54592,
+                      "sha256":  "9BDDB5BD5B4DAE8E248CD3F65A204FE0A5BB4124834FF8F0BA9B6C216B366406"
+                  },
+                  {
+                      "file":  "fdtdx.SubpixelSmoothedProjection.html",
+                      "bytes":  54712,
+                      "sha256":  "4084B3306B0C7941E014B61659D9DA4B78696AC222CCBDCEECE0ABDB4EFEAE76"
+                  },
+                  {
+                      "file":  "fdtdx.TanhProjection.html",
+                      "bytes":  52319,
+                      "sha256":  "D118628E5CEA5544B54B4B41E4E3CEF989F5A04197499D5D30EF8B2FC0492D26"
+                  },
+                  {
+                      "file":  "fdtdx.TemporalProfile.html",
+                      "bytes":  60917,
+                      "sha256":  "123EF2BB5CE111FD0C1A1FF1B47F8E3F8188DA0A40F60EA91C42C2A1CBB457FD"
+                  },
+                  {
+                      "file":  "fdtdx.TFSFPlaneSourceRegion.html",
+                      "bytes":  168732,
+                      "sha256":  "4E3D95CB543B0B3F9F7FAC3E5E0950C80A90174480153B8F655DB2D73484A4AD"
+                  },
+                  {
+                      "file":  "fdtdx.TreeClass.html",
+                      "bytes":  43572,
+                      "sha256":  "9DFD7DB887128D47A92105E1C7F4299330DF36EAE14EBCF6FAA3C54215ADCB08"
+                  },
+                  {
+                      "file":  "fdtdx.unfold_array.html",
+                      "bytes":  37188,
+                      "sha256":  "2E0C0CBADE83509311173B585DE1EAD831353D41080155358A8A8F71A8D0C3C3"
+                  },
+                  {
+                      "file":  "fdtdx.unfold_detector_states.html",
+                      "bytes":  38315,
+                      "sha256":  "8B05D9CB7AC32C878456C7D2F6BDF3DF553A03D4F8AF4DA5AF42A59610463242"
+                  },
+                  {
+                      "file":  "fdtdx.unfold_fields.html",
+                      "bytes":  36524,
+                      "sha256":  "387526B686AEFD86E82F87C785DF722D755A3E68C1274A16C14BCC2917BD39CC"
+                  },
+                  {
+                      "file":  "fdtdx.unfold_source_mode.html",
+                      "bytes":  38563,
+                      "sha256":  "5351A0A72A05AAF45EF1650CA9F7C6E5E9826234BD7F4979E9DE4DA3D6C3C891"
+                  },
+                  {
+                      "file":  "fdtdx.UniformGrid.html",
+                      "bytes":  71542,
+                      "sha256":  "10C71A0EFD16429CC432ACE206351529AC1D7F56844CF8544D616EE6B9ECB581"
+                  },
+                  {
+                      "file":  "fdtdx.UniformMaterialObject.html",
+                      "bytes":  120227,
+                      "sha256":  "594B9F2CACAF0FA4F7C182A379FAAF2452D5ED1ECF70C9D22D2DD01AC8C4D8D4"
+                  },
+                  {
+                      "file":  "fdtdx.UniformPlaneSource.html",
+                      "bytes":  162297,
+                      "sha256":  "CA0DCDBD3AA23D817033E9CEF68167329D831FE77A37025A17AC1F8123F363A0"
+                  },
+                  {
+                      "file":  "fdtdx.VerticalSymmetry2D.html",
+                      "bytes":  50444,
+                      "sha256":  "2443D266AA660D175D769AD03B457037F901114AAF92EC4F57FFCFEC59911830"
+                  },
+                  {
+                      "file":  "fdtdx.VerticalSymmetry3D.html",
+                      "bytes":  50443,
+                      "sha256":  "549386CF1D14A9A6A83E382E226C33FA45EC6637278FB3AC5DB232010446CD94"
+                  },
+                  {
+                      "file":  "fdtdx.WaveCharacter.html",
+                      "bytes":  54715,
+                      "sha256":  "EC8FC77634FF36E394035E512997C8CDEEE372B5F1F6CADFE1E09C7F18208C10"
+                  },
+                  {
+                      "file":  "fdtdx.wavelength_to_period.html",
+                      "bytes":  35295,
+                      "sha256":  "84F093EDC1F29C8FBAF33055686FC55BE0880EF354A5D55CC12731FDB5684481"
+                  }
+              ]
+}

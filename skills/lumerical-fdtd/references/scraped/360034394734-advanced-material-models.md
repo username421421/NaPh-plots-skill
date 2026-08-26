@@ -1,0 +1,94 @@
+# Advanced and custom optical material models in FDTD and MODE
+
+Source URL: https://optics.ansys.com/hc/en-us/articles/360034394734-Advanced-Material-Models  
+Area: Discovered official source  
+Topic: Discovered from FDTD product reference manual  
+Discovery depth: 1  
+Last checked: 2026-06-23  
+Capture mode: citation-safe local metadata, generated summary, headings, links, code/table inventories, key terms, and bounded excerpt.
+
+## Local Capture Summary
+
+This local capture indexes the official page `Advanced and custom optical material models in FDTD and MODE` for the topic `Discovered from FDTD product reference manual`. It captured 17 heading(s), 18 link(s), 0 code block(s), 0 inline code term(s), and 3 table(s). Main headings: Advanced and custom optical material models in FDTD and MODE, Available material models (distributed through Lumerical software), Chi2, Chi3/Chi2, Chi3 Raman Kerr, Four-Level Two-Electron, Kerr nonlinear, Paramagnetic. Key detected terms: fdtd, material, mesh, mode, monitor, port, script, source, structure, symmetry.
+
+## Key Terms
+
+- fdtd
+- material
+- mesh
+- mode
+- monitor
+- port
+- script
+- source
+- structure
+- symmetry
+
+## Captured Headings
+
+- Advanced and custom optical material models in FDTD and MODE
+- Available material models (distributed through Lumerical software)
+- Chi2
+- Chi3/Chi2
+- Chi3 Raman Kerr
+- Four-Level Two-Electron
+- Kerr nonlinear
+- Paramagnetic
+- Magnetic Electric Lorentz
+- Index Perturbation (np Density / temperature)
+- Available material models (source code plugins)
+- Lorentz example
+- Two-level one-electron example
+- Step index
+- 
+- Chi 2 anisotropic
+- See Also
+
+## Official Text Excerpt
+
+> Advanced and custom optical material models in FDTD and MODE FDTD MODE The following material models can be used in a variety of advanced applications, such as non-linear device simulations. Many of the following models have been implemented with the Flexible material plugin framework, and are distributed with the standard FDTD and MODE installation packages. Source code is provided for some models implemented with the Flexible material plugin framework at the bottom of the page. For more information read the Flexible Material plugins whitepaper. | Note: In particular, the user should be aware of the following points. - The material explorer is often not capable of displaying the properties of the these materials. To understand the properties of these materials, it is necessary to understand the underlying material model. - The mesh algorithm does not know which target mesh size should be used for these materials. It will base the target mesh size on the 'Base Material' only. If a finer mesh is required, the user should force that explicitly with a mesh override region over the material. - For ...
+
+## Code Block Inventory
+
+- No code blocks detected
+
+## Inline Code Inventory
+
+- No inline code terms detected
+
+## Table Inventory
+
+- Table 1: 1 column(s), 1 row(s)
+  - First row sample: Note : In particular, the user should be aware of the following points. The material explorer is often not capable of displaying the properties of the these materials. To understand the properties of these materials, it is necessary to unde
+- Table 2: 1 column(s), 1 row(s)
+  - First row sample: Note : Some artificial asymmetry can be introduced by the algorithm.
+- Table 3: 1 column(s), 1 row(s)
+  - First row sample: Note : Some artificial asymmetry can be introduced by the algorithm.
+
+## Official Links Found
+
+- [FDTD](https://optics.ansys.com/hc/en-us/articles/360033154434)
+- [MODE](https://optics.ansys.com/hc/en-us/articles/360020687354)
+- [Flexible material plugin framework](https://optics.ansys.com/hc/en-us/articles/360034915213)
+- [Index Perturbation (np Density / temperature)](https://optics.ansys.com/hc/en-us/articles/360034901753)
+- [Index Perturbation (np Density / temperature)](https://optics.ansys.com/hc/en-us/articles/360034382494)
+- [Flexible material plugin framework - Basic concept](https://optics.ansys.com/hc/en-us/articles/360034915213)
+- [Material Plugin: Full tensorial frequency-independent chi2](https://optics.ansys.com/hc/en-us/article_attachments/46344379114259)
+- [Material database (optical)](https://optics.ansys.com/hc/en-us/articles/360034394614)
+
+## Ansys-Related External Links Found
+
+- None
+
+## External Links Found
+
+- [Flexible Material plugins whitepaper](https://www.lumerical.com/learn/whitepapers/flexible-material-plugins/)
+- [Solitons in SOI waveguide](https://support.lumerical.com/hc/en-us/articles/360042190173)
+- [Gain and Laser](https://support.lumerical.com/hc/en-us/articles/360043683333-Lasers-and-gain-list-of-examples)
+- [4 level 2 electron model](https://support.lumerical.com/hc/en-us/articles/360041722614)
+- [Pump and probe simulation](https://support.lumerical.com/hc/en-us/articles/360042192953)
+- [this metamaterial](https://support.lumerical.com/hc/en-us/articles/360041616614-Bulk-metamaterials-based-on-magnetic-and-electric-Lorentz-models)
+- [Part I - Lorentz example,](https://www.lumerical.com/support/webinars/videos/material_plugins_practical_implementation.html)
+- [Presentation slides](https://d3thprdkpebann.cloudfront.net/resources/Lumerical_Material_Plugins_Practical_Implementation_p1.pdf)
+- [Part II - 4 level 2 electron example](https://d3thprdkpebann.cloudfront.net/videos/Lumerical_Material_Plugin_Practical_Demo_p2.mp4)
+- [Ring modulator](https://support.lumerical.com/hc/en-us/articles/360042195693-Ring-modulator-transient-response-varFDTD-)

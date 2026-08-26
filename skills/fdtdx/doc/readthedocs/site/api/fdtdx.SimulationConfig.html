@@ -1,0 +1,1206 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>fdtdx.SimulationConfig &#8212; fdtdx 0.6.2 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=e889af53" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=967efe37"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/fdtdx.SimulationConfig';</script>
+    <link rel="icon" href="../_static/fdtdx_icon_64.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="fdtdx.SimulationObject" href="fdtdx.SimulationObject.html" />
+    <link rel="prev" title="fdtdx.setup_sparams_simulation" href="fdtdx.setup_sparams_simulation.html" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+<meta name="google-site-verification" content="Au3fTqdYzcm77AO7QU3X3MH1ZRFntjEN9i5DAsoQVK8" />
+
+  <script async type="text/javascript" src="/_/static/javascript/readthedocs-addons.js"></script><meta name="readthedocs-project-slug" content="fdtdx" /><meta name="readthedocs-version-slug" content="latest" /><meta name="readthedocs-resolver-filename" content="/api/fdtdx.SimulationConfig.html" /><meta name="readthedocs-http-status" content="200" /></head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/fdtdx_icon_200.png" class="logo__image only-light" alt="fdtdx 0.6.2 documentation - Home"/>
+    <img src="../_static/fdtdx_icon_200.png" class="logo__image only-dark pst-js-only" alt="fdtdx 0.6.2 documentation - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01_quickstart.html">Quickstart</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/quickstart/01_jax_introduction.html">Introduction to JAX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/quickstart/02_basic_materials.html">Basic Materials and Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/quickstart/03_object_placement_guide.html">Object Placement Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/quickstart/04_basic_simulation.html">First Basic Simulation</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02_physics.html">Physics Tutorials</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/physics/01_maxwell.html">Maxwell’s Equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/physics/02_fdtd.html">FDTD Method</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../03_components.html">Component Examples</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/components/01_uniform_plane_source.html">Uniform Plane Source</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/components/02_mode_source_detector.html">Mode Source and Detector</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../04_advanced.html">Advanced</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/advanced/01_2d_simulation.html">2D Simulations</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../05_contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06_faq.html">FAQ</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../07_api.html">API</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.apply_params.html">fdtdx.apply_params</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.ArrayContainer.html">fdtdx.ArrayContainer</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.autoinit.html">fdtdx.autoinit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.BinaryMedianFilterModule.html">fdtdx.BinaryMedianFilterModule</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.BlochBoundary.html">fdtdx.BlochBoundary</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.boundary_objects_from_config.html">fdtdx.boundary_objects_from_config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.BoundaryConfig.html">fdtdx.BoundaryConfig</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.BrushConstraint2D.html">fdtdx.BrushConstraint2D</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.calculate_sparam.html">fdtdx.calculate_sparam</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.calculate_sparams.html">fdtdx.calculate_sparams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.CCPRPole.html">fdtdx.CCPRPole</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.circular_brush.html">fdtdx.circular_brush</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.ClosedSurfacePhasorPoyntingFluxDetector.html">fdtdx.ClosedSurfacePhasorPoyntingFluxDetector</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.ClosedSurfacePoyntingFluxDetector.html">fdtdx.ClosedSurfacePoyntingFluxDetector</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.ClosestIndex.html">fdtdx.ClosestIndex</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.Color.html">fdtdx.Color</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.compute_energy.html">fdtdx.compute_energy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.compute_eps_spectrum_from_coefficients.html">fdtdx.compute_eps_spectrum_from_coefficients</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.compute_impedance_corrected_temporal_profile.html">fdtdx.compute_impedance_corrected_temporal_profile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.compute_integrated_power.html">fdtdx.compute_integrated_power</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.compute_mode.html">fdtdx.compute_mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.compute_pole_coefficients.html">fdtdx.compute_pole_coefficients</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.compute_pole_coefficients_per_axis.html">fdtdx.compute_pole_coefficients_per_axis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.compute_poynting_flux.html">fdtdx.compute_poynting_flux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.ConnectHolesAndStructures.html">fdtdx.ConnectHolesAndStructures</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.CustomTimeSignalProfile.html">fdtdx.CustomTimeSignalProfile</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.Cylinder.html">fdtdx.Cylinder</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.Detector.html">fdtdx.Detector</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.DetectorState.html">fdtdx.DetectorState</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.Device.html">fdtdx.Device</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.DiagonalSymmetry2D.html">fdtdx.DiagonalSymmetry2D</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.DiagonalSymmetry3D.html">fdtdx.DiagonalSymmetry3D</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.DispersionModel.html">fdtdx.DispersionModel</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.DrudePole.html">fdtdx.DrudePole</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.DtypeConversion.html">fdtdx.DtypeConversion</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.EnergyDetector.html">fdtdx.EnergyDetector</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.export_arrays_snapshot_to_vti.html">fdtdx.export_arrays_snapshot_to_vti</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.export_json.html">fdtdx.export_json</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.export_json_str.html">fdtdx.export_json_str</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.export_stl.html">fdtdx.export_stl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.export_vti.html">fdtdx.export_vti</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.export_vtr.html">fdtdx.export_vtr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.extend_material_to_pml.html">fdtdx.extend_material_to_pml</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.ExtrudedPolygon.html">fdtdx.ExtrudedPolygon</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.extruded_polygon_from_gds.html">fdtdx.extruded_polygon_from_gds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.extruded_polygon_from_gds_path.html">fdtdx.extruded_polygon_from_gds_path</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.field.html">fdtdx.field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.FieldDetector.html">fdtdx.FieldDetector</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.FieldProjectionAngleDetector.html">fdtdx.FieldProjectionAngleDetector</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.FieldProjectionCartesianDetector.html">fdtdx.FieldProjectionCartesianDetector</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.FieldProjectionKSpaceDetector.html">fdtdx.FieldProjectionKSpaceDetector</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.FieldState.html">fdtdx.FieldState</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.frozen_field.html">fdtdx.frozen_field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.frozen_private_field.html">fdtdx.frozen_private_field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.full_backward.html">fdtdx.full_backward</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.GaussianPlaneSource.html">fdtdx.GaussianPlaneSource</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.GaussianPulseProfile.html">fdtdx.GaussianPulseProfile</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.GaussianSmoothing2D.html">fdtdx.GaussianSmoothing2D</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.GradientConfig.html">fdtdx.GradientConfig</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.GridCoordinateConstraint.html">fdtdx.GridCoordinateConstraint</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.HorizontalSymmetry2D.html">fdtdx.HorizontalSymmetry2D</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.HorizontalSymmetry3D.html">fdtdx.HorizontalSymmetry3D</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.import_from_json.html">fdtdx.import_from_json</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.LinearReconstructEveryK.html">fdtdx.LinearReconstructEveryK</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.Logger.html">fdtdx.Logger</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.LorentzPole.html">fdtdx.LorentzPole</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.Material.html">fdtdx.Material</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.metric_efficiency.html">fdtdx.metric_efficiency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.ModeOverlapDetector.html">fdtdx.ModeOverlapDetector</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.ModePlaneSource.html">fdtdx.ModePlaneSource</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.normalize_by_energy.html">fdtdx.normalize_by_energy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.normalize_by_poynting_flux.html">fdtdx.normalize_by_poynting_flux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.ObjectContainer.html">fdtdx.ObjectContainer</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.OnOffSwitch.html">fdtdx.OnOffSwitch</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.ParameterContainer.html">fdtdx.ParameterContainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.ParameterTransformation.html">fdtdx.ParameterTransformation</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.PerfectElectricConductor.html">fdtdx.PerfectElectricConductor</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.PerfectMagneticConductor.html">fdtdx.PerfectMagneticConductor</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.PerfectlyMatchedLayer.html">fdtdx.PerfectlyMatchedLayer</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.PeriodicBoundary.html">fdtdx.PeriodicBoundary</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.PhasorDetector.html">fdtdx.PhasorDetector</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.PhasorPoyntingFluxDetector.html">fdtdx.PhasorPoyntingFluxDetector</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.PillarDiscretization.html">fdtdx.PillarDiscretization</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.place_objects.html">fdtdx.place_objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.plot_field_slice.html">fdtdx.plot_field_slice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.plot_field_slice_component.html">fdtdx.plot_field_slice_component</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.plot_material.html">fdtdx.plot_material</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.plot_material_from_side.html">fdtdx.plot_material_from_side</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.plot_setup.html">fdtdx.plot_setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.plot_setup_from_side.html">fdtdx.plot_setup_from_side</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.PointDipoleSource.html">fdtdx.PointDipoleSource</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.PointSymmetry2D.html">fdtdx.PointSymmetry2D</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.PointSymmetry3D.html">fdtdx.PointSymmetry3D</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.Pole.html">fdtdx.Pole</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.PortSpec.html">fdtdx.PortSpec</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.PositionConstraint.html">fdtdx.PositionConstraint</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.PoyntingFluxDetector.html">fdtdx.PoyntingFluxDetector</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.private_field.html">fdtdx.private_field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.QuasiUniformGrid.html">fdtdx.QuasiUniformGrid</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.RealCoordinateConstraint.html">fdtdx.RealCoordinateConstraint</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.Recorder.html">fdtdx.Recorder</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.RecordingState.html">fdtdx.RecordingState</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.RectilinearGrid.html">fdtdx.RectilinearGrid</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.RemoveFloatingMaterial.html">fdtdx.RemoveFloatingMaterial</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.resolve_object_constraints.html">fdtdx.resolve_object_constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.run_fdtd.html">fdtdx.run_fdtd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.setup_sparams_simulation.html">fdtdx.setup_sparams_simulation</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">fdtdx.SimulationConfig</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.SimulationObject.html">fdtdx.SimulationObject</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.SimulationState.html">fdtdx.SimulationState</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.SimulationVolume.html">fdtdx.SimulationVolume</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.SingleFrequencyProfile.html">fdtdx.SingleFrequencyProfile</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.SizeConstraint.html">fdtdx.SizeConstraint</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.SizeExtensionConstraint.html">fdtdx.SizeExtensionConstraint</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.Sphere.html">fdtdx.Sphere</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.StandardToCustomRange.html">fdtdx.StandardToCustomRange</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.StandardToInversePermittivityRange.html">fdtdx.StandardToInversePermittivityRange</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.StandardToPlusOneMinusOneRange.html">fdtdx.StandardToPlusOneMinusOneRange</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.SubpixelSmoothedProjection.html">fdtdx.SubpixelSmoothedProjection</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.TanhProjection.html">fdtdx.TanhProjection</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.TemporalProfile.html">fdtdx.TemporalProfile</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.TFSFPlaneSourceRegion.html">fdtdx.TFSFPlaneSourceRegion</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.TreeClass.html">fdtdx.TreeClass</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.unfold_array.html">fdtdx.unfold_array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.unfold_detector_states.html">fdtdx.unfold_detector_states</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.unfold_fields.html">fdtdx.unfold_fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.unfold_source_mode.html">fdtdx.unfold_source_mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.UniformGrid.html">fdtdx.UniformGrid</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.UniformMaterialObject.html">fdtdx.UniformMaterialObject</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.UniformPlaneSource.html">fdtdx.UniformPlaneSource</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.VerticalSymmetry2D.html">fdtdx.VerticalSymmetry2D</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.VerticalSymmetry3D.html">fdtdx.VerticalSymmetry3D</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.WaveCharacter.html">fdtdx.WaveCharacter</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.wavelength_to_period.html">fdtdx.wavelength_to_period</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.GDSLayerObject.html">fdtdx.GDSLayerObject</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.GDSLayerSpec.html">fdtdx.GDSLayerSpec</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.GDSPortSpec.html">fdtdx.GDSPortSpec</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.detectors_from_gds_ports.html">fdtdx.detectors_from_gds_ports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.gds_layer_stack.html">fdtdx.gds_layer_stack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.gds_layer_stack_from_component.html">fdtdx.gds_layer_stack_from_component</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fdtdx.sources_from_gds_ports.html">fdtdx.sources_from_gds_ports</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/ymahlau/fdtdx" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/api/fdtdx.SimulationConfig.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>fdtdx.SimulationConfig</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">fdtdx.SimulationConfig</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.SimulationConfig"><code class="docutils literal notranslate"><span class="pre">SimulationConfig</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-reference">Quick Reference</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#attributes">Attributes</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.SimulationConfig.backend"><code class="docutils literal notranslate"><span class="pre">SimulationConfig.backend</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.SimulationConfig.courant_factor"><code class="docutils literal notranslate"><span class="pre">SimulationConfig.courant_factor</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.SimulationConfig.courant_number"><code class="docutils literal notranslate"><span class="pre">SimulationConfig.courant_number</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.SimulationConfig.dtype"><code class="docutils literal notranslate"><span class="pre">SimulationConfig.dtype</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.SimulationConfig.gradient_config"><code class="docutils literal notranslate"><span class="pre">SimulationConfig.gradient_config</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.SimulationConfig.grid"><code class="docutils literal notranslate"><span class="pre">SimulationConfig.grid</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.SimulationConfig.has_nonuniform_grid"><code class="docutils literal notranslate"><span class="pre">SimulationConfig.has_nonuniform_grid</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.SimulationConfig.has_symmetry"><code class="docutils literal notranslate"><span class="pre">SimulationConfig.has_symmetry</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.SimulationConfig.invertible_optimization"><code class="docutils literal notranslate"><span class="pre">SimulationConfig.invertible_optimization</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.SimulationConfig.max_travel_distance"><code class="docutils literal notranslate"><span class="pre">SimulationConfig.max_travel_distance</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.SimulationConfig.only_forward"><code class="docutils literal notranslate"><span class="pre">SimulationConfig.only_forward</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.SimulationConfig.resolved_grid"><code class="docutils literal notranslate"><span class="pre">SimulationConfig.resolved_grid</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.SimulationConfig.symmetry"><code class="docutils literal notranslate"><span class="pre">SimulationConfig.symmetry</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.SimulationConfig.time"><code class="docutils literal notranslate"><span class="pre">SimulationConfig.time</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.SimulationConfig.time_step_duration"><code class="docutils literal notranslate"><span class="pre">SimulationConfig.time_step_duration</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.SimulationConfig.time_steps_total"><code class="docutils literal notranslate"><span class="pre">SimulationConfig.time_steps_total</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.SimulationConfig.use_complex_fields"><code class="docutils literal notranslate"><span class="pre">SimulationConfig.use_complex_fields</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#methods">Methods</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.SimulationConfig.aset"><code class="docutils literal notranslate"><span class="pre">SimulationConfig.aset()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.SimulationConfig.get_class_fields"><code class="docutils literal notranslate"><span class="pre">SimulationConfig.get_class_fields()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.SimulationConfig.get_public_fields"><code class="docutils literal notranslate"><span class="pre">SimulationConfig.get_public_fields()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.SimulationConfig.resolve_grid"><code class="docutils literal notranslate"><span class="pre">SimulationConfig.resolve_grid()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.SimulationConfig.uniform_spacing"><code class="docutils literal notranslate"><span class="pre">SimulationConfig.uniform_spacing()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="fdtdx-simulationconfig">
+<h1>fdtdx.SimulationConfig<a class="headerlink" href="#fdtdx-simulationconfig" title="Link to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="fdtdx.SimulationConfig">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fdtdx.</span></span><span class="sig-name descname"><span class="pre">SimulationConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time=null</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grid=null</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backend='gpu'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype=&lt;class</span> <span class="pre">'jax.numpy.float32'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_complex_fields=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">courant_factor=0.99</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">symmetry=(0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gradient_config=None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/fdtdx/config.html#SimulationConfig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fdtdx.SimulationConfig" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="fdtdx.TreeClass.html#fdtdx.TreeClass" title="fdtdx.core.jax.pytrees.TreeClass"><code class="xref py py-class docutils literal notranslate"><span class="pre">TreeClass</span></code></a></p>
+<p>Configuration settings for FDTD simulations.</p>
+<p>This class contains all the parameters needed to configure and run an FDTD
+simulation, including spatial and temporal discretization, hardware backend,
+and gradient computation settings.</p>
+</dd></dl>
+
+<section id="quick-reference">
+<h2>Quick Reference<a class="headerlink" href="#quick-reference" title="Link to this heading">#</a></h2>
+<p class="rubric">Attributes</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#fdtdx.SimulationConfig.backend" title="fdtdx.SimulationConfig.backend"><code class="xref py py-attr docutils literal notranslate"><span class="pre">backend</span></code></a></p></li>
+<li><p><a class="reference internal" href="#fdtdx.SimulationConfig.courant_factor" title="fdtdx.SimulationConfig.courant_factor"><code class="xref py py-attr docutils literal notranslate"><span class="pre">courant_factor</span></code></a></p></li>
+<li><p><a class="reference internal" href="#fdtdx.SimulationConfig.courant_number" title="fdtdx.SimulationConfig.courant_number"><code class="xref py py-attr docutils literal notranslate"><span class="pre">courant_number</span></code></a></p></li>
+<li><p><a class="reference internal" href="#fdtdx.SimulationConfig.dtype" title="fdtdx.SimulationConfig.dtype"><code class="xref py py-attr docutils literal notranslate"><span class="pre">dtype</span></code></a></p></li>
+<li><p><a class="reference internal" href="#fdtdx.SimulationConfig.gradient_config" title="fdtdx.SimulationConfig.gradient_config"><code class="xref py py-attr docutils literal notranslate"><span class="pre">gradient_config</span></code></a></p></li>
+<li><p><a class="reference internal" href="#fdtdx.SimulationConfig.grid" title="fdtdx.SimulationConfig.grid"><code class="xref py py-attr docutils literal notranslate"><span class="pre">grid</span></code></a></p></li>
+<li><p><a class="reference internal" href="#fdtdx.SimulationConfig.has_nonuniform_grid" title="fdtdx.SimulationConfig.has_nonuniform_grid"><code class="xref py py-attr docutils literal notranslate"><span class="pre">has_nonuniform_grid</span></code></a></p></li>
+<li><p><a class="reference internal" href="#fdtdx.SimulationConfig.has_symmetry" title="fdtdx.SimulationConfig.has_symmetry"><code class="xref py py-attr docutils literal notranslate"><span class="pre">has_symmetry</span></code></a></p></li>
+<li><p><a class="reference internal" href="#fdtdx.SimulationConfig.invertible_optimization" title="fdtdx.SimulationConfig.invertible_optimization"><code class="xref py py-attr docutils literal notranslate"><span class="pre">invertible_optimization</span></code></a></p></li>
+<li><p><a class="reference internal" href="#fdtdx.SimulationConfig.max_travel_distance" title="fdtdx.SimulationConfig.max_travel_distance"><code class="xref py py-attr docutils literal notranslate"><span class="pre">max_travel_distance</span></code></a></p></li>
+<li><p><a class="reference internal" href="#fdtdx.SimulationConfig.only_forward" title="fdtdx.SimulationConfig.only_forward"><code class="xref py py-attr docutils literal notranslate"><span class="pre">only_forward</span></code></a></p></li>
+<li><p><a class="reference internal" href="#fdtdx.SimulationConfig.resolved_grid" title="fdtdx.SimulationConfig.resolved_grid"><code class="xref py py-attr docutils literal notranslate"><span class="pre">resolved_grid</span></code></a></p></li>
+<li><p><a class="reference internal" href="#fdtdx.SimulationConfig.symmetry" title="fdtdx.SimulationConfig.symmetry"><code class="xref py py-attr docutils literal notranslate"><span class="pre">symmetry</span></code></a></p></li>
+<li><p><a class="reference internal" href="#fdtdx.SimulationConfig.time" title="fdtdx.SimulationConfig.time"><code class="xref py py-attr docutils literal notranslate"><span class="pre">time</span></code></a></p></li>
+<li><p><a class="reference internal" href="#fdtdx.SimulationConfig.time_step_duration" title="fdtdx.SimulationConfig.time_step_duration"><code class="xref py py-attr docutils literal notranslate"><span class="pre">time_step_duration</span></code></a></p></li>
+<li><p><a class="reference internal" href="#fdtdx.SimulationConfig.time_steps_total" title="fdtdx.SimulationConfig.time_steps_total"><code class="xref py py-attr docutils literal notranslate"><span class="pre">time_steps_total</span></code></a></p></li>
+<li><p><a class="reference internal" href="#fdtdx.SimulationConfig.use_complex_fields" title="fdtdx.SimulationConfig.use_complex_fields"><code class="xref py py-attr docutils literal notranslate"><span class="pre">use_complex_fields</span></code></a></p></li>
+</ul>
+<p class="rubric">Methods</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#fdtdx.SimulationConfig.aset" title="fdtdx.SimulationConfig.aset"><code class="xref py py-attr docutils literal notranslate"><span class="pre">aset</span></code></a></p></li>
+<li><p><a class="reference internal" href="#fdtdx.SimulationConfig.get_class_fields" title="fdtdx.SimulationConfig.get_class_fields"><code class="xref py py-attr docutils literal notranslate"><span class="pre">get_class_fields</span></code></a></p></li>
+<li><p><a class="reference internal" href="#fdtdx.SimulationConfig.get_public_fields" title="fdtdx.SimulationConfig.get_public_fields"><code class="xref py py-attr docutils literal notranslate"><span class="pre">get_public_fields</span></code></a></p></li>
+<li><p><a class="reference internal" href="#fdtdx.SimulationConfig.resolve_grid" title="fdtdx.SimulationConfig.resolve_grid"><code class="xref py py-attr docutils literal notranslate"><span class="pre">resolve_grid</span></code></a></p></li>
+<li><p><a class="reference internal" href="#fdtdx.SimulationConfig.uniform_spacing" title="fdtdx.SimulationConfig.uniform_spacing"><code class="xref py py-attr docutils literal notranslate"><span class="pre">uniform_spacing</span></code></a></p></li>
+</ul>
+</section>
+</section>
+<section id="attributes">
+<h1>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">#</a></h1>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fdtdx.SimulationConfig.backend">
+<span class="sig-prename descclassname"><span class="pre">SimulationConfig.</span></span><span class="sig-name descname"><span class="pre">backend</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-data docutils literal notranslate"><span class="pre">Literal</span></code><span class="pre">[</span><code class="docutils literal notranslate"><span class="pre">'gpu'</span></code><span class="pre">,</span> <code class="docutils literal notranslate"><span class="pre">'tpu'</span></code><span class="pre">,</span> <code class="docutils literal notranslate"><span class="pre">'cpu'</span></code><span class="pre">,</span> <code class="docutils literal notranslate"><span class="pre">'METAL'</span></code><span class="pre">]</span></em><a class="headerlink" href="#fdtdx.SimulationConfig.backend" title="Link to this definition">#</a></dt>
+<dd><p>Computation backend (‘gpu’, ‘tpu’, ‘cpu’ or ‘METAL’). Defaults to “gpu”.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fdtdx.SimulationConfig.courant_factor">
+<span class="sig-prename descclassname"><span class="pre">SimulationConfig.</span></span><span class="sig-name descname"><span class="pre">courant_factor</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></em><a class="headerlink" href="#fdtdx.SimulationConfig.courant_factor" title="Link to this definition">#</a></dt>
+<dd><p>0.99).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Safety factor for the Courant condition (default</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fdtdx.SimulationConfig.courant_number">
+<span class="sig-prename descclassname"><span class="pre">SimulationConfig.</span></span><span class="sig-name descname"><span class="pre">courant_number</span></span><a class="headerlink" href="#fdtdx.SimulationConfig.courant_number" title="Link to this definition">#</a></dt>
+<dd><p>Calculate the Courant number for the simulation.</p>
+<p>The Courant number is a dimensionless quantity that determines stability
+of the FDTD simulation. It represents the ratio of the physical propagation
+speed to the numerical propagation speed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><dl class="simple">
+<dt>The Courant number, scaled by the courant_factor and normalized</dt><dd><p>for 3D simulations.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fdtdx.SimulationConfig.dtype">
+<span class="sig-prename descclassname"><span class="pre">SimulationConfig.</span></span><span class="sig-name descname"><span class="pre">dtype</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">dtype</span></code></em><a class="headerlink" href="#fdtdx.SimulationConfig.dtype" title="Link to this definition">#</a></dt>
+<dd><p>Data type for numerical computations. Defaults to jnp.float32.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fdtdx.SimulationConfig.gradient_config">
+<span class="sig-prename descclassname"><span class="pre">SimulationConfig.</span></span><span class="sig-name descname"><span class="pre">gradient_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="fdtdx.GradientConfig.html#fdtdx.GradientConfig" title="fdtdx.config.GradientConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">GradientConfig</span></code></a> <span class="pre">|</span> <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></em><a class="headerlink" href="#fdtdx.SimulationConfig.gradient_config" title="Link to this definition">#</a></dt>
+<dd><p>Optional configuration for gradient computation.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fdtdx.SimulationConfig.grid">
+<span class="sig-prename descclassname"><span class="pre">SimulationConfig.</span></span><span class="sig-name descname"><span class="pre">grid</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="fdtdx.UniformGrid.html#fdtdx.UniformGrid" title="fdtdx.core.grid.UniformGrid"><code class="xref py py-class docutils literal notranslate"><span class="pre">UniformGrid</span></code></a> <span class="pre">|</span> <a class="reference internal" href="fdtdx.QuasiUniformGrid.html#fdtdx.QuasiUniformGrid" title="fdtdx.core.grid.QuasiUniformGrid"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuasiUniformGrid</span></code></a> <span class="pre">|</span> <a class="reference internal" href="fdtdx.RectilinearGrid.html#fdtdx.RectilinearGrid" title="fdtdx.core.grid.RectilinearGrid"><code class="xref py py-class docutils literal notranslate"><span class="pre">RectilinearGrid</span></code></a></em><a class="headerlink" href="#fdtdx.SimulationConfig.grid" title="Link to this definition">#</a></dt>
+<dd><p>Spatial grid configuration.</p>
+<p><code class="docutils literal notranslate"><span class="pre">UniformGrid</span></code> is an unresolved policy used while the final volume shape
+is still being inferred.  <code class="docutils literal notranslate"><span class="pre">RectilinearGrid</span></code> is the realized solver grid
+with explicit physical edge coordinates.  Placement resolves policies to
+<code class="docutils literal notranslate"><span class="pre">RectilinearGrid</span></code> so compiled FDTD code has exactly one metric source.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fdtdx.SimulationConfig.has_nonuniform_grid">
+<span class="sig-prename descclassname"><span class="pre">SimulationConfig.</span></span><span class="sig-name descname"><span class="pre">has_nonuniform_grid</span></span><a class="headerlink" href="#fdtdx.SimulationConfig.has_nonuniform_grid" title="Link to this definition">#</a></dt>
+<dd><p>Whether the realized solver grid is non-uniform.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fdtdx.SimulationConfig.has_symmetry">
+<span class="sig-prename descclassname"><span class="pre">SimulationConfig.</span></span><span class="sig-name descname"><span class="pre">has_symmetry</span></span><a class="headerlink" href="#fdtdx.SimulationConfig.has_symmetry" title="Link to this definition">#</a></dt>
+<dd><p>Whether any axis requests mirror symmetry.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><dl class="simple">
+<dt>True if at least one entry of <a class="reference internal" href="#fdtdx.SimulationConfig.symmetry" title="fdtdx.SimulationConfig.symmetry"><code class="xref py py-attr docutils literal notranslate"><span class="pre">symmetry</span></code></a> is nonzero, meaning the</dt><dd><p>domain will be reduced and a PEC/PMC wall placed on the symmetry plane(s).</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fdtdx.SimulationConfig.invertible_optimization">
+<span class="sig-prename descclassname"><span class="pre">SimulationConfig.</span></span><span class="sig-name descname"><span class="pre">invertible_optimization</span></span><a class="headerlink" href="#fdtdx.SimulationConfig.invertible_optimization" title="Link to this definition">#</a></dt>
+<dd><p>Check if invertible optimization is enabled.</p>
+<p>Invertible optimization uses time-reversibility of Maxwell’s equations
+to compute gradients with reduced memory requirements compared to
+checkpointing-based methods.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><dl class="simple">
+<dt>True if gradient computation uses invertible differentiation</dt><dd><p>(recorder is specified), False otherwise.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fdtdx.SimulationConfig.max_travel_distance">
+<span class="sig-prename descclassname"><span class="pre">SimulationConfig.</span></span><span class="sig-name descname"><span class="pre">max_travel_distance</span></span><a class="headerlink" href="#fdtdx.SimulationConfig.max_travel_distance" title="Link to this definition">#</a></dt>
+<dd><p>Calculate the maximum distance light can travel during the simulation.</p>
+<p>This represents the theoretical maximum distance that light could travel
+through the simulation volume, useful for determining if the simulation
+time is sufficient for light to traverse the entire domain.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><dl class="simple">
+<dt>Maximum travel distance in meters, based on the speed of light</dt><dd><p>and total simulation time.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fdtdx.SimulationConfig.only_forward">
+<span class="sig-prename descclassname"><span class="pre">SimulationConfig.</span></span><span class="sig-name descname"><span class="pre">only_forward</span></span><a class="headerlink" href="#fdtdx.SimulationConfig.only_forward" title="Link to this definition">#</a></dt>
+<dd><p>Check if the simulation is forward-only (no gradient computation).</p>
+<p>Forward-only simulations don’t compute gradients and are used when only
+the forward propagation of electromagnetic fields is needed, without
+optimization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if no gradient configuration is specified, False otherwise.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fdtdx.SimulationConfig.resolved_grid">
+<span class="sig-prename descclassname"><span class="pre">SimulationConfig.</span></span><span class="sig-name descname"><span class="pre">resolved_grid</span></span><a class="headerlink" href="#fdtdx.SimulationConfig.resolved_grid" title="Link to this definition">#</a></dt>
+<dd><p>Return the concrete solver grid, or <code class="docutils literal notranslate"><span class="pre">None</span></code> if not yet resolved.</p>
+<p><code class="docutils literal notranslate"><span class="pre">UniformGrid</span></code> has no edge arrays until the simulation shape is known.
+Callers that need coordinates, areas, or volumes should use this
+property and fall back to <code class="docutils literal notranslate"><span class="pre">uniform_spacing</span></code> when it returns <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fdtdx.SimulationConfig.symmetry">
+<span class="sig-prename descclassname"><span class="pre">SimulationConfig.</span></span><span class="sig-name descname"><span class="pre">symmetry</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code><span class="pre">[</span><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code><span class="pre">,</span> <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code><span class="pre">,</span> <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code><span class="pre">]</span></em><a class="headerlink" href="#fdtdx.SimulationConfig.symmetry" title="Link to this definition">#</a></dt>
+<dd><p>Per-axis mirror symmetry of the simulation, in the order (x, y, z).
+Each entry is one of <code class="docutils literal notranslate"><span class="pre">{-1,</span> <span class="pre">0,</span> <span class="pre">+1}</span></code>:
+<code class="docutils literal notranslate"><span class="pre">0</span></code> = no symmetry on this axis (default),
+<code class="docutils literal notranslate"><span class="pre">-1</span></code> = PEC (electric-wall) mirror on the axis center plane,
+<code class="docutils literal notranslate"><span class="pre">+1</span></code> = PMC (magnetic-wall) mirror on the axis center plane.
+When any entry is nonzero, <a class="reference internal" href="fdtdx.place_objects.html#fdtdx.place_objects" title="fdtdx.place_objects"><code class="xref py py-func docutils literal notranslate"><span class="pre">fdtdx.place_objects()</span></code></a> automatically reduces the
+domain to the symmetric half/quarter/octant (keeping the upper half along each
+symmetric axis), clips every object onto that reduced grid, inserts the PEC/PMC
+wall on the symmetry plane, and forwards the matching per-axis condition to the
+mode solver. The FDTD then runs on the reduced domain; call
+<a class="reference internal" href="fdtdx.unfold_fields.html#fdtdx.unfold_fields" title="fdtdx.unfold_fields"><code class="xref py py-func docutils literal notranslate"><span class="pre">fdtdx.unfold_fields()</span></code></a> / <a class="reference internal" href="fdtdx.unfold_detector_states.html#fdtdx.unfold_detector_states" title="fdtdx.unfold_detector_states"><code class="xref py py-func docutils literal notranslate"><span class="pre">fdtdx.unfold_detector_states()</span></code></a> afterwards to
+reconstruct the full-domain arrays. This is additive and independent of manually
+specifying PEC/PMC as ordinary boundaries via <a class="reference internal" href="fdtdx.BoundaryConfig.html#fdtdx.BoundaryConfig" title="fdtdx.BoundaryConfig"><code class="xref py py-class docutils literal notranslate"><span class="pre">fdtdx.BoundaryConfig</span></code></a>.
+Each symmetric axis must resolve to an <strong>even</strong> number of grid cells (so the domain
+splits exactly down the middle and the unfolded result matches the full domain
+cell-for-cell); otherwise <a class="reference internal" href="fdtdx.place_objects.html#fdtdx.place_objects" title="fdtdx.place_objects"><code class="xref py py-func docutils literal notranslate"><span class="pre">fdtdx.place_objects()</span></code></a> raises a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code>.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fdtdx.SimulationConfig.time">
+<span class="sig-prename descclassname"><span class="pre">SimulationConfig.</span></span><span class="sig-name descname"><span class="pre">time</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></em><a class="headerlink" href="#fdtdx.SimulationConfig.time" title="Link to this definition">#</a></dt>
+<dd><p>Total simulation time in seconds.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fdtdx.SimulationConfig.time_step_duration">
+<span class="sig-prename descclassname"><span class="pre">SimulationConfig.</span></span><span class="sig-name descname"><span class="pre">time_step_duration</span></span><a class="headerlink" href="#fdtdx.SimulationConfig.time_step_duration" title="Link to this definition">#</a></dt>
+<dd><p>Calculate the duration of a single time step.</p>
+<p>The time step duration is determined by the Courant condition to ensure
+numerical stability. Realized rectilinear grids use their smallest
+per-axis spacings. Unresolved uniform grids use their configured scalar
+spacing; unresolved quasi-uniform grids use their smallest per-axis
+spacing as a conservative CFL bound.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><dl class="simple">
+<dt>Time step duration in seconds, calculated using the Courant</dt><dd><p>condition and spatial resolution.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fdtdx.SimulationConfig.time_steps_total">
+<span class="sig-prename descclassname"><span class="pre">SimulationConfig.</span></span><span class="sig-name descname"><span class="pre">time_steps_total</span></span><a class="headerlink" href="#fdtdx.SimulationConfig.time_steps_total" title="Link to this definition">#</a></dt>
+<dd><p>Calculate the total number of time steps for the simulation.</p>
+<p>Determines how many discrete time steps are needed to simulate the
+specified total simulation time, based on the time step duration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><dl class="simple">
+<dt>Total number of time steps needed to reach the specified</dt><dd><p>simulation time.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fdtdx.SimulationConfig.use_complex_fields">
+<span class="sig-prename descclassname"><span class="pre">SimulationConfig.</span></span><span class="sig-name descname"><span class="pre">use_complex_fields</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code> <span class="pre">|</span> <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></em><a class="headerlink" href="#fdtdx.SimulationConfig.use_complex_fields" title="Link to this definition">#</a></dt>
+<dd><p>Whether to use complex-valued field arrays.
+None (default): auto-detect based on boundary conditions (e.g. Bloch).
+True: force complex fields (complex64 if dtype=float32, complex128 if dtype=float64).
+False: force real fields (raises error if Bloch boundaries are present).</p>
+</dd></dl>
+
+</section>
+<section id="methods">
+<h1>Methods<a class="headerlink" href="#methods" title="Link to this heading">#</a></h1>
+<dl class="py method">
+<dt class="sig sig-object py" id="fdtdx.SimulationConfig.aset">
+<span class="sig-prename descclassname"><span class="pre">SimulationConfig.</span></span><span class="sig-name descname"><span class="pre">aset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attr_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">create_new_ok</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#fdtdx.SimulationConfig.aset" title="Link to this definition">#</a></dt>
+<dd><p>Sets an attribute of this class. In contrast to the classical .at[].set(), this method updates the class
+attribute directly and does not only operate on jax pytree leaf nodes. Instead, replaces the full attribute
+with the new value.</p>
+<p>The attribute can either be the attribute name of this class, or for nested classes it can also be the
+attribute name of a class, which itself is an attribute of this class. The syntax for this operation could
+look like this: “a-&gt;b-&gt;[0]-&gt;[‘name’]”. Here, the current class has an attribute a, which has an attribute b,
+which is a list, which we index at index 0, which is an element of type dictionary, which we index using
+the dictionary key ‘name’.</p>
+<p>Note that dictionary keys cannot contain square brackets or single quotes (even if they are escaped).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>attr_name</strong> (<em>str</em>) – Name of attribute to set</p></li>
+<li><p><strong>val</strong> (<em>Any</em>) – Value to set the attribute to</p></li>
+<li><p><strong>create_new_ok</strong> (<em>bool</em><em>, </em><em>optional</em>) – If false (default), throw an error if the attribute does not exist.
+If true, creates a new attribute if the attribute name does not exist yet.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Updated instance with new attribute value</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Self</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fdtdx.SimulationConfig.get_class_fields">
+<span class="sig-prename descclassname"><span class="pre">SimulationConfig.</span></span><span class="sig-name descname"><span class="pre">get_class_fields</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fdtdx.SimulationConfig.get_class_fields" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">TreeClassField</span></code>]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fdtdx.SimulationConfig.get_public_fields">
+<span class="sig-prename descclassname"><span class="pre">SimulationConfig.</span></span><span class="sig-name descname"><span class="pre">get_public_fields</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#fdtdx.SimulationConfig.get_public_fields" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">TreeClassField</span></code>]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fdtdx.SimulationConfig.resolve_grid">
+<span class="sig-prename descclassname"><span class="pre">SimulationConfig.</span></span><span class="sig-name descname"><span class="pre">resolve_grid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/fdtdx/config.html#SimulationConfig.resolve_grid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fdtdx.SimulationConfig.resolve_grid" title="Link to this definition">#</a></dt>
+<dd><p>Return a concrete solver grid.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>shape</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>] | <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span>) – Required when <code class="docutils literal notranslate"><span class="pre">grid</span></code> is an unresolved <code class="docutils literal notranslate"><span class="pre">UniformGrid</span></code>.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="fdtdx.RectilinearGrid.html#fdtdx.RectilinearGrid" title="fdtdx.core.grid.RectilinearGrid"><code class="xref py py-class docutils literal notranslate"><span class="pre">RectilinearGrid</span></code></a></span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A concrete <code class="docutils literal notranslate"><span class="pre">RectilinearGrid</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fdtdx.SimulationConfig.uniform_spacing">
+<span class="sig-prename descclassname"><span class="pre">SimulationConfig.</span></span><span class="sig-name descname"><span class="pre">uniform_spacing</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/fdtdx/config.html#SimulationConfig.uniform_spacing"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fdtdx.SimulationConfig.uniform_spacing" title="Link to this definition">#</a></dt>
+<dd><p>Return the uniform grid spacing.</p>
+<p><code class="docutils literal notranslate"><span class="pre">UniformGrid</span></code> can answer this before placement.  <code class="docutils literal notranslate"><span class="pre">RectilinearGrid</span></code>
+answers only when all spacings are equal and raises for non-uniform
+meshes, making unsupported scalar assumptions explicit.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<p>If you find any errors in the documentation, please report them in the <a class="reference external" href="https://github.com/ymahlau/fdtdx/issues">Github Issues</a>!</p>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="fdtdx.setup_sparams_simulation.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">fdtdx.setup_sparams_simulation</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="fdtdx.SimulationObject.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">fdtdx.SimulationObject</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">fdtdx.SimulationConfig</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.SimulationConfig"><code class="docutils literal notranslate"><span class="pre">SimulationConfig</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-reference">Quick Reference</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#attributes">Attributes</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.SimulationConfig.backend"><code class="docutils literal notranslate"><span class="pre">SimulationConfig.backend</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.SimulationConfig.courant_factor"><code class="docutils literal notranslate"><span class="pre">SimulationConfig.courant_factor</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.SimulationConfig.courant_number"><code class="docutils literal notranslate"><span class="pre">SimulationConfig.courant_number</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.SimulationConfig.dtype"><code class="docutils literal notranslate"><span class="pre">SimulationConfig.dtype</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.SimulationConfig.gradient_config"><code class="docutils literal notranslate"><span class="pre">SimulationConfig.gradient_config</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.SimulationConfig.grid"><code class="docutils literal notranslate"><span class="pre">SimulationConfig.grid</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.SimulationConfig.has_nonuniform_grid"><code class="docutils literal notranslate"><span class="pre">SimulationConfig.has_nonuniform_grid</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.SimulationConfig.has_symmetry"><code class="docutils literal notranslate"><span class="pre">SimulationConfig.has_symmetry</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.SimulationConfig.invertible_optimization"><code class="docutils literal notranslate"><span class="pre">SimulationConfig.invertible_optimization</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.SimulationConfig.max_travel_distance"><code class="docutils literal notranslate"><span class="pre">SimulationConfig.max_travel_distance</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.SimulationConfig.only_forward"><code class="docutils literal notranslate"><span class="pre">SimulationConfig.only_forward</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.SimulationConfig.resolved_grid"><code class="docutils literal notranslate"><span class="pre">SimulationConfig.resolved_grid</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.SimulationConfig.symmetry"><code class="docutils literal notranslate"><span class="pre">SimulationConfig.symmetry</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.SimulationConfig.time"><code class="docutils literal notranslate"><span class="pre">SimulationConfig.time</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.SimulationConfig.time_step_duration"><code class="docutils literal notranslate"><span class="pre">SimulationConfig.time_step_duration</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.SimulationConfig.time_steps_total"><code class="docutils literal notranslate"><span class="pre">SimulationConfig.time_steps_total</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.SimulationConfig.use_complex_fields"><code class="docutils literal notranslate"><span class="pre">SimulationConfig.use_complex_fields</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#methods">Methods</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.SimulationConfig.aset"><code class="docutils literal notranslate"><span class="pre">SimulationConfig.aset()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.SimulationConfig.get_class_fields"><code class="docutils literal notranslate"><span class="pre">SimulationConfig.get_class_fields()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.SimulationConfig.get_public_fields"><code class="docutils literal notranslate"><span class="pre">SimulationConfig.get_public_fields()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.SimulationConfig.resolve_grid"><code class="docutils literal notranslate"><span class="pre">SimulationConfig.resolve_grid()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fdtdx.SimulationConfig.uniform_spacing"><code class="docutils literal notranslate"><span class="pre">SimulationConfig.uniform_spacing()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Yannik Mahlau
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025, Yannik Mahlau.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

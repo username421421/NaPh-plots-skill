@@ -1,0 +1,64 @@
+# PML boundary conditions in FDTD and MODE
+
+Source URL: https://optics.ansys.com/hc/en-us/articles/360034382674-PML-boundary-conditions-in-FDTD-and-MODE  
+Area: Boundaries  
+Topic: PML profiles, layers, stabilized and steep-angle usage  
+Discovery depth: 0  
+Last checked: 2026-06-23  
+Capture mode: citation-safe local metadata, generated summary, headings, links, code/table inventories, key terms, and bounded excerpt.
+
+## Local Capture Summary
+
+This local capture indexes the official page `PML boundary conditions in FDTD and MODE` for the topic `PML profiles, layers, stabilized and steep-angle usage`. It captured 8 heading(s), 2 link(s), 0 code block(s), 0 inline code term(s), and 0 table(s). Main headings: PML boundary conditions in FDTD and MODE, PML Type, PML Profiles, PML Profile options, Using Different Profiles for Different Boundaries, FDE vs. varFDTD and FDTD Solvers, PML Parameters, Related publications. Key detected terms: boundary, fdtd, material, mode, periodic, pml, reflection, solver, structure.
+
+## Key Terms
+
+- boundary
+- fdtd
+- material
+- mode
+- periodic
+- pml
+- reflection
+- solver
+- structure
+
+## Captured Headings
+
+- PML boundary conditions in FDTD and MODE
+- PML Type
+- PML Profiles
+- PML Profile options
+- Using Different Profiles for Different Boundaries
+- FDE vs. varFDTD and FDTD Solvers
+- PML Parameters
+- Related publications
+
+## Official Text Excerpt
+
+> PML boundary conditions in FDTD and MODE FDTD MODE PML absorbing boundary conditions are designed to absorb incident light with minimal reflections. PML boundaries are basically implemented as an absorbing material that is also impedance matched to the surrounding materials, to minimize reflections. An ideal PML boundary produces zero reflections, however, in practice, there will always be small reflections due to the discretization of the underlying PML equations. Furthermore, as a consequence of using finite difference approximations to discretize the PML equations, there is some chance of producing numerical instabilities. The goal of this section is to outline best practices for minimizing reflection errors and getting rid of numerical instabilities without increasing simulation times unnecessarily. PML Type Stretched coordinate PML (based on the formulation proposed by Gedney and Zhao [2]) is the default and recommended option. A legacy uniaxial anisotropic PML formulation is also available, but is rarely used in practice. PML Profiles In FDTD or varFDTD simulation regions, the user can directly specify all the parameters that control the absorption properties of the selected PML boundaries (see the screenshot ...
+
+## Code Block Inventory
+
+- No code blocks detected
+
+## Inline Code Inventory
+
+- No inline code terms detected
+
+## Table Inventory
+
+- No tables detected
+
+## Official Links Found
+
+- [FDTD](https://optics.ansys.com/hc/en-us/articles/360033154434)
+- [MODE](https://optics.ansys.com/hc/en-us/articles/360020687354)
+
+## Ansys-Related External Links Found
+
+- None
+
+## External Links Found
+
+- None

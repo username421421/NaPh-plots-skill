@@ -1,0 +1,68 @@
+# Testing FDTD dipole sources in homogeneous materials
+
+Source URL: https://optics.ansys.com/hc/en-us/articles/360034382814-Homogeneous-materials  
+Area: Discovered official source  
+Topic: Discovered from FDTD product reference manual  
+Discovery depth: 1  
+Last checked: 2026-06-23  
+Capture mode: citation-safe local metadata, generated summary, headings, links, code/table inventories, key terms, and bounded excerpt.
+
+## Local Capture Summary
+
+This local capture indexes the official page `Testing FDTD dipole sources in homogeneous materials` for the topic `Discovered from FDTD product reference manual`. It captured 4 heading(s), 5 link(s), 0 code block(s), 0 inline code term(s), and 1 table(s). Main headings: Testing FDTD dipole sources in homogeneous materials, Theoretical power radiated by a dipole in a homogeneous material, Verifying the emitted power in FDTD., See also. Key detected terms: dipole, fdtd, import, material, mesh, mode, monitor, normalization, port, script, source, structure.
+
+## Key Terms
+
+- dipole
+- fdtd
+- import
+- material
+- mesh
+- mode
+- monitor
+- normalization
+- port
+- script
+- source
+- structure
+
+## Captured Headings
+
+- Testing FDTD dipole sources in homogeneous materials
+- Theoretical power radiated by a dipole in a homogeneous material
+- Verifying the emitted power in FDTD.
+- See also
+
+## Official Text Excerpt
+
+> Testing FDTD dipole sources in homogeneous materials FDTD MODE This section describes the power radiated by a dipole in a homogeneous material. Theoretical power radiated by a dipole in a homogeneous material The analytic expressions of total radiated power of electric and magnetic dipoles in a homogeneous material of refractive index n, in 2D and 3D are shown in the following table. |Dipole type|Total radiate power (Watts)|Units | 2D TM Electric Dipole | $$ P=\frac{\pi}{2} \frac{\mu_{0}}{4 \pi}\left|\vec{p}_{0}\right|^{2} \omega^{3} $$ | [p0] = Cm/m | 2D TE Electric Dipole | $$ P=\frac{\pi}{4} \frac{\mu_{0}}{4 \pi}\left|\vec{p}_{0}\right|^{2} \omega^{3} $$ | [p0] = Cm/m | 3D Electric Dipole | $$ P=\frac{\mu_{0}}{4 \pi} n\left|\vec{p}_{0}\right|^{2} \frac{\omega^{4}}{3 c} $$ | [p0] = Cm | 2D TM Magnetic Dipole | $$ P=\frac{\pi}{4} \frac{\mu_{0}}{4 \pi} n^{2}\left|\vec{m}_{0}\right|^{2} \frac{\omega^{3}}{c^{2}} $$ | [m0] = Am2/m | 2D TE Magnetic Dipole | $$ P=\frac{\pi}{2} \frac{\mu_{0}}{4 \pi} n^{2}\left|\vec{m}_{0}\right|^{2} \frac{\omega^{3}}{c^{2}} $$ | [m0] = Am2/m | 3D Magnetic Dipole | $$ P=\frac{\mu_{0}}{4 \pi} n^{3}\left|\vec{n}_{0}\right|^{2} \frac{\omega^{4}}{3 c^{3}} $$ | [m0] = Am2 Verifying the emitted power in FDTD. The script file usr_dipole_power.lsf will compare the above analytic ...
+
+## Code Block Inventory
+
+- No code blocks detected
+
+## Inline Code Inventory
+
+- No inline code terms detected
+
+## Table Inventory
+
+- Table 1: 3 column(s), 6 row(s)
+  - Headers: Dipole type, Total radiate power (Watts), Units
+  - First row sample: 2D TM Electric Dipole | $$ P=\frac{\pi}{2} \frac{\mu_{0}}{4 \pi}\left|\vec{p}_{0}\right|^{2} \omega^{3} $$ | [p0] = Cm/m
+
+## Official Links Found
+
+- [FDTD](https://optics.ansys.com/hc/en-us/articles/360033154434)
+- [MODE](https://optics.ansys.com/hc/en-us/articles/360020687354)
+- [Understanding dipoles in non-homogeneous materials](https://optics.ansys.com/hc/en-us/articles/360034382834)
+- [sourcepower](https://optics.ansys.com/hc/en-us/articles/360034925313)
+- [dipolepower](https://optics.ansys.com/hc/en-us/articles/360034925293)
+
+## Ansys-Related External Links Found
+
+- None
+
+## External Links Found
+
+- None

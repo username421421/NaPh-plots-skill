@@ -1,0 +1,66 @@
+# addmodeexpansion - Script command
+
+Source URL: https://optics.ansys.com/hc/en-us/articles/360034924573-addmodeexpansion-Script-command  
+Area: Script command  
+Topic: Add mode expansion monitor  
+Discovery depth: 0  
+Last checked: 2026-06-23  
+Capture mode: citation-safe local metadata, generated summary, headings, links, code/table inventories, key terms, and bounded excerpt.
+
+## Local Capture Summary
+
+This local capture indexes the official page `addmodeexpansion - Script command` for the topic `Add mode expansion monitor`. It captured 1 heading(s), 11 link(s), 1 code block(s), 0 inline code term(s), and 1 table(s). Main headings: addmodeexpansion - Script command. Key detected terms: command, fdtd, mode, monitor, script, script-command, solver.
+
+## Key Terms
+
+- command
+- fdtd
+- mode
+- monitor
+- script
+- script-command
+- solver
+
+## Captured Headings
+
+- addmodeexpansion - Script command
+
+## Official Text Excerpt
+
+> addmodeexpansion - Script command FDTD MODE Adds a mode expansion monitor to the simulation environment. In MODE an active varFDTD region needs to be present for this command to work. | Syntax | Description | addmodeexpansion; | Adds a mode expansion monitor to the simulation environment. This function does not return any data. |addmodeexpansion(struct_data);| Adds a mode expansion monitor and set its property using a struct containing "property" and value pairs. See the struct script command page for an example. This function does not return any data. Example The following script commands will add mode expansion and field monitors and then setup some of the expansion monitor properties. See Also List of commands, set, Using Mode Expansion Monitors, setexpansion, removeexpansion, updatemodes, seteigensolver, geteigensolver
+
+## Code Block Inventory
+
+- Code block 1: 19 line(s); first line `# add monitors`
+
+## Inline Code Inventory
+
+- No inline code terms detected
+
+## Table Inventory
+
+- Table 1: 2 column(s), 2 row(s)
+  - Headers: Syntax, Description
+  - First row sample: addmodeexpansion; | Adds a mode expansion monitor to the simulation environment. This function does not return any data.
+
+## Official Links Found
+
+- [FDTD](https://optics.ansys.com/hc/en-us/articles/360033154434)
+- [MODE](https://optics.ansys.com/hc/en-us/articles/360020687354)
+- [struct](https://optics.ansys.com/hc/en-us/articles/360034409574-struct-Script-command)
+- [List of commands](https://optics.ansys.com/hc/en-us/articles/360037228834)
+- [set](https://optics.ansys.com/hc/en-us/articles/360034928773-set)
+- [Using Mode Expansion Monitors](https://optics.ansys.com/hc/en-us/articles/360034902433-Using-Mode-Expansion-Monitors)
+- [setexpansion](https://optics.ansys.com/hc/en-us/articles/360034408974-setexpansion)
+- [removeexpansion](https://optics.ansys.com/hc/en-us/articles/360034408994-removeexpansion)
+- [updatemodes](https://optics.ansys.com/hc/en-us/articles/360034929073-updatemodes)
+- [seteigensolver](https://optics.ansys.com/hc/en-us/articles/360034929113-seteigensolver)
+- [geteigensolver](https://optics.ansys.com/hc/en-us/articles/360034408794-geteigensolver)
+
+## Ansys-Related External Links Found
+
+- None
+
+## External Links Found
+
+- None

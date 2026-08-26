@@ -1,0 +1,73 @@
+# Always extend structures through PML boundary conditions
+
+Source URL: https://optics.ansys.com/hc/en-us/articles/360034382414-Extending-structures-through-PML-Optical-  
+Area: Discovered official source  
+Topic: Discovered from FDTD product reference manual  
+Discovery depth: 1  
+Last checked: 2026-06-23  
+Capture mode: citation-safe local metadata, generated summary, headings, links, code/table inventories, key terms, and bounded excerpt.
+
+## Local Capture Summary
+
+This local capture indexes the official page `Always extend structures through PML boundary conditions` for the topic `Discovered from FDTD product reference manual`. It captured 7 heading(s), 2 link(s), 0 code block(s), 0 inline code term(s), and 3 table(s). Main headings: Always extend structures through PML boundary conditions, Simulation areas, A - Simulation area of interest, B - Boundary condition area, C - Completely outside the simulation region, Extending objects through the boundary condition area, Examples. Key detected terms: bloch, boundary, fdtd, import, material, mesh, mode, monitor, periodic, pml, port, reflection, source, structure.
+
+## Key Terms
+
+- bloch
+- boundary
+- fdtd
+- import
+- material
+- mesh
+- mode
+- monitor
+- periodic
+- pml
+- port
+- reflection
+- source
+- structure
+
+## Captured Headings
+
+- Always extend structures through PML boundary conditions
+- Simulation areas
+- A - Simulation area of interest
+- B - Boundary condition area
+- C - Completely outside the simulation region
+- Extending objects through the boundary condition area
+- Examples
+
+## Official Text Excerpt
+
+> Always extend structures through PML boundary conditions FDTD MODE PML boundary conditions are designed to absorb all incident light. For best performance, physical structures should extend completely through the PML boundary condition region. The default settings in FDTD will automatically extend any structures which lie on the PML boundary through the PML. In some cases, such as for photonic crystals, it is better to disable this feature and draw the structures in the PML manually. Simulation areas A typical simulation is shown in the above screenshot. The simulation region outline is shown graphically in orange. When the boundary conditions are set to PML, the simulation region outline has some thickness. This creates three areas, labelled A, B, C in the above figure. A - Simulation area of interest This is the region that the user is interested in simulating. All important structures, sources and monitors should be defined in this area. The size of this area is set with the X,Y,Z span property of the simulation region. Monitors only collect data in this area. Monitors and sources larger than this ...
+
+## Code Block Inventory
+
+- No code blocks detected
+
+## Inline Code Inventory
+
+- No inline code terms detected
+
+## Table Inventory
+
+- Table 1: 1 column(s), 1 row(s)
+  - First row sample: Important: FDTD/MODE only meshs the structure as it is drawn on the left if the extend structures through PML checkbox is unchecked. Otherwise, the material which touches the inside PML boundary will be extended straight through the PML. Wh
+- Table 2: 1 column(s), 1 row(s)
+  - First row sample: Note: Sources and monitors will be automatically truncated to the inner simulation region. We recommend defining the sources and monitors to be larger than the simulation region. That way, if you need to make the simulation region larger, y
+- Table 3: 1 column(s), 1 row(s)
+  - First row sample: Note: Anything completely outside of the orange simulation boundary region has no effect on the simulation. In the photonic crystal example above, the two outermost rings of PC are not necessary. It is the third ring, within the PML boundar
+
+## Official Links Found
+
+- [FDTD](https://optics.ansys.com/hc/en-us/articles/360033154434)
+- [MODE](https://optics.ansys.com/hc/en-us/articles/360020687354)
+
+## Ansys-Related External Links Found
+
+- None
+
+## External Links Found
+
+- None
