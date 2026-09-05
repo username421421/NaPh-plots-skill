@@ -2,16 +2,11 @@
 
 ## Start Here
 
-Use this order for new requests:
-
-1. `doc/docs/index.md`
-2. `doc/docs/Introduction.md`
-3. `doc/docs/Python_Tutorials/Basics.md`
-4. `doc/docs/Python_User_Interface.md`
-5. `doc/docs/FAQ.md`
-
-If the task is implementation-heavy, skip directly to `doc/docs/Python_User_Interface.md` plus the matching tutorial page.
-For code reuse, also open `references/examples.md` and pull a section-level snippet with `scripts/meep_docs.py compose`.
+Select the matching task row and retrieve only the needed API/tutorial section.
+The second column is the first route; follow additional pages only for unresolved
+details. Introductory pages (`index.md`, `Introduction.md`, Basics, FAQ) are optional
+orientation, not a required reading sequence. Examples are snapshot patterns;
+verify affected calls against the selected runtime before reuse.
 
 ## Task To Document Map
 

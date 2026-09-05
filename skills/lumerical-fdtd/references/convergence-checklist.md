@@ -2,6 +2,16 @@
 
 Use this file before trusting or reporting an FDTD result. Primary official source: [Convergence testing process for FDTD simulations](https://optics.ansys.com/hc/en-us/articles/360034915833-Convergence-testing-process-for-FDTD-simulations), with supporting guidance from solver, mesh, PML, source, and monitor documentation.
 
+## Scope and execution
+
+This checklist governs acceptance of scientific results. It does not require
+rerunning validated campaigns for documentation or logging changes and does not
+authorize compute. Reuse evidence only when it applies to the current geometry,
+materials, source, grid, monitors, and metric. Identify missing evidence and
+obtain the workspace's required run confirmation before new solves or exports.
+Set a budget and termination ceiling for proposed sweeps; reaching a limit is
+not convergence. Report which checks were performed, reused, or remain pending.
+
 ## Convergence Workflow
 
 1. Define the reported metric before tuning the simulation: transmission at target wavelength, resonance wavelength/Q, Purcell factor, directivity, S-parameter, color coordinate, etc.

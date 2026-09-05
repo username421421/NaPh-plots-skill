@@ -16,8 +16,8 @@ The simulation skills include their bundled reference corpora, local query scrip
 ## Clone and keep it updated
 
 ```bash
-git clone https://github.com/username421421/NaPh-plots-skill.git
-cd NaPh-plots-skill
+git clone https://github.com/username421421/nanophotonics-codex-skills.git
+cd nanophotonics-codex-skills
 git pull --ff-only
 ```
 
@@ -41,19 +41,33 @@ On systems using an `.agents/skills` directory, copy the same four directories t
 The package paths are independent. A tool can use only one of these directories, for example:
 
 ```text
-NaPh-plots-skill/skills/meep
-NaPh-plots-skill/skills/fdtdx
+nanophotonics-codex-skills/skills/meep
+nanophotonics-codex-skills/skills/fdtdx
 ```
 
 Keep each `SKILL.md` beside its `references/`, `scripts/`, `doc/`, `assets/`, and `agents/` directories. The instructions intentionally use relative paths into those directories.
 
 ## Maintenance notes
 
-- The FDTDX skill distinguishes the latest upstream API from its bundled offline corpus; check its versioning instructions before relying on an API example.
+- The FDTDX skill queries the selected installed API with `api --source installed`; the default `api` mode reads the explicitly labeled offline snapshot. Runtime lookup failures never fall back silently.
 - The Lumerical FDTD skill uses its local Ansys reference corpus before live lookup.
-- The Meep skill treats its bundled Python API documentation as the local source of truth and requires convergence checks for numerical conclusions.
+- The Meep skill checks affected APIs against the selected runtime and uses its bundled documentation as a snapshot. Scientific conclusions require applicable convergence evidence.
 - The scientific-plotting skill is a style and QA workflow; it does not install Matplotlib or other Python packages.
 - Do not commit private simulation data, credentials, local virtual environments, or generated result files to this repository.
+
+## Checking skill updates
+
+Skill entrypoints route directly to relevant API sections and examples. Detailed
+physics and compatibility guidance stays in the references; bounded lookups must
+be expanded when needed to establish the complete API contract. Workspace execution
+authorization still applies before numerical runs and expensive exports.
+
+These lightweight helper tests require Python and do not run simulations:
+
+```bash
+python skills/fdtdx/scripts/test_fdtdx_docs_runtime.py
+python -m unittest discover -s skills/lumerical-fdtd/tests
+```
 
 ## Adding another personal skill
 

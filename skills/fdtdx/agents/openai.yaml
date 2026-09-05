@@ -1,4 +1,4 @@
 interface:
   display_name: "FDTDX"
   short_description: "Build and validate JAX FDTD simulations"
-  default_prompt: "Use $fdtdx to build and validate an FDTDX simulation from the bundled documentation."
+  default_prompt: "Use $fdtdx to build and validate an FDTDX simulation against the selected project runtime and matching documentation."

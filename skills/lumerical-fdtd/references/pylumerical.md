@@ -4,7 +4,7 @@ Use this file when the requested implementation uses the PyAnsys package for Lum
 
 ## Agent Workflow
 
-Before writing PyLumerical code, complete this checklist:
+For new or changed PyLumerical behavior, use only the relevant sections and audit affected calls. Reuse verified evidence for unchanged code:
 
 1. Search this file and the local captured corpus:
 
@@ -14,7 +14,7 @@ rg -n "fdtd-example1-pythonic|fdtd-example1-lsf|metalens|photonic-crystal|basic 
 ```
 
 2. Pick the closest official example from the local corpus before designing code. Prefer `scraped/fdtd-example1-pythonic.md` for Pythonic constructor style, `scraped/fdtd-example1-lsf.md` for legacy script-command style, `scraped/photonic-crystal-bandstructure.md` for FDTD sweeps/groups/Bloch setup, and `scraped/metalens-fdtd-with-projections.md` for FDTD plus far-field and symmetry patterns.
-3. Audit every command, constructor, object property, and result key against `references/python-api.md`, the relevant source/monitor/mesh reference, and the local scraped page for the closest example.
+3. Audit affected commands, constructors, object properties, and result keys against `references/python-api.md`, the relevant source/monitor/mesh reference, and the local scraped page for the closest example.
 4. Prefer exact Lumerical property names in `properties=OrderedDict([...])` when property order matters. Use keyword arguments only when no linked property ordering risk exists.
 5. Write implementation notes before coding: package choice, Lumerical version/license assumptions, session arguments, examples inspected, object-property audit, result keys, and convergence risks.
 

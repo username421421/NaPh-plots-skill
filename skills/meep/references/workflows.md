@@ -1,6 +1,6 @@
 # Meep Implementation Workflows
 
-Before using a workflow, pull the closest tutorial code from `references/examples.md` via `scripts/meep_docs.py compose` and adapt it instead of writing from scratch.
+For new solver behavior, use the closest version-compatible tutorial or existing campaign pattern. For local fixes, audit only the affected behavior and reuse verified evidence. Examples below are snapshot patterns, not execution authorization. Before any run, set a runtime/step ceiling and resource budget under the workspace contract; record ceiling termination as unconverged. Validate decay-probe suitability and the target metric.
 
 ## Workflow 1: Minimal Valid Simulation
 
@@ -165,9 +165,9 @@ Read first:
 
 ## Workflow 8: Convergence And Validation
 
-Always run these checks before final claims:
+Establish or reuse applicable evidence before final scientific claims. Plan any new runs under the workspace execution contract; do not run this sequence for unrelated edits.
 
-1. Double `resolution`.
+1. Refine `resolution` using a budgeted sequence and explicit metric tolerance.
 2. Increase PML thickness (often 2x).
 3. Increase runtime or tighten `decay_by`.
 4. Confirm key scalar outputs change less than tolerance.

@@ -1,4 +1,5 @@
 from pathlib import Path
+import re
 import unittest
 
 
@@ -6,33 +7,26 @@ SKILL_ROOT = Path(__file__).resolve().parents[1]
 
 
 class LumericalFdtdSkillWorkflowTest(unittest.TestCase):
-    def test_skill_requires_local_research_before_coding(self):
+    def test_skill_reference_routes_resolve(self):
+        skill = (SKILL_ROOT / "SKILL.md").read_text(encoding="utf-8")
+        routes = re.findall(r"`(references/[^`<>]+\.md)`", skill)
+        self.assertTrue(routes, "Entrypoint must expose package guidance")
+        for route in routes:
+            with self.subTest(route=route):
+                target = SKILL_ROOT / route
+                self.assertTrue(target.is_file(), f"Broken route: {route}")
+                self.assertTrue(target.read_text(encoding="utf-8").strip())
+
+    def test_skill_exposes_api_and_physics_guidance(self):
         skill = (SKILL_ROOT / "SKILL.md").read_text(encoding="utf-8")
 
-        required_phrases = [
-            "Before writing code",
-            "Search Similar Local Examples",
-            "Function And Argument Audit",
-            "Implementation Notes Before Coding",
-            "Do not write or modify simulation code until",
-            "references/examples-and-commands.md",
-            "references/pylumerical.md",
-            "references/corpus-index.md",
-            "references/keyword-index.md",
-        ]
-        for phrase in required_phrases:
-            self.assertIn(phrase, skill)
-
-    def test_skill_routes_to_local_reference_files_not_web_first(self):
-        skill = (SKILL_ROOT / "SKILL.md").read_text(encoding="utf-8")
-
-        self.assertIn("Use local files first", skill)
         self.assertIn("references/pylumerical.md", skill)
         self.assertIn("references/python-api.md", skill)
         self.assertIn("references/mesh.md", skill)
         self.assertIn("references/sources.md", skill)
         self.assertIn("references/monitors-results.md", skill)
-        self.assertNotIn("browse the web first", skill.lower())
+        self.assertIn("references/api-audit.md", skill)
+        self.assertIn("references/convergence-checklist.md", skill)
 
     def test_pylumerical_reference_exists_and_is_actionable(self):
         reference = (SKILL_ROOT / "references" / "pylumerical.md").read_text(encoding="utf-8")

@@ -9,15 +9,17 @@
 
 ## Source-of-truth order
 
-For new work, use this order when sources disagree:
+For executable behavior, trust the campaign's selected installed source and
+version-matched tests/docs. Record interpreter, module path, package version,
+source commit when available, and lock metadata. Resolve official upstream for
+requested upgrades, latest-capability questions, or unresolved compatibility;
+keep its target release/commit separate from the installed runtime. For a new
+project without a runtime, select an official release before coding.
 
-1. The latest official FDTDX release/source resolved at task time.
-2. The user's installed FDTDX version and project source, which determine what can actually run.
-3. The bundled API index and package source snapshot under `doc/api-index.json` and `doc/package-src/`, as an offline fallback.
-4. Bundled tests under `doc/tests/`; they encode supported behavior and physics checks for the snapshot.
-5. Bundled examples and documentation snapshots under `doc/examples/`, `doc/readthedocs/`, and `doc/notebooks/`.
-
-The bundled corpus is a historical offline snapshot of FDTDX current main at commit `b93f90412db852527393c4a95a448c25aed1f6a8`, which reported package version 0.6.2. It is not authoritative for the latest upstream API; resolve the latest release/source from official upstream at task time. Read `references/corpus-manifest.md` for provenance.
+The bundled corpus is an offline snapshot at commit
+`b93f90412db852527393c4a95a448c25aed1f6a8`, reporting version 0.6.2. Its API index,
+source, tests, examples, and tutorials describe that snapshot, not necessarily the
+installed or latest API. Read `references/corpus-manifest.md` for provenance.
 
 ## Offline snapshot capability matrix
 
@@ -38,7 +40,7 @@ The bundled corpus is a historical offline snapshot of FDTDX current main at com
 | I/O | JSON setup serialization, STL export, uniform-grid VTI, rectilinear-grid VTR, array snapshots, GDS import helpers |
 | Symmetry | PEC/PMC mirror reduction plus unfold helpers for fields, detectors, and modes |
 
-Use `python scripts/fdtdx_docs.py api <symbol>` for exact fields, signatures, methods, and docstrings.
+Use `python scripts/fdtdx_docs.py api <symbol> --source snapshot` for indexed snapshot fields and docs. Use the project interpreter with `--source installed` for the actual runtime signature and requested member. The default remains snapshot and is labeled in output.
 
 ## Known limits and snapshot documentation drift
 
@@ -57,11 +59,11 @@ Use `python scripts/fdtdx_docs.py api <symbol>` for exact fields, signatures, me
 
 ## Version-mismatch policy
 
-Before writing or modifying FDTDX code:
+For changed FDTDX API behavior:
 
-1. Resolve the latest official release/source from PyPI and the official GitHub repository; record its version and commit.
-2. Run `python scripts/fdtdx_doctor.py --project <project>` with the project's intended interpreter.
-3. Compare the installed source commit, public exports, and key signatures with the latest target; package version alone is not sufficient.
-4. If they differ, inspect the installed signature/source (`inspect.signature`, `inspect.getsourcefile`) and the project's lock file. Upgrade the project before implementation when the task includes an upgrade; otherwise do not mix APIs.
-5. Use the bundled API index/source only as a fallback and label any snapshot-specific behavior.
-6. When live docs or source are consulted, record the target and installed version/commit in implementation notes.
+1. Identify the selected interpreter and dependency/source pins.
+2. Run `fdtdx_doctor.py --project <project>` with that interpreter when environment evidence is missing or changed.
+3. Inspect affected symbols with `fdtdx_docs.py api <symbol> --source installed`; this imports the package but does not solve.
+4. Compare with matching source/tests. Consult official upstream when the task requires a newer target or evidence is unresolved; never silently upgrade.
+5. Label snapshot-specific examples. Missing installed imports/symbols are failures, not permission to fall back to the snapshot.
+6. Record inspected versions/commits and reuse verified evidence for unchanged behavior. Documentation-only edits do not require a fresh backend check.

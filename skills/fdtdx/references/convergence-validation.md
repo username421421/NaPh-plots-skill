@@ -11,6 +11,8 @@
 
 ## Required validation plan
 
+For scientific acceptance, establish or reuse applicable evidence. This checklist does not authorize a solve or sweep. Follow the workspace execution contract; documentation-only edits need no numerical rerun. Report performed, reused, and pending checks.
+
 Define before running:
 
 1. The reported scalar/vector metric and acceptable tolerance.
@@ -19,7 +21,7 @@ Define before running:
 4. The expected sign, units, normalization, shape, and dtype.
 5. Runtime/memory limits and whether JIT compilation time is separated from execution time.
 
-Do not treat a plausible field plot as validation.
+Do not treat a plausible field plot as validation. Stop at the approved runtime/memory or sweep budget and report incomplete convergence; do not expand the campaign automatically.
 
 ## Numerical convergence
 

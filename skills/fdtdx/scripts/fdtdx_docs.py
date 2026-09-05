@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
-"""Query the bundled FDTDX docs, notebooks, examples, tests, source, and API index."""
+"""Query the FDTDX corpus or explicitly inspect the selected installed runtime."""
 
 from __future__ import annotations
 
 import argparse
 import ast
+import importlib
+import importlib.metadata
+import inspect
 import json
 import re
 import sys
@@ -303,8 +306,59 @@ def command_snippets(page: str, title: str, language: str, max_results: int, com
         print(f"{index:3}: lines {block.start + 2}-{block.end - 1} | lang={block.language or 'text'} | {block.heading_path}")
 
 
+def command_installed_api(query: str, member: str, max_doc_lines: int) -> None:
+    """Inspect exact attributes without constructing simulation objects."""
+    try:
+        module = importlib.import_module("fdtdx")
+    except Exception as exc:
+        fail(f"Installed FDTDX import failed under {sys.executable}: {type(exc).__name__}: {exc}. No snapshot fallback.")
+    module_path = getattr(module, "__file__", None)
+    metadata = {"source": "installed", "python": sys.executable,
+                "module_path": module_path,
+                "module_version": str(getattr(module, "__version__", "unknown")),
+                "distribution_version": "unknown", "source_commit": "unknown"}
+    try:
+        distribution = importlib.metadata.distribution("fdtdx")
+        metadata["distribution_version"] = distribution.version
+        direct_url = json.loads(distribution.read_text("direct_url.json") or "{}")
+        metadata["source_commit"] = direct_url.get("vcs_info", {}).get("commit_id", "unknown")
+    except importlib.metadata.PackageNotFoundError:
+        pass
+    except (ValueError, OSError, AttributeError, TypeError):
+        # Missing/malformed provenance must not hide the actual module/signature.
+        pass
+    print(json.dumps(metadata, ensure_ascii=False))
+    print("note: distribution metadata may differ from a shadowing/editable module; verify module_path and project pins")
+    name = query.removeprefix("fdtdx.")
+    parts = name.split(".") + (member.split(".") if member else [])
+    if not all(part.isidentifier() and not part.startswith("_") for part in parts):
+        fail("Installed lookup requires an exact public symbol/member path, not a search expression.")
+    symbol = module
+    try:
+        for part in parts:
+            symbol = getattr(symbol, part)
+    except AttributeError:
+        fail(f"Installed symbol not found: fdtdx.{'.'.join(parts)}. No snapshot fallback.")
+    try:
+        signature = str(inspect.signature(symbol))
+    except (ValueError, TypeError):
+        signature = " [signature unavailable; inspect installed source]"
+    print(f"fdtdx.{'.'.join(parts)}{signature}")
+    if "= null" in signature:
+        print("note: `null` is TreeClass's required-field sentinel, not a usable default")
+    try:
+        source = inspect.getsourcefile(symbol)
+        line = inspect.getsourcelines(symbol)[1]
+        print(f"source: {source}:{line}")
+    except (OSError, TypeError):
+        print("source: unavailable; inspect module_path")
+    print_limited((inspect.getdoc(symbol) or "").splitlines(), max_doc_lines)
+
+
 def command_api(query: str, member: str, max_results: int, max_doc_lines: int) -> None:
     data = load_api()
+    print(json.dumps({"source": "snapshot", "api_index": str(API_INDEX),
+                      "metadata": data.get("metadata", {})}, ensure_ascii=False))
     needle = query.lower().removeprefix("fdtdx.")
     entries = data["entries"]
     exact = [entry for entry in entries if entry["name"].lower() == needle]
@@ -403,8 +457,10 @@ def build_parser() -> argparse.ArgumentParser:
         cmd.add_argument("--lang", default="python")
         cmd.add_argument("--max-results", type=int, default=0)
 
-    cmd = sub.add_parser("api", help="Inspect a public FDTDX symbol or class member.")
+    cmd = sub.add_parser("api", help="Inspect a snapshot symbol or explicitly select the installed runtime.")
     cmd.add_argument("query")
+    cmd.add_argument("--source", choices=("snapshot", "installed"), default="snapshot",
+                     help="snapshot reads bundled JSON (default); installed imports this interpreter's fdtdx")
     cmd.add_argument("--member", default="")
     cmd.add_argument("--max-results", type=int, default=12)
     cmd.add_argument("--max-doc-lines", type=int, default=80)
@@ -432,7 +488,10 @@ def main() -> int:
     elif args.command in {"snippets", "compose"}:
         command_snippets(args.page, args.title, args.lang, args.max_results, args.command == "compose")
     elif args.command == "api":
-        command_api(args.query, args.member, args.max_results, args.max_doc_lines)
+        if args.source == "installed":
+            command_installed_api(args.query, args.member, args.max_doc_lines)
+        else:
+            command_api(args.query, args.member, args.max_results, args.max_doc_lines)
     elif args.command == "examples":
         command_examples(args.limit)
     elif args.command == "manifest":

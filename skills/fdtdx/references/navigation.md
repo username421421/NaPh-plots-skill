@@ -9,7 +9,10 @@
 
 ## Fast local lookup
 
-Run commands from the skill root:
+Choose one task row; read the second source only if the first leaves a gap. These
+paths describe the bundled snapshot; match them to the runtime before reuse.
+
+Run commands from the skill root. These examples query the bundled snapshot. For installed signatures use the project interpreter and add `--source installed` to `api`; failed runtime imports never fall back to the snapshot:
 
 ```powershell
 python scripts/fdtdx_docs.py manifest
@@ -81,5 +84,5 @@ Use the API query script instead of relying on this category list for arguments.
 - Start from an example when the task needs a complete application architecture, visualization, optimization loop, or analysis pipeline.
 - Preserve the physical validation from the test when adapting an example.
 - Do not copy private attributes or internal functions from `width_sweep_analysis.py` without auditing the source; its manual mode analysis is not the preferred public S-parameter workflow.
-- Do not use older notebook constructors without checking `doc/api-index.json`.
+- Do not use older notebook constructors without checking the installed signature (`api --source installed`); the API index describes only the snapshot.
 - Use `doc/readthedocs/api-markdown/fdtdx.<Symbol>.md` when the exact official rendered API page matters; use the API query command for faster signature/member lookup.
